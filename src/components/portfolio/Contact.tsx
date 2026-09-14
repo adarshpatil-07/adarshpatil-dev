@@ -33,7 +33,7 @@ export function Contact() {
           <div className="grid gap-4 sm:grid-cols-2"><Input name="name" placeholder="Your name" aria-label="Your name" required /><Input type="email" name="email" placeholder="Email address" aria-label="Email address" required /></div>
           <Input name="subject_line" placeholder="What’s this about?" aria-label="Message subject" required />
           <Textarea name="message" placeholder="Tell me a little about your idea..." aria-label="Message" className="min-h-36" required />
-          <div className="flex items-center justify-between gap-4"><p className="text-xs text-muted-foreground" role="status">{status === "success" ? "Message sent — thank you." : status === "error" ? "Add your Web3Forms key in the portfolio data file to enable sending." : "I’ll reply as soon as I can."}</p><Button type="submit" disabled={status === "sending"}>{status === "sending" ? <Loader2 className="animate-spin" /> : null}Send message</Button></div>
+          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center"><p className="text-xs text-muted-foreground" role="status">{status === "success" ? "Message sent — thank you." : status === "error" ? "Add your Web3Forms key in the portfolio data file to enable sending." : "I’ll reply as soon as I can."}</p><Button type="submit" className="w-full shrink-0 sm:w-auto" disabled={status === "sending"}>{status === "sending" ? <Loader2 className="animate-spin" /> : null}Send message</Button></div>
         </form>
       </div>
     </section>
