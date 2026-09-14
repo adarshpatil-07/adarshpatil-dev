@@ -53,8 +53,8 @@ export const portfolio: PortfolioData = {
   initials: "AP",
   role: "Computer Engineering Student",
   status: "Open to internships · 2026",
-  location: "Based in your city",
-  email: "hello@example.com",
+  location: "Nagpur,Maharashtra,India",
+  email: "adarshpatil.tech07@gmail.com",
   resumeHref: "/resume.pdf",
   hero: {
     eyebrow: "Computer engineering · systems · software",
@@ -76,9 +76,9 @@ export const portfolio: PortfolioData = {
     ],
   },
   socials: [
-    { label: "GitHub", href: "https://github.com/your-username", type: "github" },
-    { label: "LinkedIn", href: "https://linkedin.com/in/your-username", type: "linkedin" },
-    { label: "Email", href: "mailto:hello@example.com", type: "email" },
+    { label: "GitHub", href: "https://github.com/adarshpatil3900-png", type: "github" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/adarsh-patil-bb0335375/", type: "linkedin" },
+    { label: "Email", href: "mailto:adarshpatil.tech07@gmail.com", type: "email" },
   ],
   skills: [
     { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "Verilog", "SQL"] },
