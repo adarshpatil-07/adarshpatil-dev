@@ -29,15 +29,28 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
           <p className="mt-4 text-sm leading-6 text-muted-foreground">{project.description}</p>
           <div className="mt-5 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
-              <span key={tag} className="rounded-full bg-secondary px-3 py-1 font-mono text-[11px]">{tag}</span>
+              <span key={tag} className="rounded-full bg-secondary px-3 py-1 font-mono text-[11px]">
+                {tag}
+              </span>
             ))}
           </div>
           <div className="mt-auto flex flex-wrap gap-5 pt-8 text-sm font-medium">
-            <a href={project.href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 transition-colors hover:text-primary">
-              View project <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            <a
+              href={project.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+            >
+              View project{" "}
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
             {project.sourceHref ? (
-              <a href={project.sourceHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground">
+              <a
+                href={project.sourceHref}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+              >
                 <Github className="h-4 w-4" /> Source
               </a>
             ) : null}

@@ -49,8 +49,8 @@ export interface PortfolioData {
 }
 
 export const portfolio: PortfolioData = {
-  name: "Alex Morgan",
-  initials: "AM",
+  name: "Adarsh Patil",
+  initials: "AP",
   role: "Computer Engineering Student",
   status: "Open to internships · 2026",
   location: "Based in your city",
@@ -68,7 +68,12 @@ export const portfolio: PortfolioData = {
       "My work sits between hardware and software: prototyping connected devices, writing low-level code, and shaping clear interfaces for complex systems.",
       "Away from the lab, I document what I learn, contribute to student engineering teams, and look for practical problems worth solving.",
     ],
-    interests: ["Embedded systems", "Computer architecture", "Full-stack engineering", "Human-centered tools"],
+    interests: [
+      "Embedded systems",
+      "Computer architecture",
+      "Full-stack engineering",
+      "Human-centered tools",
+    ],
   },
   socials: [
     { label: "GitHub", href: "https://github.com/your-username", type: "github" },
@@ -77,14 +82,18 @@ export const portfolio: PortfolioData = {
   ],
   skills: [
     { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "Verilog", "SQL"] },
-    { title: "Hardware", skills: ["Microcontrollers", "PCB Design", "Digital Logic", "UART / I²C / SPI"] },
+    {
+      title: "Hardware",
+      skills: ["Microcontrollers", "PCB Design", "Digital Logic", "UART / I²C / SPI"],
+    },
     { title: "Software", skills: ["React", "Node.js", "Git", "Linux", "PostgreSQL"] },
     { title: "Tools", skills: ["KiCad", "Oscilloscope", "Docker", "Figma", "MATLAB"] },
   ],
   projects: [
     {
       title: "Telemetry Console",
-      description: "A real-time telemetry dashboard for monitoring sensor nodes, visualizing device health, and replaying field data.",
+      description:
+        "A real-time telemetry dashboard for monitoring sensor nodes, visualizing device health, and replaying field data.",
       image: telemetryImage,
       tags: ["Embedded C", "React", "WebSockets"],
       href: "https://example.com",
@@ -92,7 +101,8 @@ export const portfolio: PortfolioData = {
     },
     {
       title: "Collaborative Lab",
-      description: "A shared development workspace that pairs a lightweight code editor with reproducible hardware experiments.",
+      description:
+        "A shared development workspace that pairs a lightweight code editor with reproducible hardware experiments.",
       image: labImage,
       tags: ["TypeScript", "Systems", "Docker"],
       href: "https://example.com",
@@ -100,7 +110,8 @@ export const portfolio: PortfolioData = {
     },
     {
       title: "Board Atlas",
-      description: "A visual tool for cataloguing development boards, pinouts, components, and reusable circuit designs.",
+      description:
+        "A visual tool for cataloguing development boards, pinouts, components, and reusable circuit designs.",
       image: boardImage,
       tags: ["React", "PostgreSQL", "KiCad"],
       href: "https://example.com",
@@ -109,12 +120,13 @@ export const portfolio: PortfolioData = {
   ],
   timeline: [
     {
-      title: "B.S. Computer Engineering",
-      organization: "Your University",
-      location: "Your City",
-      period: "2023 — 2027",
+      title: "B.Tech in Computer Engineering",
+      organization: "Suryodaya College of Engineering & Technology",
+      location: "Nagpur,Maharashtra,India",
+      period: "2025 — 2029",
       type: "Education",
-      description: "Coursework in digital systems, computer architecture, electronics, algorithms, and embedded design.",
+      description:
+        "Coursework in digital systems, computer architecture, electronics, algorithms, and embedded design.",
     },
     {
       title: "Engineering Intern",
@@ -122,7 +134,8 @@ export const portfolio: PortfolioData = {
       location: "Remote",
       period: "May 2025 — Aug 2025",
       type: "Experience",
-      description: "Built internal tools, tested firmware, and collaborated with engineers across hardware and software teams.",
+      description:
+        "Built internal tools, tested firmware, and collaborated with engineers across hardware and software teams.",
     },
     {
       title: "Embedded Systems Lead",
@@ -130,7 +143,8 @@ export const portfolio: PortfolioData = {
       location: "Your University",
       period: "2024 — Present",
       type: "Experience",
-      description: "Leading firmware development and system integration for the team’s autonomous robotics platform.",
+      description:
+        "Leading firmware development and system integration for the team’s autonomous robotics platform.",
     },
   ],
   web3FormsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",

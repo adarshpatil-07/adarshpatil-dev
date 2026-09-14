@@ -15,15 +15,23 @@ export function Timeline() {
             className="grid gap-4 border-t border-border py-7 md:grid-cols-[10rem_1fr_10rem]"
           >
             <div className="flex items-start justify-between gap-3">
-              <span className="rounded-full border border-border px-3 py-1 font-mono text-[11px]">{item.type}</span>
+              <span className="rounded-full border border-border px-3 py-1 font-mono text-[11px]">
+                {item.type}
+              </span>
               <p className="font-mono text-xs text-muted-foreground md:hidden">{item.period}</p>
             </div>
             <div className="min-w-0">
               <h3 className="font-display text-xl font-semibold sm:text-2xl">{item.title}</h3>
-              <p className="mt-1 text-sm">{item.organization} · {item.location}</p>
-              <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">{item.description}</p>
+              <p className="mt-1 text-sm">
+                {item.organization} · {item.location}
+              </p>
+              <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
+                {item.description}
+              </p>
             </div>
-            <p className="hidden font-mono text-xs text-muted-foreground md:block md:text-right">{item.period}</p>
+            <p className="hidden font-mono text-xs text-muted-foreground md:block md:text-right">
+              {item.period}
+            </p>
           </Reveal>
         ))}
       </div>

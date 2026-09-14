@@ -69,7 +69,10 @@ export function Header() {
                 >
                   {link}
                   {active === id ? (
-                    <motion.span layoutId="nav-active" className="absolute -bottom-1.5 left-0 h-px w-full bg-primary" />
+                    <motion.span
+                      layoutId="nav-active"
+                      className="absolute -bottom-1.5 left-0 h-px w-full bg-primary"
+                    />
                   ) : null}
                 </a>
               );
@@ -90,7 +93,10 @@ export function Header() {
         </div>
       </div>
       {open ? (
-        <nav className="border-t border-border bg-background px-5 py-2 md:hidden" aria-label="Mobile navigation">
+        <nav
+          className="border-t border-border bg-background px-5 py-2 md:hidden"
+          aria-label="Mobile navigation"
+        >
           {links.map((link) => (
             <a
               key={link}
