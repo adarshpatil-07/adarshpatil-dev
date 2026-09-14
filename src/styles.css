@@ -34,6 +34,7 @@
 }
 
 :root {
+  color-scheme: light;
   --radius: 0.25rem;
   --background: oklch(0.975 0.012 82);
   --foreground: oklch(0.18 0.012 62);
@@ -55,6 +56,30 @@
   --input: oklch(0.79 0.018 77);
   --ring: oklch(0.58 0.185 31);
   --signal: oklch(0.73 0.17 155);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.17 0.008 70);
+  --foreground: oklch(0.94 0.008 82);
+  --card: oklch(0.21 0.009 70);
+  --card-foreground: oklch(0.94 0.008 82);
+  --popover: oklch(0.21 0.009 70);
+  --popover-foreground: oklch(0.94 0.008 82);
+  --primary: oklch(0.7 0.16 40);
+  --primary-foreground: oklch(0.17 0.008 70);
+  --secondary: oklch(0.26 0.01 70);
+  --secondary-foreground: oklch(0.94 0.008 82);
+  --muted: oklch(0.26 0.01 70);
+  --muted-foreground: oklch(0.7 0.012 78);
+  --accent: oklch(0.34 0.03 213);
+  --accent-foreground: oklch(0.94 0.008 82);
+  --destructive: oklch(0.55 0.19 27);
+  --destructive-foreground: oklch(0.96 0.008 82);
+  --border: oklch(0.32 0.01 72);
+  --input: oklch(0.32 0.01 72);
+  --ring: oklch(0.7 0.16 40);
+  --signal: oklch(0.75 0.16 155);
 }
 
 @layer base {
