@@ -2,7 +2,7 @@
 
 A personal portfolio website built with a modern full-stack React setup. Features smooth scroll-reveal animations, dark/light mode, and a fully typed data layer so all personal content lives in one place.
 
-**Live:** [mdtaquiimam.vercel.app](https://mdtaquiimam.vercel.app)
+**Live:** 
 
 ---
 
