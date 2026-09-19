@@ -58,21 +58,21 @@ export const portfolio: PortfolioData = {
   resumeHref: "/resume.pdf",
   hero: {
     eyebrow: "Computer engineering · systems · software",
-    headline: "Building thoughtful systems, from silicon to screen.",
+    headline: "Building software, from logic to interface.",
     intro:
-      "I’m a computer engineering student interested in embedded systems, dependable software, and the small details that make technology feel effortless.",
+      "I’m a computer engineering student focused on building software, exploring AI and machine learning, and turning ideas into projects that actually work.",
   },
   about: {
     lead: "I like understanding how things work at every layer.",
     paragraphs: [
-      "My work sits between hardware and software: prototyping connected devices, writing low-level code, and shaping clear interfaces for complex systems.",
-      "Away from the lab, I document what I learn, contribute to student engineering teams, and look for practical problems worth solving.",
+      "My work sits at the intersection of software engineering, full-stack development, and AI/ML, with a growing interest in how software interacts with the systems underneath it.",
+      "Outside of building projects, I document what I learn, explore new areas of computer science, and look for practical problems that are worth solving",
     ],
     interests: [
-      "Embedded systems",
+      "Software engineering",
       "Computer architecture",
       "Full-stack engineering",
-      "Human-centered tools",
+      "AI & machine learning",
     ],
   },
   socials: [
@@ -81,21 +81,21 @@ export const portfolio: PortfolioData = {
     { label: "Email", href: "mailto:adarshpatil.tech07@gmail.com", type: "email" },
   ],
   skills: [
-    { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "Verilog", "SQL"] },
+    { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "JavaScript", "SQL"] },
     {
-      title: "Hardware",
-      skills: ["Microcontrollers", "PCB Design", "Digital Logic", "UART / I²C / SPI"],
+      title: "AI/ML",
+      skills: ["NumPy", "Pandas", "scikit-learn", "Matplotlib","TensorFlow"],
     },
     { title: "Software", skills: ["React", "Node.js", "Git", "Linux", "PostgreSQL"] },
-    { title: "Tools", skills: ["KiCad", "Oscilloscope", "Docker", "Figma", "MATLAB"] },
+    { title: "Tools", skills: ["Vite", "Github Actions", "Docker", "Figma", "Canva"] },
   ],
   projects: [
     {
-      title: "Telemetry Console",
+      title: "Personal Portfolio Website ",
       description:
-        "A real-time telemetry dashboard for monitoring sensor nodes, visualizing device health, and replaying field data.",
+        "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience.",
       image: telemetryImage,
-      tags: ["Embedded C", "React", "WebSockets"],
+      tags: ["TypeScript", "React 19", "TailWind CSS", "Vite"],
       href: "https://example.com",
       sourceHref: "https://github.com/your-username",
     },
