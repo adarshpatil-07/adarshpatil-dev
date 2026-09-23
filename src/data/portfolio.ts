@@ -76,7 +76,7 @@ export const portfolio: PortfolioData = {
     ],
   },
   socials: [
-    { label: "GitHub", href: "https://github.com/adarshpatil3900-png", type: "github" },
+    { label: "GitHub", href: "https://github.com/adarshpatil-07", type: "github" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/adarsh-patil-bb0335375/", type: "linkedin" },
     { label: "Email", href: "mailto:adarshpatil.tech07@gmail.com", type: "email" },
   ],
@@ -126,9 +126,9 @@ export const portfolio: PortfolioData = {
       period: "2025 — 2029",
       type: "Education",
       description:
-        "Coursework in digital systems, computer architecture, electronics, algorithms, and embedded design.",
+        "Coursework covering data structures and algorithms, computer architecture, operating systems, database systems, software development, computer networks, and core programming concepts, with a focus on building practical software engineering skills.",
     },
-    {
+    /*{
       title: "Engineering Intern",
       organization: "Example Technology Lab",
       location: "Remote",
@@ -145,7 +145,7 @@ export const portfolio: PortfolioData = {
       type: "Experience",
       description:
         "Leading firmware development and system integration for the team’s autonomous robotics platform.",
-    },
+    },*/
   ],
   web3FormsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
 };
