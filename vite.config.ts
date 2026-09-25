@@ -10,7 +10,7 @@ export default defineConfig(async ({ command }) => {
     tailwindcss(),
     tsConfigPaths({ projects: ["./tsconfig.json"] }),
     tanstackStart({
-      server: { entry: "vercel" },
+      server: { entry: "server" },
     }),
     viteReact(),
   ];
@@ -19,7 +19,7 @@ export default defineConfig(async ({ command }) => {
     const { nitro } = await import("nitro/vite");
     plugins.push(
       nitro({
-        preset: "cloudflare-module",
+        preset: "vercel",
         cloudflare: {
           nodeCompat: true,
           deployConfig: true,
