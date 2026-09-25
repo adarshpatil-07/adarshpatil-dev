@@ -63,10 +63,10 @@ export const portfolio: PortfolioData = {
       "I’m a computer engineering student focused on building software, exploring AI and machine learning, and turning ideas into projects that actually work.",
   },
   about: {
-    lead: "I like understanding how things work at every layer.",
+    lead: "I'm Adarsh, a Computer Engineering student with a focus on full-stack and AI/ML development — I build practical, real-world applications and am actively working toward internships and hands-on industry experience.",
     paragraphs: [
-      "My work sits at the intersection of software engineering, full-stack development, and AI/ML, with a growing interest in how software interacts with the systems underneath it.",
-      "Outside of building projects, I document what I learn, explore new areas of computer science, and look for practical problems that are worth solving",
+      "On the full-stack side, I work across both front-end and back-end to build applications that are functional and usable, not just technically complete. On the AI/ML side, I'm exploring how models can be integrated into real applications rather than treated as standalone experiments.",
+      "Outside of building projects, I document what I learn, explore new areas of computer science, and look for practical problems that are worth solving. I'm actively seeking internships and industry exposure to apply what I've learned in real, high-stakes environments.",
     ],
     interests: [
       "Software engineering",
