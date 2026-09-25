@@ -84,7 +84,7 @@ export const portfolio: PortfolioData = {
     { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "JavaScript", "SQL"] },
     {
       title: "AI/ML",
-      skills: ["NumPy", "Pandas", "scikit-learn", "Matplotlib","TensorFlow"],
+      skills: ["NumPy", "Pandas", "scikit-learn", "Matplotlib", "TensorFlow"],
     },
     { title: "Software", skills: ["React", "Node.js", "Git", "Linux", "PostgreSQL"] },
     { title: "Tools", skills: ["Vite", "Github Actions", "Docker", "Figma", "Canva"] },
@@ -147,5 +147,5 @@ export const portfolio: PortfolioData = {
         "Leading firmware development and system integration for the team’s autonomous robotics platform.",
     },*/
   ],
-  web3FormsAccessKey: "YOUR_WEB3FORMS_ACCESS_KEY",
+  web3FormsAccessKey: import.meta.env["VITE_WEB3FORMS_KEY"] ?? "",
 };
