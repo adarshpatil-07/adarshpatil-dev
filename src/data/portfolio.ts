@@ -138,7 +138,7 @@ export const portfolio: PortfolioData = {
         "Built internal tools, tested firmware, and collaborated with engineers across hardware and software teams.",
     },
     {
-      title: "Embedded Systems Lead",
+      title: "Embedded  Lead",
       organization: "University Robotics Team",
       location: "Your University",
       period: "2024 — Present",
