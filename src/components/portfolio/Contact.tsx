@@ -99,10 +99,15 @@ export function Contact() {
             </p>
             <Button
               type="submit"
-              className="w-full shrink-0 sm:w-auto"
+              variant="default"
+              className="w-full shrink-0 sm:w-auto rounded-full bg-white text-zinc-950 px-6 py-2.5 font-bold shadow-md hover:bg-white/90 gap-2.5"
               disabled={status === "sending"}
             >
-              {status === "sending" ? <Loader2 className="animate-spin" /> : null}
+              {status === "sending" ? <Loader2 className="animate-spin text-primary" /> : (
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-white">
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </span>
+              )}
               Send message
             </Button>
           </div>

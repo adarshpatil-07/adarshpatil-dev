@@ -14,15 +14,15 @@ export function CompactProjectCard({ project, index }: { project: Project; index
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{ y: -4 }}
-      className="group flex h-full flex-col rounded-sm border border-border bg-card/40 p-5 transition-colors duration-300 hover:border-foreground/40 hover:bg-card/70"
+      className="group flex h-full flex-col rounded-3xl border border-border bg-card/50 p-6 transition-all duration-300 hover:border-primary/40 hover:bg-card shadow-sm"
     >
       <div className="mb-3 flex items-center justify-between">
-        <span className="font-mono text-xs text-muted-foreground">
-          {index + 1 < 10 ? `0${index + 1}` : index + 1}
+        <span className="font-mono text-xs font-bold text-primary">
+          #{index + 1 < 10 ? `0${index + 1}` : index + 1}
         </span>
       </div>
 
-      <div className="overflow-hidden rounded-sm border border-border bg-muted">
+      <div className="overflow-hidden rounded-2xl border border-border bg-muted">
         <img
           src={project.image}
           alt={`${project.title} interface preview`}
@@ -34,35 +34,35 @@ export function CompactProjectCard({ project, index }: { project: Project; index
       </div>
 
       <div className="flex flex-1 flex-col pt-5">
-        <h3 className="font-display text-xl font-semibold sm:text-2xl">{project.title}</h3>
+        <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{project.title}</h3>
         <p className="mt-3 text-sm leading-6 text-muted-foreground">{project.description}</p>
 
         <div className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (
-            <span key={tag} className="rounded-full bg-secondary px-3 py-1 font-mono text-[11px]">
+            <span key={tag} className="rounded-full bg-secondary border border-border/50 px-3 py-1 font-mono text-[11px] font-medium text-foreground">
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap items-center gap-5 pt-6 text-sm font-medium">
+        <div className="mt-auto flex flex-wrap items-center gap-3 pt-6 text-sm font-semibold">
           <a
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1 transition-colors hover:text-primary"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs text-white shadow-sm transition-all hover:bg-primary/90 hover:scale-[1.02]"
           >
-            View project{" "}
-            <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            View project
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
           </a>
           {project.sourceHref ? (
             <a
               href={project.sourceHref}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border px-3.5 py-1.5 text-xs text-muted-foreground transition-all hover:border-foreground/40 hover:text-foreground"
             >
-              <Github className="h-4 w-4" /> Source
+              <Github className="h-3.5 w-3.5" /> Source
             </a>
           ) : null}
         </div>

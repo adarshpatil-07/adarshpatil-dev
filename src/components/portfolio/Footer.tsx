@@ -8,8 +8,11 @@ export function Footer() {
         <p>
           © {new Date().getFullYear()} {portfolio.name}
         </p>
-        <a href="#top" className="inline-flex items-center gap-2 hover:text-foreground">
-          Back to top <ArrowUp className="h-3 w-3" />
+        <a
+          href="#top"
+          className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-1.5 transition-colors hover:border-primary/50 hover:text-foreground"
+        >
+          Back to top <ArrowUp className="h-3 w-3 text-primary" />
         </a>
       </div>
     </footer>

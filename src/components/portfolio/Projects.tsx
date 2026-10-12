@@ -22,11 +22,11 @@ export function Projects() {
         <Button
           asChild
           variant="outline"
-          className="group h-11 px-6 font-mono text-xs uppercase tracking-wider"
+          className="group rounded-full border-border hover:border-primary/50 h-11 px-7 text-xs font-semibold uppercase tracking-wider"
         >
           <Link to="/projects">
             View all projects
-            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 text-primary" />
           </Link>
         </Button>
       </div>

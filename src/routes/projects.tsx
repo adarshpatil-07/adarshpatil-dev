@@ -44,11 +44,11 @@ function ProjectsPage() {
               <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
               Back to home
             </Link>
-            <div className="mt-4 border-b border-border pb-8">
-              <p className="font-mono text-xs uppercase text-muted-foreground">
+            <div className="mt-4 border-b border-border/60 pb-8">
+              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
                 Archive / All Projects
               </p>
-              <h1 className="mt-3 font-display text-4xl font-semibold sm:text-5xl md:text-6xl">
+              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
                 All projects
               </h1>
               <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
