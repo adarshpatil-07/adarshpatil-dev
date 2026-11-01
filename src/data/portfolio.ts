@@ -110,7 +110,7 @@ export const portfolio: PortfolioData = {
     },
     { label: "Email", href: "mailto:adarshpatil.tech07@gmail.com", type: "email" },
     // Add your X/Twitter profile URL here to show the X button in the hero, contact, and footer:
-    // { label: "X", href: "https://x.com/your-handle", type: "twitter" },
+    { label: "X", href: "https://x.com/AdarshBuilds07", type: "twitter" },
   ],
   skills: [
     { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "JavaScript", "SQL"] },
