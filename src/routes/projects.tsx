@@ -1,10 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
 import { Header } from "@/components/portfolio/Header";
 import { Footer } from "@/components/portfolio/Footer";
 import { CompactProjectCard } from "@/components/portfolio/CompactProjectCard";
 import { portfolio } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/projects")({
   head: () => ({
@@ -26,10 +28,35 @@ export const Route = createFileRoute("/projects")({
   component: ProjectsPage,
 });
 
+function buildCategories(projects: typeof portfolio.projects): string[] {
+  const seen = new Set<string>();
+  const cats: string[] = [];
+  for (const project of projects) {
+    for (const cat of project.categories) {
+      if (!seen.has(cat)) {
+        seen.add(cat);
+        cats.push(cat);
+      }
+    }
+  }
+  return ["All", ...cats.sort()];
+}
+
 function ProjectsPage() {
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, []);
+
+  const ALL_CATEGORIES = useMemo(() => buildCategories(portfolio.projects), []);
+  const [activeCategory, setActiveCategory] = useState("All");
+
+  const visibleProjects = useMemo(
+    () =>
+      activeCategory === "All"
+        ? portfolio.projects
+        : portfolio.projects.filter((p) => p.categories.includes(activeCategory)),
+    [activeCategory],
+  );
 
   return (
     <>
@@ -58,10 +85,51 @@ function ProjectsPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
-            {portfolio.projects.map((project, index) => (
-              <CompactProjectCard key={project.title} project={project} index={index} />
+          {/* Category filter pills */}
+          <div className="mb-8 flex flex-wrap gap-2">
+            {ALL_CATEGORIES.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveCategory(cat)}
+                className={cn(
+                  "rounded-full px-4 py-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer",
+                  activeCategory === cat
+                    ? "bg-primary text-primary-foreground shadow-sm"
+                    : "border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
+                )}
+              >
+                {cat}
+              </button>
             ))}
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+            <AnimatePresence mode="popLayout">
+              {visibleProjects.length === 0 ? (
+                <motion.p
+                  key="empty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="col-span-full py-12 text-center text-sm text-muted-foreground"
+                >
+                  No projects in this category yet.
+                </motion.p>
+              ) : (
+                visibleProjects.map((project, index) => (
+                  <motion.div
+                    key={project.title}
+                    layout
+                    initial={{ opacity: 0, scale: 0.97 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.97 }}
+                    transition={{ duration: 0.2, delay: index * 0.06 }}
+                  >
+                    <CompactProjectCard project={project} index={index} />
+                  </motion.div>
+                ))
+              )}
+            </AnimatePresence>
           </div>
         </section>
       </main>

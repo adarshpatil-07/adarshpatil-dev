@@ -19,6 +19,7 @@ export interface Project {
   description: string;
   image: string;
   tags: string[];
+  categories: string[];
   href: string;
   sourceHref?: string;
 }
@@ -127,6 +128,7 @@ export const portfolio: PortfolioData = {
         "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience.",
       image: telemetryImage,
       tags: ["TypeScript", "React 19", "TailWind CSS", "Vite"],
+      categories: ["Full Stack", "Web Development"],
       href: "https://adarshpatil-dev.vercel.app/",
       sourceHref: "https://github.com/adarshpatil-07/adarshpatil-dev",
     },
@@ -136,6 +138,7 @@ export const portfolio: PortfolioData = {
         "A computer vision project using TensorFlow and Keras to build and train an image classification model on the Fashion MNIST dataset.",
       image: labImage,
       tags: ["Python", "TensorFlow", "Keras", "NumPy", "Machine Learning"],
+      categories: ["AI / ML", "Python", "Computer Vision"],
       href: "",
       sourceHref: "https://github.com/adarshpatil-07/tensorflow-computer-vision",
     },
@@ -145,6 +148,7 @@ export const portfolio: PortfolioData = {
         "A visual tool for cataloguing development boards, pinouts, components, and reusable circuit designs.",
       image: boardImage,
       tags: ["React", "PostgreSQL", "KiCad"],
+      categories: ["Full Stack", "Web Development", "Other"],
       href: "https://example.com",
       sourceHref: "https://github.com/your-username",
     },
