@@ -58,7 +58,7 @@ export const portfolio: PortfolioData = {
   resumeHref: "/resume.pdf",
   hero: {
     eyebrow: "Computer engineering · systems · software",
-    headline: "Building software, from logic to interface.",
+    headline: "Exploring full-stack development and AI/ML, while working towards meaningful open-source contributions.",
     intro:
       "I’m a computer engineering student focused on building software, exploring AI and machine learning, and turning ideas into projects that actually work.",
   },
