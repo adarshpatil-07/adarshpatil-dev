@@ -102,7 +102,7 @@ export function Contact() {
               {status === "sending" ? (
                 <Loader2 className="animate-spin text-primary" />
               ) : (
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-white">
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-primary-foreground">
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </span>
               )}

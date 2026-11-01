@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowDownRight, FileText, FolderGit2 } from "lucide-react";
 import { getSocial, portfolio } from "@/data/portfolio";
+import { cn } from "@/lib/utils";
 import { SocialGlyph } from "./SocialIcons";
 
 const container = {
@@ -21,71 +22,76 @@ export function Hero() {
   return (
     <section id="top" className="px-3 pt-3 pb-8 sm:px-6 sm:pt-6 md:px-8 md:pt-6 md:pb-12">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] hero-container-gradient shadow-2xl">
-        <div className="pointer-events-none absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/40" />
+        {/* Subtle radial vignette */}
+        <div className="pointer-events-none absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/45" />
 
-        <div className="relative z-10 grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:items-stretch">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-[minmax(0,1.25fr)_minmax(0,0.85fr)] lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] md:items-stretch">
+          {/* Main content column */}
           <motion.div
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex min-w-0 flex-col justify-between gap-10 p-6 text-white sm:p-10 md:p-12 lg:p-14 lg:pr-8"
+            className="flex min-w-0 flex-col justify-between p-5 text-white sm:p-8 md:p-10 lg:p-12 xl:p-14 md:pr-4 lg:pr-6"
           >
             <div>
+              {/* Eyebrow & Status bar */}
               <motion.div
                 variants={item}
-                className="flex items-center justify-between gap-3 border-b border-white/15 pb-5"
+                className="flex flex-wrap items-center justify-between gap-3 border-b border-white/15 pb-4 sm:pb-5"
               >
-                <p className="font-mono text-xs font-semibold uppercase tracking-wider text-white/80">
+                <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-white/80 sm:text-xs">
                   {portfolio.hero.eyebrow}
                 </p>
-                <span className="hidden shrink-0 items-center gap-2 rounded-full border border-white/10 bg-black/20 px-3 py-1 text-xs text-white/90 backdrop-blur-md sm:flex">
+                <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-white/15 bg-white/10 px-2.5 py-0.5 text-[11px] font-medium text-white/90 backdrop-blur-md sm:px-3 sm:py-1 sm:text-xs">
                   <span className="h-2 w-2 rounded-full bg-signal animate-pulse" />
                   {portfolio.status}
                 </span>
               </motion.div>
 
-              <div className="mt-8 max-w-xl space-y-5 sm:mt-10">
+              {/* Headline & Intro */}
+              <div className="mt-6 max-w-xl space-y-3.5 sm:mt-8 sm:space-y-4 md:mt-8 lg:mt-10 lg:space-y-5">
                 <motion.h1
                   variants={item}
-                  className="font-display text-[1.75rem] font-extrabold leading-[1.18] tracking-tight text-white sm:text-4xl sm:leading-[1.15] md:text-[2.35rem] lg:text-[2.6rem]"
+                  className="font-display text-[1.45rem] font-extrabold leading-[1.2] tracking-tight text-white xs:text-[1.7rem] sm:text-3xl sm:leading-[1.18] md:text-[2rem] md:leading-[1.18] lg:text-[2.4rem] xl:text-[2.65rem]"
                 >
                   {portfolio.hero.headline}
                 </motion.h1>
                 <motion.p
                   variants={item}
-                  className="max-w-lg text-[0.95rem] leading-7 text-white/90 sm:text-lg sm:leading-8"
+                  className="max-w-lg text-[0.925rem] leading-relaxed text-white/90 sm:text-base sm:leading-7 lg:text-lg lg:leading-8"
                 >
                   {portfolio.hero.intro}
                 </motion.p>
               </div>
 
+              {/* Action buttons & Social links */}
               <motion.div
                 variants={item}
-                className="mt-8 flex flex-wrap items-center gap-2.5 sm:gap-3"
+                className="mt-6 flex flex-wrap items-center gap-2 sm:mt-8 sm:gap-2.5 md:gap-3"
               >
                 <a
                   href={portfolio.resumeHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-3 rounded-full bg-white py-2 pl-5 pr-2.5 text-sm font-bold text-zinc-950 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-[0.98]"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-white py-1.5 pl-4 pr-1.5 text-xs font-bold text-zinc-950 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-[0.98] sm:py-2 sm:pl-5 sm:pr-2 sm:text-sm"
                 >
-                  <FileText className="h-4 w-4" aria-hidden="true" />
+                  <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                   <span>Resume</span>
-                  <span className="grid h-8 w-8 place-items-center rounded-full bg-primary text-white transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                    <ArrowDownRight className="h-4 w-4" />
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-primary text-primary-foreground transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 sm:h-8 sm:w-8">
+                    <ArrowDownRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                   </span>
                 </a>
 
                 <a
                   href="#open-source"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm sm:gap-2"
                 >
-                  <FolderGit2 className="h-4 w-4" aria-hidden="true" />
+                  <FolderGit2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                   Open Source
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-5 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm"
                 >
                   Get in touch
                 </a>
@@ -98,19 +104,27 @@ export function Hero() {
               </motion.div>
             </div>
 
-            <div>
-              <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 sm:gap-6">
+            {/* Mobile-only centered photograph (stacks naturally below headline, intro, and buttons) */}
+            <motion.div variants={item} className="my-7 flex justify-center md:hidden">
+              <HeroPhoto className="max-w-[13.5rem] xs:max-w-[15.5rem] sm:max-w-[17.5rem]" />
+            </motion.div>
+
+            {/* Skills & Author Footer */}
+            <div className="mt-2 md:mt-8 lg:mt-10">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 md:gap-3 lg:gap-6">
                 {portfolio.skills.slice(0, 4).map((group, idx) => (
                   <div key={group.title} className="space-y-1">
-                    <span className="font-mono text-xs font-bold text-white/90 drop-shadow-sm">
+                    <span className="font-mono text-xs font-bold text-violet-300 drop-shadow-sm">
                       #0{idx + 1}
                     </span>
-                    <p className="text-sm font-medium text-white/80">{group.title}</p>
+                    <p className="text-xs font-medium text-white/80 sm:text-sm">{group.title}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-6 border-t border-white/10 pt-5">
-                <p className="font-display text-xl font-bold text-white">{portfolio.name}</p>
+              <div className="mt-5 border-t border-white/10 pt-4 sm:mt-6 sm:pt-5">
+                <p className="font-display text-lg font-bold text-white sm:text-xl">
+                  {portfolio.name}
+                </p>
                 <p className="text-xs text-white/75">
                   {portfolio.role} · {portfolio.location}
                 </p>
@@ -118,29 +132,47 @@ export function Hero() {
             </div>
           </motion.div>
 
+          {/* Desktop & Tablet right column: photo anchored bottom-right */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative flex min-h-[16rem] items-end justify-center lg:min-h-0 lg:justify-end"
+            className="relative hidden p-6 md:flex md:flex-col md:justify-end md:items-end lg:p-10 lg:pl-0 xl:p-12 xl:pl-0"
           >
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute bottom-[8%] left-1/2 h-[70%] w-[70%] -translate-x-1/2 rounded-full bg-orange/50 blur-3xl lg:left-auto lg:right-[8%] lg:translate-x-0"
-            />
-            <img
-              src={portfolio.profileImage}
-              alt={`${portfolio.name}, ${portfolio.role}`}
-              width={720}
-              height={900}
-              loading="eager"
-              decoding="async"
-              className="hero-photo relative z-10 h-[18rem] w-auto max-w-[min(100%,22rem)] object-cover object-[center_12%] sm:h-[22rem] lg:h-[min(38rem,92%)] lg:max-w-[100%] lg:translate-x-4"
-            />
+            <HeroPhoto className="max-w-[15.5rem] lg:max-w-[20rem] xl:max-w-[23rem]" />
           </motion.div>
         </div>
       </div>
     </section>
+  );
+}
+
+function HeroPhoto({ className }: { className?: string | undefined }) {
+  return (
+    <div className={cn("relative mx-auto w-full", className)}>
+      {/* Ambient glow behind the photograph */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -inset-3 sm:-inset-5 rounded-[2.5rem] bg-gradient-to-tr from-violet-600/30 via-purple-500/20 to-indigo-500/15 blur-2xl sm:blur-3xl -z-10"
+      />
+      {/* Framed portrait container with natural 3:4 aspect ratio */}
+      <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-white/15 bg-white/5 shadow-2xl shadow-black/50 ring-1 ring-white/10 sm:rounded-3xl">
+        <img
+          src={portfolio.profileImage}
+          alt={`${portfolio.name}, ${portfolio.role}`}
+          width={1086}
+          height={1448}
+          loading="eager"
+          decoding="async"
+          className="h-full w-full object-cover object-top transition-transform duration-500 hover:scale-[1.02]"
+        />
+        {/* Subtle vignette overlay to integrate naturally with dark violet background */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0e051b]/55 via-transparent to-black/10"
+        />
+      </div>
+    </div>
   );
 }
 
@@ -159,9 +191,9 @@ function HeroSocial({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-4 py-2.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+      className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm sm:gap-2"
     >
-      <SocialGlyph type={type} className="h-4 w-4" />
+      <SocialGlyph type={type} className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
       <span>{label}</span>
     </a>
   );

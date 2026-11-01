@@ -1,7 +1,7 @@
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
-import profileImage from "@/assets/profile 2.jpeg";
+import profileImage from "@/assets/profile1.jpeg";
 
 export interface SocialLink {
   label: string;

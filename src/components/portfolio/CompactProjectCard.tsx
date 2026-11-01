@@ -50,7 +50,7 @@ export function CompactProjectCard({ project, index }: { project: Project; index
             href={project.href}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs text-white shadow-sm transition-all hover:bg-primary/90 hover:scale-[1.02]"
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary px-3.5 py-1.5 text-xs text-primary-foreground font-semibold shadow-sm transition-all hover:bg-primary/90 hover:scale-[1.02]"
           >
             View project
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
