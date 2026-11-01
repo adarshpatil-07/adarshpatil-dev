@@ -1,11 +1,12 @@
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
+import profileImage from "@/assets/profile 2.jpeg";
 
 export interface SocialLink {
   label: string;
   href: string;
-  type: "email" | "github" | "linkedin";
+  type: "email" | "github" | "linkedin" | "twitter";
 }
 
 export interface SkillGroup {
@@ -31,6 +32,25 @@ export interface TimelineItem {
   description: string;
 }
 
+export interface OpenSourceContribution {
+  title: string;
+  repoName: string;
+  description: string;
+  contribution: string;
+  technologies: string[];
+  href: string;
+  isDemo: boolean;
+}
+
+export interface Article {
+  title: string;
+  description: string;
+  date: string;
+  category: string;
+  href?: string;
+  isDemo: boolean;
+}
+
 export interface PortfolioData {
   name: string;
   initials: string;
@@ -39,11 +59,14 @@ export interface PortfolioData {
   location: string;
   email: string;
   resumeHref: string;
+  profileImage: string;
   hero: { eyebrow: string; headline: string; intro: string };
   about: { lead: string; paragraphs: string[]; interests: string[] };
   socials: SocialLink[];
   skills: SkillGroup[];
   projects: Project[];
+  openSource: OpenSourceContribution[];
+  articles: Article[];
   timeline: TimelineItem[];
   web3FormsAccessKey: string;
 }
@@ -56,9 +79,11 @@ export const portfolio: PortfolioData = {
   location: "Nagpur,Maharashtra,India",
   email: "adarshpatil.tech07@gmail.com",
   resumeHref: "/resume.pdf",
+  profileImage,
   hero: {
     eyebrow: "Computer engineering · systems · software",
-    headline: "Exploring full-stack development and AI/ML, while working towards meaningful open-source contributions.",
+    headline:
+      "Exploring full-stack development and AI/ML, while aspiring to make meaningful open-source contributions.",
     intro:
       "I’m a computer engineering student focused on building software, exploring AI and machine learning, and turning ideas into projects that actually work.",
   },
@@ -77,8 +102,14 @@ export const portfolio: PortfolioData = {
   },
   socials: [
     { label: "GitHub", href: "https://github.com/adarshpatil-07", type: "github" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/adarsh-patil-bb0335375/", type: "linkedin" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/adarsh-patil-bb0335375/",
+      type: "linkedin",
+    },
     { label: "Email", href: "mailto:adarshpatil.tech07@gmail.com", type: "email" },
+    // Add your X/Twitter profile URL here to show the X button in the hero, contact, and footer:
+    // { label: "X", href: "https://x.com/your-handle", type: "twitter" },
   ],
   skills: [
     { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "JavaScript", "SQL"] },
@@ -118,6 +149,29 @@ export const portfolio: PortfolioData = {
       sourceHref: "https://github.com/your-username",
     },
   ],
+  openSource: [
+    {
+      title: "First Open Source Contribution",
+      repoName: "Replace with repository name",
+      description:
+        "Contributed to an open-source project by improving its existing implementation and following maintainer feedback.",
+      contribution:
+        "DEMO ENTRY — replace this with the exact repository, pull request, and what you changed. The GitHub link currently points to your profile until a specific contribution URL is added.",
+      technologies: ["Git", "Open Source"],
+      href: "https://github.com/adarshpatil-07",
+      isDemo: true,
+    },
+  ],
+  articles: [
+    {
+      title: "Understanding the Rise and Fall of the Roman Empire",
+      category: "History",
+      date: "Demo",
+      description:
+        "An exploration of the Roman Empire's rise, its emperors, political struggles, and the events that eventually led to its decline.",
+      isDemo: true,
+    },
+  ],
   timeline: [
     {
       title: "B.Tech in Computer Engineering",
@@ -149,3 +203,7 @@ export const portfolio: PortfolioData = {
   ],
   web3FormsAccessKey: import.meta.env["VITE_WEB3FORMS_KEY"] ?? "",
 };
+
+export function getSocial(type: SocialLink["type"]) {
+  return portfolio.socials.find((social) => social.type === type);
+}

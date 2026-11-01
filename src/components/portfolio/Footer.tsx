@@ -1,19 +1,14 @@
-import { ArrowUp } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
+import { SocialIconRow } from "./SocialIcons";
+
+const footerSocials = portfolio.socials.filter((social) => social.type !== "email");
 
 export function Footer() {
   return (
     <footer className="border-t border-border">
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-6 text-xs text-muted-foreground md:px-8">
-        <p>
-          © {new Date().getFullYear()} {portfolio.name}
-        </p>
-        <a
-          href="#top"
-          className="inline-flex items-center gap-2 rounded-full border border-border px-3.5 py-1.5 transition-colors hover:border-primary/50 hover:text-foreground"
-        >
-          Back to top <ArrowUp className="h-3 w-3 text-primary" />
-        </a>
+      <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-5 py-6 text-sm text-muted-foreground sm:flex-row sm:items-center md:px-8">
+        <p>© 2026 Developed with ❤️ by Adarsh Patil</p>
+        <SocialIconRow socials={footerSocials} />
       </div>
     </footer>
   );
