@@ -5,6 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { portfolio } from "@/data/portfolio";
 import { SectionHeading } from "./SectionHeading";
+import { SocialIconRow } from "./SocialIcons";
+import { VisitorCount } from "./VisitorCount";
+
+const profileSocials = portfolio.socials.filter((social) => social.type !== "email");
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -32,7 +36,7 @@ export function Contact() {
   return (
     <section id="contact" className="section-shell pb-16 md:pb-24">
       <SectionHeading
-        index="05"
+        index="07"
         title="Let’s build something useful."
         description="Have an internship, research idea, or interesting engineering problem? Send a note."
       />
@@ -46,20 +50,12 @@ export function Contact() {
             {portfolio.email}
             <ArrowUpRight className="h-4 w-4" />
           </a>
-          <div className="mt-10 space-y-3">
-            {portfolio.socials
-              .filter((social) => social.type !== "email")
-              .map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="block text-sm text-muted-foreground hover:text-foreground"
-                >
-                  {social.label} ↗
-                </a>
-              ))}
+          <div className="mt-8">
+            <VisitorCount />
+          </div>
+          <div className="mt-8">
+            <p className="text-sm text-muted-foreground">Find me online</p>
+            <SocialIconRow socials={profileSocials} className="mt-3" />
           </div>
         </div>
 
@@ -103,8 +99,10 @@ export function Contact() {
               className="w-full shrink-0 sm:w-auto rounded-full bg-white text-zinc-950 px-6 py-2.5 font-bold shadow-md hover:bg-white/90 gap-2.5"
               disabled={status === "sending"}
             >
-              {status === "sending" ? <Loader2 className="animate-spin text-primary" /> : (
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-white">
+              {status === "sending" ? (
+                <Loader2 className="animate-spin text-primary" />
+              ) : (
+                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-primary-foreground">
                   <ArrowUpRight className="h-3.5 w-3.5" />
                 </span>
               )}

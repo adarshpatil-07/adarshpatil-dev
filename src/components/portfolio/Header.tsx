@@ -5,7 +5,15 @@ import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
 import { ThemeToggle } from "./ThemeToggle";
 
-const links = ["About", "Skills", "Projects", "Experience", "Contact"];
+const links = [
+  { label: "About", id: "about" },
+  { label: "Skills", id: "skills" },
+  { label: "Projects", id: "projects" },
+  { label: "Open Source", id: "open-source" },
+  { label: "Articles", id: "articles" },
+  { label: "Experience", id: "experience" },
+  { label: "Contact", id: "contact" },
+];
 const HEADER_OFFSET = 64;
 
 function scrollToId(id: string) {
@@ -21,7 +29,7 @@ export function Header() {
   const [active, setActive] = useState("");
 
   useEffect(() => {
-    const ids = ["about", "skills", "projects", "experience", "contact"];
+    const ids = links.map((link) => link.id);
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -56,19 +64,18 @@ export function Header() {
           <span className="text-primary">.</span>
         </a>
         <div className="flex items-center gap-1 sm:gap-2">
-          <nav className="hidden items-center gap-6 md:flex lg:gap-7" aria-label="Main navigation">
+          <nav className="hidden items-center gap-4 lg:flex xl:gap-6" aria-label="Main navigation">
             {links.map((link) => {
-              const id = link.toLowerCase();
               return (
                 <a
-                  key={link}
-                  href={`#${id}`}
-                  onClick={(event) => handleNav(event, id)}
-                  aria-current={active === id ? "true" : undefined}
-                  className={`relative text-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${active === id ? "text-foreground" : "text-muted-foreground"}`}
+                  key={link.id}
+                  href={`#${link.id}`}
+                  onClick={(event) => handleNav(event, link.id)}
+                  aria-current={active === link.id ? "true" : undefined}
+                  className={`relative whitespace-nowrap text-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${active === link.id ? "text-foreground" : "text-muted-foreground"}`}
                 >
-                  {link}
-                  {active === id ? (
+                  {link.label}
+                  {active === link.id ? (
                     <motion.span
                       layoutId="nav-active"
                       className="absolute -bottom-1.5 left-0 h-px w-full bg-primary"
@@ -78,12 +85,12 @@ export function Header() {
               );
             })}
           </nav>
-          <div className="mx-1 hidden h-5 w-px bg-border md:block" />
+          <div className="mx-1 hidden h-5 w-px bg-border lg:block" />
           <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
-            className="shrink-0 md:hidden"
+            className="shrink-0 lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-label="Toggle menu"
@@ -94,17 +101,17 @@ export function Header() {
       </div>
       {open ? (
         <nav
-          className="border-t border-border bg-background px-5 py-2 md:hidden"
+          className="border-t border-border bg-background px-5 py-2 lg:hidden"
           aria-label="Mobile navigation"
         >
           {links.map((link) => (
             <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              onClick={(event) => handleNav(event, link.toLowerCase())}
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(event) => handleNav(event, link.id)}
               className="block border-b border-border py-3 text-sm last:border-0"
             >
-              {link}
+              {link.label}
             </a>
           ))}
         </nav>

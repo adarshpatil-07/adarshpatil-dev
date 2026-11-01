@@ -5,7 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 export function Timeline() {
   return (
     <section id="experience" className="section-shell">
-      <SectionHeading index="04" title="Experience & education" />
+      <SectionHeading index="06" title="Experience & education" />
       <div className="md:ml-[10rem]">
         {portfolio.timeline.map((item, index) => (
           <Reveal
@@ -21,7 +21,9 @@ export function Timeline() {
               <p className="font-mono text-xs text-muted-foreground md:hidden">{item.period}</p>
             </div>
             <div className="min-w-0">
-              <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{item.title}</h3>
+              <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
+                {item.title}
+              </h3>
               <p className="mt-1 text-sm font-medium text-foreground/90">
                 {item.organization} · {item.location}
               </p>

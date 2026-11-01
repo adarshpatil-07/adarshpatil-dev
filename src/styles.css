@@ -40,7 +40,6 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-signal: var(--signal);
-  --color-orange: var(--orange);
 }
 
 /* ═══════════════════════════════════════════
@@ -49,62 +48,58 @@
 :root {
   color-scheme: light;
 
-  --orange: #FF5A1F;
+  --background: #f8f7fb;
+  --foreground: #14101f;
+  --card: #ffffff;
+  --card-foreground: #14101f;
+  --popover: #ffffff;
+  --popover-foreground: #14101f;
+  --primary: #6d28d9;
+  --primary-foreground: #ffffff;
+  --secondary: #f0ecf8;
+  --secondary-foreground: #281e3d;
+  --muted: #ebe6f5;
+  --muted-foreground: #6c647e;
+  --accent: #f0ecf8;
+  --accent-foreground: #14101f;
+  --destructive: #e11d48;
+  --destructive-foreground: #ffffff;
+  --border: #ded8ec;
+  --input: #ded8ec;
+  --ring: #7c3aed;
+  --signal: #22c55e;
 
-  --background: #F8F6F3;
-  --foreground: #1A1412;
-  --card: #FFFFFF;
-  --card-foreground: #1A1412;
-  --popover: #FFFFFF;
-  --popover-foreground: #1A1412;
-  --primary: #FF5A1F;
-  --primary-foreground: #FFFFFF;
-  --secondary: #F0EBE5;
-  --secondary-foreground: #2D2017;
-  --muted: #EDE8E2;
-  --muted-foreground: #78716C;
-  --accent: #F0EBE5;
-  --accent-foreground: #1A1412;
-  --destructive: #EF4444;
-  --destructive-foreground: #FFFFFF;
-  --border: #DDD6CC;
-  --input: #DDD6CC;
-  --ring: #FF5A1F;
-  --signal: #22C55E;
-
-  --hero-gradient: linear-gradient(155deg, #FF5A1F 0%, #E84400 30%, #C23A00 55%, #1A1412 100%);
+  --hero-gradient: linear-gradient(145deg, #1d0f33 0%, #291447 35%, #1b0d30 70%, #0f061e 100%);
 }
 
 /* ═══════════════════════════════════════════
-   Dark theme  (default)
+   Dark theme (Abyss-inspired, refined)
    ═══════════════════════════════════════════ */
 .dark {
   color-scheme: dark;
 
-  --orange: #FF5A1F;
+  --background: #09070f;
+  --foreground: #f2f0f7;
+  --card: #120d1e;
+  --card-foreground: #f2f0f7;
+  --popover: #120d1e;
+  --popover-foreground: #f2f0f7;
+  --primary: #a78bfa;
+  --primary-foreground: #09070f;
+  --secondary: #1a132b;
+  --secondary-foreground: #ede8f6;
+  --muted: #161024;
+  --muted-foreground: #9b91ad;
+  --accent: #1e1632;
+  --accent-foreground: #f2f0f7;
+  --destructive: #f43f5e;
+  --destructive-foreground: #ffffff;
+  --border: #231a38;
+  --input: #231a38;
+  --ring: #a78bfa;
+  --signal: #22c55e;
 
-  --background: #0C0A09;
-  --foreground: #F5F5F4;
-  --card: #1C1917;
-  --card-foreground: #F5F5F4;
-  --popover: #1C1917;
-  --popover-foreground: #F5F5F4;
-  --primary: #FF5A1F;
-  --primary-foreground: #FFFFFF;
-  --secondary: #252220;
-  --secondary-foreground: #F5F5F4;
-  --muted: #252220;
-  --muted-foreground: #A8A29E;
-  --accent: #252220;
-  --accent-foreground: #F5F5F4;
-  --destructive: #EF4444;
-  --destructive-foreground: #FAFAF9;
-  --border: #332E2B;
-  --input: #332E2B;
-  --ring: #FF5A1F;
-  --signal: #22C55E;
-
-  --hero-gradient: linear-gradient(155deg, #FF5A1F 0%, #D94400 30%, #8B1A1A 55%, #1C1917 100%);
+  --hero-gradient: linear-gradient(145deg, #170b2b 0%, #23103e 35%, #150927 70%, #0b0416 100%);
 }
 
 /* ─── Base layer ─── */
@@ -133,12 +128,19 @@
   background: var(--hero-gradient);
 }
 
+/* ─── Hero portrait fade ─── */
+@utility hero-photo {
+  mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
+}
+
 /* ─── Section shell ─── */
 @utility section-shell {
   width: 100%;
   max-width: 72rem;
   margin-inline: auto;
   padding: 5rem 1.25rem;
+  scroll-margin-top: 5rem;
   @media (min-width: 48rem) {
     padding: 7rem 2rem;
   }
