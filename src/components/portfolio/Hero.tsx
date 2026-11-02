@@ -137,7 +137,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden p-6 md:flex md:flex-col md:justify-end md:items-end lg:p-10 lg:pl-0 xl:p-12 xl:pl-0"
+            className="relative hidden p-6 md:flex md:flex-col md:justify-center md:items-center lg:p-10 lg:pl-0 xl:p-12 xl:pl-0"
           >
             <HeroPhoto className="max-w-[15.5rem] lg:max-w-[20rem] xl:max-w-[23rem]" />
           </motion.div>
