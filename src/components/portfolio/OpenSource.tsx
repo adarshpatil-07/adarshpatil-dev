@@ -34,7 +34,7 @@ export function OpenSource() {
                 aria-expanded={expanded}
                 aria-controls={panelId}
                 onClick={() => setOpenTitle(expanded ? null : item.title)}
-                className="flex w-full items-start gap-4 rounded-3xl p-6 text-left sm:p-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                className="flex w-full items-start gap-4 rounded-3xl p-6 text-left sm:p-8 lg:p-6 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <span className="mt-1 font-mono text-xs font-bold text-primary">#0{index + 1}</span>
                 <div className="min-w-0 flex-1">
@@ -80,7 +80,7 @@ function ContributionDetails({
       id={panelId}
       role="region"
       aria-labelledby={labelledBy}
-      className="border-t border-border px-6 pb-6 sm:px-8 sm:pb-8"
+      className="border-t border-border px-6 pb-6 sm:px-8 sm:pb-8 lg:px-6 lg:pb-6"
     >
       <div className="pt-5 md:pl-12">
         <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">
@@ -103,7 +103,7 @@ function ContributionDetails({
           href={item.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-muted-foreground transition-all hover:border-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          className="mt-6 inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-muted-foreground transition-all hover:border-foreground/40 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:mt-4"
         >
           <Github className="h-4 w-4" />
           View on GitHub

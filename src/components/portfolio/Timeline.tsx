@@ -12,7 +12,7 @@ export function Timeline() {
             key={`${item.title}-${item.period}`}
             as="article"
             delay={Math.min(index, 4) * 0.06}
-            className="grid gap-4 rounded-3xl border border-border bg-card/40 p-6 sm:p-8 md:grid-cols-[10rem_1fr_10rem] mb-6 shadow-sm hover:border-primary/40 transition-colors"
+            className="grid gap-4 rounded-3xl border border-border bg-card/40 p-6 sm:p-8 md:grid-cols-[10rem_1fr_10rem] mb-6 shadow-sm hover:border-primary/40 transition-colors lg:mb-4 lg:p-6 lg:gap-5"
           >
             <div className="flex items-start justify-between gap-3">
               <span className="rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 font-mono text-[11px] font-semibold text-primary">
@@ -27,7 +27,7 @@ export function Timeline() {
               <p className="mt-1 text-sm font-medium text-foreground/90">
                 {item.organization} · {item.location}
               </p>
-              <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground">
+              <p className="mt-4 max-w-xl text-sm leading-6 text-muted-foreground lg:mt-3">
                 {item.description}
               </p>
             </div>

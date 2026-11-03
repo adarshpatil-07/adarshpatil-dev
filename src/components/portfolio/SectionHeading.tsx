@@ -8,7 +8,7 @@ interface SectionHeadingProps {
 
 export function SectionHeading({ index, title, description }: SectionHeadingProps) {
   return (
-    <Reveal y={16} className="mb-10 grid gap-3 md:grid-cols-[10rem_1fr] md:items-start">
+    <Reveal y={16} className="mb-10 grid gap-3 md:grid-cols-[10rem_1fr] md:items-start lg:mb-7">
       <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
         #{index} / {title}
       </p>
@@ -17,7 +17,7 @@ export function SectionHeading({ index, title, description }: SectionHeadingProp
           {title}
         </h2>
         {description ? (
-          <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
+          <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base lg:mt-3">
             {description}
           </p>
         ) : null}

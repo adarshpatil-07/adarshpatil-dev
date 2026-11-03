@@ -20,8 +20,8 @@ const twitter = getSocial("twitter");
 
 export function Hero() {
   return (
-    <section id="top" className="px-3 pt-3 pb-8 sm:px-6 sm:pt-6 md:px-8 md:pt-6 md:pb-12">
-      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] hero-container-gradient shadow-2xl">
+    <section id="top" className="px-3 pt-3 pb-8 sm:px-6 sm:pt-6 md:px-8 md:pt-6 md:pb-12 lg:px-10 lg:pt-5 lg:pb-8">
+      <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] hero-container-gradient shadow-2xl lg:max-w-7xl">
         {/* Subtle radial vignette */}
         <div className="pointer-events-none absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/45" />
 
@@ -31,7 +31,7 @@ export function Hero() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex min-w-0 flex-col justify-between p-5 text-white sm:p-8 md:p-10 lg:p-12 xl:p-14 md:pr-4 lg:pr-6"
+            className="flex min-w-0 flex-col justify-between p-5 text-white sm:p-8 md:p-10 lg:p-9 xl:p-10 md:pr-4 lg:pr-5"
           >
             <div>
               {/* Eyebrow & Status bar */}
@@ -49,7 +49,7 @@ export function Hero() {
               </motion.div>
 
               {/* Headline & Intro */}
-              <div className="mt-6 max-w-xl space-y-3.5 sm:mt-8 sm:space-y-4 md:mt-8 lg:mt-10 lg:space-y-5">
+              <div className="mt-6 max-w-xl space-y-3.5 sm:mt-8 sm:space-y-4 md:mt-8 lg:mt-7 lg:space-y-4">
                 <motion.h1
                   variants={item}
                   className="font-display text-[1.45rem] font-extrabold leading-[1.2] tracking-tight text-white xs:text-[1.7rem] sm:text-3xl sm:leading-[1.18] md:text-[2rem] md:leading-[1.18] lg:text-[2.4rem] xl:text-[2.65rem]"
@@ -110,8 +110,8 @@ export function Hero() {
             </motion.div>
 
             {/* Skills & Author Footer */}
-            <div className="mt-2 md:mt-8 lg:mt-10">
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 md:gap-3 lg:gap-6">
+            <div className="mt-2 md:mt-8 lg:mt-6">
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 md:gap-3 lg:gap-4">
                 {portfolio.skills.slice(0, 4).map((group, idx) => (
                   <div key={group.title} className="space-y-1">
                     <span className="font-mono text-xs font-bold text-violet-300 drop-shadow-sm">
@@ -137,7 +137,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="relative hidden p-6 md:flex md:flex-col md:justify-center md:items-center lg:p-10 lg:pl-0 xl:p-12 xl:pl-0"
+            className="relative hidden p-6 md:flex md:flex-col md:justify-center md:items-center lg:p-7 lg:pl-0 xl:p-8 xl:pl-0"
           >
             <HeroPhoto className="max-w-[15.5rem] lg:max-w-[20rem] xl:max-w-[23rem]" />
           </motion.div>
