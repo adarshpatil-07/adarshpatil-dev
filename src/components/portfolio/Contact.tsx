@@ -34,13 +34,13 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-shell pb-16 md:pb-24">
+    <section id="contact" className="section-shell pb-16 md:pb-24 lg:pb-16">
       <SectionHeading
         index="07"
         title="Let’s build something useful."
         description="Have an internship, research idea, or interesting engineering problem? Send a note."
       />
-      <div className="grid gap-12 md:ml-[10rem] md:grid-cols-[0.8fr_1.2fr]">
+      <div className="grid gap-12 md:ml-[10rem] md:grid-cols-[0.8fr_1.2fr] lg:gap-8">
         <div>
           <p className="text-sm text-muted-foreground">Prefer email?</p>
           <a
@@ -50,10 +50,10 @@ export function Contact() {
             {portfolio.email}
             <ArrowUpRight className="h-4 w-4" />
           </a>
-          <div className="mt-8">
+          <div className="mt-8 lg:mt-6">
             <VisitorCount />
           </div>
-          <div className="mt-8">
+          <div className="mt-8 lg:mt-6">
             <p className="text-sm text-muted-foreground">Find me online</p>
             <SocialIconRow socials={profileSocials} className="mt-3" />
           </div>

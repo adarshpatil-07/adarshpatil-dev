@@ -62,16 +62,16 @@ function ProjectsPage() {
     <>
       <Header />
       <main id="top" className="min-h-screen">
-        <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
-          <div className="mb-10 md:mb-14">
+        <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16 lg:max-w-7xl lg:px-10 lg:py-10">
+          <div className="mb-10 md:mb-14 lg:mb-8">
             <Link
               to="/"
-              className="group mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+              className="group mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:mb-5"
             >
               <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
               Back to home
             </Link>
-            <div className="mt-4 border-b border-border/60 pb-8">
+            <div className="mt-4 border-b border-border/60 pb-8 lg:mt-3 lg:pb-6">
               <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
                 Archive / All Projects
               </p>
@@ -103,7 +103,7 @@ function ProjectsPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-8">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-8 lg:gap-5">
             <AnimatePresence mode="popLayout">
               {visibleProjects.length === 0 ? (
                 <motion.p

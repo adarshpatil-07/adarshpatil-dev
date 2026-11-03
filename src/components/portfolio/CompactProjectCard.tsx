@@ -14,7 +14,7 @@ export function CompactProjectCard({ project, index }: { project: Project; index
         ease: [0.22, 1, 0.36, 1],
       }}
       whileHover={{ y: -4 }}
-      className="group flex h-full flex-col rounded-3xl border border-border bg-card/50 p-6 transition-all duration-300 hover:border-primary/40 hover:bg-card shadow-sm"
+      className="group flex h-full flex-col rounded-3xl border border-border bg-card/50 p-6 transition-all duration-300 hover:border-primary/40 hover:bg-card shadow-sm lg:p-5"
     >
       <div className="mb-3 flex items-center justify-between">
         <span className="font-mono text-xs font-bold text-primary">
@@ -33,11 +33,11 @@ export function CompactProjectCard({ project, index }: { project: Project; index
         />
       </div>
 
-      <div className="flex flex-1 flex-col pt-5">
+      <div className="flex flex-1 flex-col pt-5 lg:pt-4">
         <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">{project.title}</h3>
-        <p className="mt-3 text-sm leading-6 text-muted-foreground">{project.description}</p>
+        <p className="mt-3 text-sm leading-6 text-muted-foreground lg:mt-2.5">{project.description}</p>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-4 flex flex-wrap gap-2 lg:mt-3">
           {project.tags.map((tag) => (
             <span key={tag} className="rounded-full bg-secondary border border-border/50 px-3 py-1 font-mono text-[11px] font-medium text-foreground">
               {tag}
@@ -45,7 +45,7 @@ export function CompactProjectCard({ project, index }: { project: Project; index
           ))}
         </div>
 
-        <div className="mt-auto flex flex-wrap items-center gap-3 pt-6 text-sm font-semibold">
+        <div className="mt-auto flex flex-wrap items-center gap-3 pt-6 text-sm font-semibold lg:pt-4">
           <a
             href={project.href}
             target="_blank"

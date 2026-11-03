@@ -46,7 +46,7 @@ export function Projects() {
       />
 
       {/* Category filter pills */}
-      <div className="mb-8 flex flex-wrap gap-2 md:ml-[10rem]">
+      <div className="mb-8 flex flex-wrap gap-2 md:ml-[10rem] lg:mb-6">
         {ALL_CATEGORIES.map((cat) => (
           <button
             key={cat}
@@ -93,7 +93,7 @@ export function Projects() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-12 flex justify-center">
+      <div className="mt-12 flex justify-center lg:mt-8">
         <Button
           asChild
           variant="outline"

@@ -10,9 +10,9 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
       viewport={{ once: true, amount: 0.2, margin: "0px 0px -80px 0px" }}
       transition={{ duration: 0.6, delay: Math.min(index, 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -4 }}
-      className="group rounded-3xl border border-border bg-card/40 p-6 sm:p-8 transition-all duration-300 hover:border-primary/40 hover:bg-card mb-8 shadow-sm"
+      className="group rounded-3xl border border-border bg-card/40 p-6 sm:p-8 transition-all duration-300 hover:border-primary/40 hover:bg-card mb-8 shadow-sm lg:mb-5 lg:p-6"
     >
-      <div className="grid gap-6 md:grid-cols-[3rem_1.1fr_1fr] md:items-start">
+      <div className="grid gap-6 md:grid-cols-[3rem_1.1fr_1fr] md:items-start lg:gap-5">
         <span className="font-mono text-xs font-bold text-primary">#0{index + 1}</span>
         <div className="overflow-hidden rounded-2xl border border-border bg-muted">
           <img
@@ -26,15 +26,15 @@ export function ProjectCard({ project, index }: { project: Project; index: numbe
         </div>
         <div className="flex h-full min-w-0 flex-col">
           <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">{project.title}</h3>
-          <p className="mt-4 text-sm leading-6 text-muted-foreground">{project.description}</p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <p className="mt-4 text-sm leading-6 text-muted-foreground lg:mt-3">{project.description}</p>
+          <div className="mt-5 flex flex-wrap gap-2 lg:mt-4">
             {project.tags.map((tag) => (
               <span key={tag} className="rounded-full bg-secondary border border-border/50 px-3 py-1 font-mono text-[11px] font-medium text-foreground">
                 {tag}
               </span>
             ))}
           </div>
-          <div className="mt-auto flex flex-wrap items-center gap-4 pt-8 text-sm font-semibold">
+          <div className="mt-auto flex flex-wrap items-center gap-4 pt-8 text-sm font-semibold lg:pt-5">
             <a
               href={project.href}
               target="_blank"
