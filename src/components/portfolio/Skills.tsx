@@ -75,20 +75,20 @@ export function Skills() {
         title="Skills"
         description="A practical toolkit for building across the hardware–software boundary."
       />
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 lg:gap-4">
+      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 md:gap-6 lg:grid-cols-4 lg:gap-4">
         {portfolio.skills.map((group, index) => (
           <Reveal
             key={group.title}
             as="article"
             y={18}
             delay={Math.min(index, 4) * 0.08}
-            className="group min-h-48 rounded-2xl sm:rounded-3xl border border-border bg-card/60 p-6 transition-all duration-300 hover:border-primary/40 hover:bg-card hover:-translate-y-1 sm:min-h-56 lg:min-h-0 lg:p-5 shadow-sm"
+            className="group min-h-0 rounded-2xl sm:rounded-3xl border border-border bg-card/60 p-4 transition-all duration-300 hover:border-primary/40 hover:bg-card hover:-translate-y-1 sm:min-h-56 sm:p-6 lg:min-h-0 lg:p-5 shadow-sm"
           >
             <p className="font-mono text-xs font-bold text-primary">#0{index + 1}</p>
-            <h3 className="mt-5 font-display text-xl font-bold tracking-tight sm:mt-6 sm:text-2xl lg:mt-4">
+            <h3 className="mt-3 font-display text-xl font-bold tracking-tight sm:mt-6 sm:text-2xl lg:mt-4">
               {group.title}
             </h3>
-            <ul className="mt-5 space-y-2 text-sm text-muted-foreground lg:mt-4 lg:space-y-1.5">
+            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground sm:mt-5 sm:space-y-2 lg:mt-4 lg:space-y-1.5">
               {group.skills.map((skill) => (
                 <li key={skill} className="flex items-center gap-2">
                   <SkillIcon skill={skill} />

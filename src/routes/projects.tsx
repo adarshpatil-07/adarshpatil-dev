@@ -62,16 +62,16 @@ function ProjectsPage() {
     <>
       <Header />
       <main id="top" className="min-h-screen">
-        <section className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16 lg:max-w-7xl lg:px-10 lg:py-10">
-          <div className="mb-10 md:mb-14 lg:mb-8">
+        <section className="mx-auto max-w-6xl px-5 py-8 md:px-8 md:py-16 lg:max-w-7xl lg:px-10 lg:py-10">
+          <div className="mb-6 md:mb-14 lg:mb-8">
             <Link
               to="/"
-              className="group mb-8 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground lg:mb-5"
+              className="group mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground md:mb-8 lg:mb-5"
             >
               <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
               Back to home
             </Link>
-            <div className="mt-4 border-b border-border/60 pb-8 lg:mt-3 lg:pb-6">
+            <div className="mt-3 border-b border-border/60 pb-5 md:mt-4 md:pb-8 lg:mt-3 lg:pb-6">
               <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
                 Archive / All Projects
               </p>
@@ -86,7 +86,7 @@ function ProjectsPage() {
           </div>
 
           {/* Category filter pills */}
-          <div className="mb-8 flex flex-wrap gap-2">
+          <div className="mb-5 flex flex-wrap gap-2 md:mb-8">
             {ALL_CATEGORIES.map((cat) => (
               <button
                 key={cat}
@@ -103,7 +103,7 @@ function ProjectsPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 md:gap-8 lg:gap-5">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-5">
             <AnimatePresence mode="popLayout">
               {visibleProjects.length === 0 ? (
                 <motion.p

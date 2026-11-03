@@ -34,26 +34,26 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-shell pb-16 md:pb-24 lg:pb-16">
+    <section id="contact" className="section-shell pb-10 md:pb-24 lg:pb-16">
       <SectionHeading
         index="07"
         title="Let’s build something useful."
         description="Have an internship, research idea, or interesting engineering problem? Send a note."
       />
-      <div className="grid gap-12 md:ml-[10rem] md:grid-cols-[0.8fr_1.2fr] lg:gap-8">
+      <div className="grid gap-7 md:ml-[10rem] md:grid-cols-[0.8fr_1.2fr] md:gap-12 lg:gap-8">
         <div>
           <p className="text-sm text-muted-foreground">Prefer email?</p>
           <a
             href={`mailto:${portfolio.email}`}
-            className="mt-2 inline-flex items-center gap-2 border-b border-foreground pb-1 font-display text-xl"
+            className="mt-2 inline-flex max-w-full items-center gap-2 break-words border-b border-foreground pb-1 font-display text-xl"
           >
             {portfolio.email}
             <ArrowUpRight className="h-4 w-4" />
           </a>
-          <div className="mt-8 lg:mt-6">
+          <div className="mt-5 md:mt-8 lg:mt-6">
             <VisitorCount />
           </div>
-          <div className="mt-8 lg:mt-6">
+          <div className="mt-5 md:mt-8 lg:mt-6">
             <p className="text-sm text-muted-foreground">Find me online</p>
             <SocialIconRow socials={profileSocials} className="mt-3" />
           </div>
