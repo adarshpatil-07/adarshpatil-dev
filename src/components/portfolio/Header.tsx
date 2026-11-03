@@ -109,7 +109,7 @@ export function Header() {
               key={link.id}
               href={`#${link.id}`}
               onClick={(event) => handleNav(event, link.id)}
-              className="block border-b border-border py-3 text-sm last:border-0"
+              className="block border-b border-border py-2.5 text-sm last:border-0 md:py-3"
             >
               {link.label}
             </a>

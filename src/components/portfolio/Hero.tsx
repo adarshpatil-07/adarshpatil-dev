@@ -20,7 +20,7 @@ const twitter = getSocial("twitter");
 
 export function Hero() {
   return (
-    <section id="top" className="px-3 pt-3 pb-8 sm:px-6 sm:pt-6 md:px-8 md:pt-6 md:pb-12 lg:px-10 lg:pt-5 lg:pb-8">
+    <section id="top" className="px-3 pt-2.5 pb-5 sm:px-6 sm:pt-6 sm:pb-8 md:px-8 md:pt-6 md:pb-12 lg:px-10 lg:pt-5 lg:pb-8">
       <div className="relative mx-auto max-w-6xl overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] md:rounded-[3rem] hero-container-gradient shadow-2xl lg:max-w-7xl">
         {/* Subtle radial vignette */}
         <div className="pointer-events-none absolute inset-0 bg-radial-gradient from-transparent via-black/10 to-black/45" />
@@ -31,13 +31,13 @@ export function Hero() {
             variants={container}
             initial="hidden"
             animate="show"
-            className="flex min-w-0 flex-col justify-between p-5 text-white sm:p-8 md:p-10 lg:p-9 xl:p-10 md:pr-4 lg:pr-5"
+            className="flex min-w-0 flex-col justify-between p-4 text-white sm:p-8 md:p-10 lg:p-9 xl:p-10 md:pr-4 lg:pr-5"
           >
             <div>
               {/* Eyebrow & Status bar */}
               <motion.div
                 variants={item}
-                className="flex flex-wrap items-center justify-between gap-3 border-b border-white/15 pb-4 sm:pb-5"
+                className="flex flex-wrap items-center justify-between gap-2 border-b border-white/15 pb-3 sm:gap-3 sm:pb-5"
               >
                 <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-white/80 sm:text-xs">
                   {portfolio.hero.eyebrow}
@@ -49,7 +49,7 @@ export function Hero() {
               </motion.div>
 
               {/* Headline & Intro */}
-              <div className="mt-6 max-w-xl space-y-3.5 sm:mt-8 sm:space-y-4 md:mt-8 lg:mt-7 lg:space-y-4">
+              <div className="mt-4 max-w-xl space-y-3 sm:mt-8 sm:space-y-4 md:mt-8 lg:mt-7 lg:space-y-4">
                 <motion.h1
                   variants={item}
                   className="font-display text-[1.45rem] font-extrabold leading-[1.2] tracking-tight text-white xs:text-[1.7rem] sm:text-3xl sm:leading-[1.18] md:text-[2rem] md:leading-[1.18] lg:text-[2.4rem] xl:text-[2.65rem]"
@@ -67,7 +67,7 @@ export function Hero() {
               {/* Action buttons & Social links */}
               <motion.div
                 variants={item}
-                className="mt-6 flex flex-wrap items-center gap-2 sm:mt-8 sm:gap-2.5 md:gap-3"
+                className="mt-4 flex flex-wrap items-center gap-2 sm:mt-8 sm:gap-2.5 md:gap-3"
               >
                 <a
                   href={portfolio.resumeHref}
@@ -105,7 +105,7 @@ export function Hero() {
             </div>
 
             {/* Mobile-only centered photograph (stacks naturally below headline, intro, and buttons) */}
-            <motion.div variants={item} className="my-7 flex justify-center md:hidden">
+            <motion.div variants={item} className="my-4 flex justify-center sm:my-7 md:hidden">
               <HeroPhoto className="max-w-[13.5rem] xs:max-w-[15.5rem] sm:max-w-[17.5rem]" />
             </motion.div>
 
@@ -121,7 +121,7 @@ export function Hero() {
                   </div>
                 ))}
               </div>
-              <div className="mt-5 border-t border-white/10 pt-4 sm:mt-6 sm:pt-5">
+              <div className="mt-4 border-t border-white/10 pt-3 sm:mt-6 sm:pt-5">
                 <p className="font-display text-lg font-bold text-white sm:text-xl">
                   {portfolio.name}
                 </p>

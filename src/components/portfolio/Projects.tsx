@@ -46,7 +46,7 @@ export function Projects() {
       />
 
       {/* Category filter pills */}
-      <div className="mb-8 flex flex-wrap gap-2 md:ml-[10rem] lg:mb-6">
+      <div className="mb-5 flex flex-wrap gap-2 md:mb-8 md:ml-[10rem] lg:mb-6">
         {ALL_CATEGORIES.map((cat) => (
           <button
             key={cat}
@@ -72,7 +72,7 @@ export function Projects() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="py-12 text-center text-sm text-muted-foreground"
+              className="py-8 text-center text-sm text-muted-foreground md:py-12"
             >
               No projects in this category yet.
             </motion.p>
@@ -93,7 +93,7 @@ export function Projects() {
         </AnimatePresence>
       </div>
 
-      <div className="mt-12 flex justify-center lg:mt-8">
+      <div className="mt-8 flex justify-center md:mt-12 lg:mt-8">
         <Button
           asChild
           variant="outline"

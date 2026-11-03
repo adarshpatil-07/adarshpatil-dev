@@ -54,7 +54,7 @@ export function GitHubCalendar() {
   // ── Loading skeleton ────────────────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="mt-10 rounded-2xl border border-border bg-card/60 p-6 lg:mt-8 lg:p-5">
+      <div className="mt-6 rounded-2xl border border-border bg-card/60 p-4 md:mt-10 md:p-6 lg:mt-8 lg:p-5">
         <div className="mb-4 h-4 w-48 animate-pulse rounded bg-primary/10" />
         <div className="overflow-x-auto">
           <div className="flex gap-[3px]" style={{ minWidth: 720 }}>
@@ -78,7 +78,7 @@ export function GitHubCalendar() {
   // ── Error fallback ──────────────────────────────────────────────────────────
   if (error || !data) {
     return (
-      <div className="mt-10 rounded-2xl border border-border bg-card/60 p-6 text-center text-sm text-muted-foreground lg:mt-8 lg:p-5">
+      <div className="mt-6 rounded-2xl border border-border bg-card/60 p-4 text-center text-sm text-muted-foreground md:mt-10 md:p-6 lg:mt-8 lg:p-5">
         <p>Unable to load contribution data.</p>
         <a
           href="https://github.com/adarshpatil-07"
@@ -143,7 +143,7 @@ export function GitHubCalendar() {
   }
 
   return (
-    <div className="mt-10 rounded-2xl border border-border bg-card/60 p-5 sm:p-6 lg:mt-8 lg:p-5">
+    <div className="mt-6 rounded-2xl border border-border bg-card/60 p-4 sm:p-6 md:mt-10 lg:mt-8 lg:p-5">
       {/* Header */}
       <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
         <div>
