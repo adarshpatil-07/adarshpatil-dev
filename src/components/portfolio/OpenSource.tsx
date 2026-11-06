@@ -13,7 +13,7 @@ export function OpenSource() {
       <SectionHeading
         index="04"
         title="Open source"
-        description="Public work, pull requests, and contributions — this list is data-driven so new entries can be added from the portfolio file."
+        description="Open-source projects I've contributed to, with links to my pull requests."
       />
       <div className="space-y-3 md:ml-[10rem] md:space-y-4">
         {portfolio.openSource.map((item, index) => {

@@ -42,7 +42,7 @@ export function Projects() {
       <SectionHeading
         index="03"
         title="Selected projects"
-        description="Experiments and tools shaped by curiosity, constraints, and many late nights in the lab."
+        description="A collection of things I've built, explored, and learned along the way."
       />
 
       {/* Category filter pills */}
