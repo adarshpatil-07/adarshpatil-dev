@@ -156,14 +156,14 @@ export const portfolio: PortfolioData = {
   openSource: [
     {
       title: "First Open Source Contribution",
-      repoName: "Replace with repository name",
+      repoName: "Understand-Anything",
       description:
-        "Contributed to an open-source project by improving its existing implementation and following maintainer feedback.",
+        "Contributed to Understand-Anything by adding VS Code and GitHub Copilot installation instructions to the README and its localized versions.",
       contribution:
-        "DEMO ENTRY — replace this with the exact repository, pull request, and what you changed. The GitHub link currently points to your profile until a specific contribution URL is added.",
-      technologies: ["Git", "Open Source"],
-      href: "https://github.com/adarshpatil-07",
-      isDemo: true,
+        "PR #756: Added marketplace installation instructions for GitHub Copilot across the main README and 8 translated README files. Reviewed and merged into main.",
+      technologies: ["Git", "GitHub", "Markdown", "Open Source"],
+      href: "https://github.com/Egonex-AI/Understand-Anything/pull/756",
+      isDemo: false,
     },
   ],
   articles: [
