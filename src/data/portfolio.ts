@@ -82,7 +82,7 @@ export const portfolio: PortfolioData = {
   resumeHref: "/resume.pdf",
   profileImage,
   hero: {
-    eyebrow: "Computer engineering · systems · software",
+    eyebrow: "Computer engineering / systems / software",
     headline:
       "Exploring full-stack development and AI/ML, while aspiring to make meaningful open-source contributions.",
     intro:
