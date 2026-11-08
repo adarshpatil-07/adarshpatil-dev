@@ -143,14 +143,14 @@ export const portfolio: PortfolioData = {
       sourceHref: "https://github.com/adarshpatil-07/tensorflow-computer-vision",
     },
     {
-      title: "Board Atlas",
+      title: "RAG Document Q&A Chatbot",
       description:
-        "A visual tool for cataloguing development boards, pinouts, components, and reusable circuit designs.",
+        "An AI-powered document assistant that lets users upload multiple PDFs and ask questions about their contents using Retrieval-Augmented Generation (RAG), vector embeddings, and Gemini. Features contextual answers with document citations.",
       image: boardImage,
-      tags: ["React", "PostgreSQL", "KiCad"],
-      categories: ["Full Stack", "Web Development", "Other"],
-      href: "https://example.com",
-      sourceHref: "https://github.com/your-username",
+      tags: ["Python", "LangChain", "Gemini", "ChromaDB", "Streamlit", "RAG"],
+      categories: ["AI / ML", "Full Stack", "Python"],
+      href: "https://adarsh-rag-chatbot.streamlit.app/",
+      sourceHref: "https://github.com/adarshpatil-07/Datheon_Python_Generative_AI_LangChain_Internship",
     },
   ],
   openSource: [
