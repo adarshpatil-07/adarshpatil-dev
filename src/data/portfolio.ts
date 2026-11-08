@@ -135,7 +135,7 @@ export const portfolio: PortfolioData = {
     {
       title: "TensorFlow Computer Vision",
       description:
-        "A computer vision project using TensorFlow and Keras to build and train an image classification model on the Fashion MNIST dataset.",
+        "An image classification project built with TensorFlow and Keras, using a neural network trained on the Fashion MNIST dataset (70,000 grayscale images across 10 apparel classes). Includes data normalization, model training, performance evaluation, and prediction visualization.",
       image: labImage,
       tags: ["Python", "TensorFlow", "Keras", "NumPy", "Machine Learning"],
       categories: ["AI / ML", "Python", "Computer Vision"],
