@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import { Header } from "@/components/portfolio/Header";
 import { Footer } from "@/components/portfolio/Footer";
 import { CompactProjectCard } from "@/components/portfolio/CompactProjectCard";
@@ -61,75 +60,61 @@ function ProjectsPage() {
   return (
     <>
       <Header />
-      <main id="top" className="min-h-screen">
-        <section className="mx-auto max-w-6xl px-5 py-8 md:px-8 md:py-16 lg:max-w-7xl lg:px-10 lg:py-10">
-          <div className="mb-6 md:mb-14 lg:mb-8">
+      <main id="top">
+        <section className="section-shell">
+          <div className="mb-6">
             <Link
               to="/"
-              className="group mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground md:mb-8 lg:mb-5"
+              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground underline underline-offset-4"
             >
-              <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
+              <ArrowLeft className="h-4 w-4" />
               Back to home
             </Link>
-            <div className="mt-3 border-b border-border/60 pb-5 md:mt-4 md:pb-8 lg:mt-3 lg:pb-6">
-              <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
+
+            <div className="mt-3 border-b border-border pb-4">
+              <span className="font-mono text-xs text-muted-foreground">
                 Archive / All Projects
-              </p>
-              <h1 className="mt-3 font-display text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+              </span>
+              <h1 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
                 All projects
               </h1>
-              <p className="mt-4 max-w-2xl text-sm leading-6 text-muted-foreground md:text-base">
-                Experiments, tools, and systems shaped by curiosity, constraints, and practical
-                problem solving.
+              <p className="mt-1.5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
+                Experiments, tools, and systems shaped by curiosity, constraints, and practical engineering.
               </p>
             </div>
           </div>
 
           {/* Category filter pills */}
-          <div className="mb-5 flex flex-wrap gap-2 md:mb-8">
-            {ALL_CATEGORIES.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={cn(
-                  "rounded-full px-4 py-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-[border-color,background-color,color] duration-200 cursor-pointer",
-                  activeCategory === cat
-                    ? "bg-primary text-primary-foreground shadow-sm"
-                    : "border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
-                )}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+            {ALL_CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={cn(
+                    "min-h-[44px] rounded-md px-3 py-1.5 text-xs font-mono transition-[background-color,border-color,color] duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                    isActive
+                      ? "bg-primary text-primary-foreground font-semibold"
+                      : "border border-border bg-card text-muted-foreground hover:text-foreground hover:border-foreground/40",
+                  )}
+                >
+                  {cat}
+                </button>
+              );
+            })}
           </div>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3 lg:gap-5">
-            <AnimatePresence mode="popLayout">
-              {visibleProjects.length === 0 ? (
-                <motion.p
-                  key="empty"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="col-span-full py-12 text-center text-sm text-muted-foreground"
-                >
-                  No projects in this category yet.
-                </motion.p>
-              ) : (
-                visibleProjects.map((project, index) => (
-                  <motion.div
-                    key={project.title}
-                    layout
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.97 }}
-                    transition={{ duration: 0.2, delay: index * 0.06 }}
-                  >
-                    <CompactProjectCard project={project} index={index} />
-                  </motion.div>
-                ))
-              )}
-            </AnimatePresence>
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+            {visibleProjects.length === 0 ? (
+              <p className="col-span-full py-8 text-center text-sm text-muted-foreground border border-border rounded-md">
+                No projects in this category yet.
+              </p>
+            ) : (
+              visibleProjects.map((project, index) => (
+                <CompactProjectCard key={project.title} project={project} index={index} />
+              ))
+            )}
           </div>
         </section>
       </main>

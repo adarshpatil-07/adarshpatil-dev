@@ -11,13 +11,13 @@
   --font-mono: "DM Mono", monospace;
 
   /* ── Radii ── */
-  --radius: 0.75rem;
-  --radius-sm: calc(var(--radius) - 4px);
+  --radius: 0.375rem;
+  --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 4px);
-  --radius-xl: 1.5rem;
-  --radius-2xl: 2rem;
-  --radius-3xl: 2.5rem;
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.25rem;
 
   /* ── Semantic colour tokens ── */
   --color-background: var(--background);
@@ -40,7 +40,8 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-signal: var(--signal);
-  --color-hero-vignette: var(--hero-vignette);
+
+  /* Calendar grayscale scale */
   --color-contribution-0: var(--contribution-0);
   --color-contribution-1: var(--contribution-1);
   --color-contribution-2: var(--contribution-2);
@@ -49,83 +50,73 @@
 }
 
 /* ═══════════════════════════════════════════
-   Light theme
+   Light theme (Monochrome: crisp white base)
    ═══════════════════════════════════════════ */
 :root {
   color-scheme: light;
 
-  --background: #f8f7fb;
-  --foreground: #14101f;
-  --card: #ffffff;
-  --card-foreground: #14101f;
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --card: #fafafa;
+  --card-foreground: #0a0a0a;
   --popover: #ffffff;
-  --popover-foreground: #14101f;
-  --primary: #6d28d9;
-  --primary-foreground: #ffffff;
-  --secondary: #f0ecf8;
-  --secondary-foreground: #281e3d;
-  --muted: #ebe6f5;
-  --muted-foreground: #6c647e;
-  --accent: #f0ecf8;
-  --accent-foreground: #14101f;
-  --destructive: #e11d48;
-  --destructive-foreground: #ffffff;
-  --border: #ded8ec;
-  --input: #ded8ec;
-  --ring: #7c3aed;
-  --signal: #22c55e;
+  --popover-foreground: #0a0a0a;
+  --primary: #0a0a0a;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f4;
+  --secondary-foreground: #0a0a0a;
+  --muted: #f4f4f4;
+  --muted-foreground: #737373;
+  --accent: #f4f4f4;
+  --accent-foreground: #0a0a0a;
+  --destructive: #0a0a0a;
+  --destructive-foreground: #fafafa;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
+  --signal: #737373;
 
-  --hero-gradient: linear-gradient(145deg, #1d0f33 0%, #291447 35%, #1b0d30 70%, #0f061e 100%);
-
-  /* ── GitHub contribution calendar levels ── */
-  --contribution-0: #e8e4f0;
-  --contribution-1: #bba8e0;
-  --contribution-2: #8b5fca;
-  --contribution-3: #6d28d9;
-  --contribution-4: #6d28d9;
-
-  /* ── Hero portrait vignette ── */
-  --hero-vignette: #0e051b;
+  /* GitHub contribution calendar (grayscale) */
+  --contribution-0: #f0f0f0;
+  --contribution-1: #d4d4d4;
+  --contribution-2: #a3a3a3;
+  --contribution-3: #525252;
+  --contribution-4: #171717;
 }
 
 /* ═══════════════════════════════════════════
-   Dark theme (Abyss-inspired, refined)
+   Dark theme (Monochrome: near-black default)
    ═══════════════════════════════════════════ */
 .dark {
   color-scheme: dark;
 
-  --background: #09070f;
-  --foreground: #f2f0f7;
-  --card: #120d1e;
-  --card-foreground: #f2f0f7;
-  --popover: #120d1e;
-  --popover-foreground: #f2f0f7;
-  --primary: #a78bfa;
-  --primary-foreground: #09070f;
-  --secondary: #1a132b;
-  --secondary-foreground: #ede8f6;
-  --muted: #161024;
-  --muted-foreground: #9b91ad;
-  --accent: #1e1632;
-  --accent-foreground: #f2f0f7;
-  --destructive: #f43f5e;
-  --destructive-foreground: #ffffff;
-  --border: #231a38;
-  --input: #231a38;
-  --ring: #a78bfa;
-  --signal: #22c55e;
+  --background: #0a0a0a;
+  --foreground: #fafafa;
+  --card: #121212;
+  --card-foreground: #fafafa;
+  --popover: #121212;
+  --popover-foreground: #fafafa;
+  --primary: #fafafa;
+  --primary-foreground: #0a0a0a;
+  --secondary: #171717;
+  --secondary-foreground: #fafafa;
+  --muted: #171717;
+  --muted-foreground: #a1a1a1;
+  --accent: #171717;
+  --accent-foreground: #fafafa;
+  --destructive: #fafafa;
+  --destructive-foreground: #0a0a0a;
+  --border: #262626;
+  --input: #262626;
+  --ring: #fafafa;
+  --signal: #a1a1a1;
 
-  --hero-gradient: linear-gradient(145deg, #170b2b 0%, #23103e 35%, #150927 70%, #0b0416 100%);
-
-  /* ── GitHub contribution calendar levels ── */
-  --contribution-0: #161024;
-  --contribution-1: #3b2166;
-  --contribution-2: #5b31a6;
-  --contribution-3: #7c50d6;
-  --contribution-4: #a78bfa;
-
-  /* ── Hero portrait vignette ── */
-  --hero-vignette: #0e051b;
+  /* GitHub contribution calendar (grayscale) */
+  --contribution-0: #171717;
+  --contribution-1: #2e2e2e;
+  --contribution-2: #525252;
+  --contribution-3: #8a8a8a;
+  --contribution-4: #fafafa;
 }
 
 /* ─── Base layer ─── */
@@ -151,31 +142,18 @@
   }
 }
 
-/* ─── Hero container gradient ─── */
-@utility hero-container-gradient {
-  background: var(--hero-gradient);
-}
-
-/* ─── Hero portrait fade ─── */
-@utility hero-photo {
-  mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 62%, transparent 100%);
-}
-
 /* ─── Section shell ─── */
 @utility section-shell {
   width: 100%;
   max-width: 72rem;
   margin-inline: auto;
-  padding: 3.25rem 1.25rem;
-  scroll-margin-top: 5rem;
+  padding-block: 1.75rem; /* 28px on mobile */
+  padding-inline: 1rem;   /* 16px on mobile */
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 3.5rem; /* 56px sticky header offset */
   @media (min-width: 48rem) {
-    padding: 7rem 2rem;
-  }
-  @media (min-width: 64rem) {
-    max-width: 80rem;
-    padding: 4.5rem 2.5rem;
-    scroll-margin-top: 4.5rem;
+    padding-block: 2.5rem; /* 40px on desktop */
+    padding-inline: 1.5rem; /* 24px on desktop */
   }
 }
 

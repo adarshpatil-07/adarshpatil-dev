@@ -76,7 +76,7 @@ export const portfolio: PortfolioData = {
   name: "Adarsh Patil",
   initials: "AP",
   role: "Computer Engineering Student",
-  status: "Open to internships · 2026",
+  status: "Open to internships (2026)",
   location: "Nagpur,Maharashtra,India",
   email: "adarshpatil.tech07@gmail.com",
   resumeHref: "/resume.pdf",
@@ -89,7 +89,7 @@ export const portfolio: PortfolioData = {
       "I’m a computer engineering student focused on building software, exploring AI and machine learning, and turning ideas into projects that actually work.",
   },
   about: {
-    lead: "I'm Adarsh, a Computer Engineering student with a focus on full-stack and AI/ML development — I build practical, real-world applications and am actively working toward internships and hands-on industry experience.",
+    lead: "I'm Adarsh, a Computer Engineering student with a focus on full-stack and AI/ML development - I build practical, real-world applications and am actively working toward internships and hands-on industry experience.",
     paragraphs: [
       "On the full-stack side, I work across both front-end and back-end to build applications that are functional and usable, not just technically complete. On the AI/ML side, I'm exploring how models can be integrated into real applications rather than treated as standalone experiments.",
       "Outside of building projects, I document what I learn, explore new areas of computer science, and look for practical problems that are worth solving. I'm actively seeking internships and industry exposure to apply what I've learned in real, high-stakes environments.",
@@ -181,7 +181,7 @@ export const portfolio: PortfolioData = {
       title: "B.Tech in Computer Engineering",
       organization: "Suryodaya College of Engineering & Technology",
       location: "Nagpur,Maharashtra,India",
-      period: "2025 — 2029",
+      period: "2025 - 2029",
       type: "Education",
       description:
         "Coursework covering data structures and algorithms, computer architecture, operating systems, database systems, software development, computer networks, and core programming concepts, with a focus on building practical software engineering skills.",

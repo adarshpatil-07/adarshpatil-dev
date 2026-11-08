@@ -12,8 +12,7 @@ interface ApiResponse {
   contributions: ContributionDay[];
 }
 
-// Contribution level colours — reference CSS custom properties so they
-// automatically respond to light/dark theme switches without hardcoded hex.
+// Grayscale level tokens defined in styles.css
 const LEVEL_COLORS: Record<number, string> = {
   0: "var(--contribution-0)",
   1: "var(--contribution-1)",
@@ -23,12 +22,12 @@ const LEVEL_COLORS: Record<number, string> = {
 };
 
 const WEEKDAY_LABELS = ["Mon", "Wed", "Fri"];
-const WEEKDAY_INDICES = [1, 3, 5]; // Mon=1, Wed=3, Fri=5 (0=Sun)
+const WEEKDAY_INDICES = [1, 3, 5];
 
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-const CELL_SIZE = 11;
-const CELL_GAP = 3;
+const CELL_SIZE = 10;
+const CELL_GAP = 2.5;
 const STEP = CELL_SIZE + CELL_GAP;
 
 export function GitHubCalendar() {
@@ -52,19 +51,18 @@ export function GitHubCalendar() {
     return () => controller.abort();
   }, []);
 
-  // ── Loading skeleton ────────────────────────────────────────────────────────
   if (loading) {
     return (
-      <div className="mt-6 rounded-2xl border border-border bg-card/60 p-4 md:mt-10 md:p-6 lg:mt-8 lg:p-5">
-        <div className="mb-4 h-4 w-48 animate-pulse rounded bg-primary/10" />
+      <div className="rounded-md border border-border bg-card p-3 sm:p-4">
+        <div className="mb-3 h-4 w-40 animate-pulse rounded bg-secondary" />
         <div className="overflow-x-auto">
-          <div className="flex gap-[3px]" style={{ minWidth: 720 }}>
+          <div className="flex gap-[2.5px]" style={{ minWidth: 680 }}>
             {Array.from({ length: 53 }).map((_, wi) => (
-              <div key={wi} className="flex flex-col gap-[3px]">
+              <div key={wi} className="flex flex-col gap-[2.5px]">
                 {Array.from({ length: 7 }).map((_, di) => (
                   <div
                     key={di}
-                    className="animate-pulse rounded-sm"
+                    className="rounded-sm animate-pulse"
                     style={{ width: CELL_SIZE, height: CELL_SIZE, background: "var(--contribution-0)" }}
                   />
                 ))}
@@ -76,16 +74,15 @@ export function GitHubCalendar() {
     );
   }
 
-  // ── Error fallback ──────────────────────────────────────────────────────────
   if (error || !data) {
     return (
-      <div className="mt-6 rounded-2xl border border-border bg-card/60 p-4 text-center text-sm text-muted-foreground md:mt-10 md:p-6 lg:mt-8 lg:p-5">
+      <div className="rounded-md border border-border bg-card p-4 text-center text-sm text-muted-foreground">
         <p>Unable to load contribution data.</p>
         <a
           href="https://github.com/adarshpatil-07"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 inline-flex items-center gap-1 text-primary hover:underline"
+          className="mt-2 inline-flex items-center gap-1 underline underline-offset-4 text-foreground hover:text-muted-foreground"
         >
           View on GitHub <ExternalLink className="h-3 w-3" />
         </a>
@@ -93,14 +90,10 @@ export function GitHubCalendar() {
     );
   }
 
-  // ── Group days into weeks (Sun-start) ───────────────────────────────────────
   const contributions = data.contributions;
   if (contributions.length === 0) return null;
 
-  // Determine starting weekday of first entry (0=Sun…6=Sat)
   const firstDayOfWeek = new Date(contributions[0]!.date).getDay();
-
-  // Build weeks: each week is an array of 7 slots (null = padding)
   const weeks: (ContributionDay | null)[][] = [];
   let currentWeek: (ContributionDay | null)[] = Array(firstDayOfWeek).fill(null);
 
@@ -116,7 +109,6 @@ export function GitHubCalendar() {
     weeks.push(currentWeek);
   }
 
-  // ── Month label positions ───────────────────────────────────────────────────
   const monthLabels: { label: string; x: number }[] = [];
   let prevMonth = -1;
   weeks.forEach((week, wi) => {
@@ -131,42 +123,40 @@ export function GitHubCalendar() {
 
   const svgWidth = weeks.length * STEP;
   const svgHeight = 7 * STEP;
-  const WEEKDAY_COL_WIDTH = 28;
-  const MONTH_ROW_HEIGHT = 20;
+  const WEEKDAY_COL_WIDTH = 26;
+  const MONTH_ROW_HEIGHT = 18;
 
   const totalWidth = WEEKDAY_COL_WIDTH + svgWidth;
   const totalHeight = MONTH_ROW_HEIGHT + svgHeight;
 
-  // ── Format tooltip ──────────────────────────────────────────────────────────
   function formatDate(dateStr: string) {
     const d = new Date(dateStr + "T00:00:00");
-    return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
+    return d.toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
   }
 
   return (
-    <div className="mt-6 rounded-2xl border border-border bg-card/60 p-4 sm:p-6 md:mt-10 lg:mt-8 lg:p-5">
+    <div className="rounded-md border border-border bg-card p-3 sm:p-4">
       {/* Header */}
-      <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <div>
-          <p className="font-mono text-xs font-bold text-primary">GitHub Activity</p>
-          <p className="mt-0.5 text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">{data.total.lastYear}</span> contributions
-            in the last year
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex items-baseline gap-2">
+          <p className="font-mono text-xs font-semibold text-foreground">GitHub Activity</p>
+          <p className="text-xs text-muted-foreground">
+            <span className="font-semibold text-foreground">{data.total.lastYear}</span> contributions in the last year
           </p>
         </div>
         <a
           href="https://github.com/adarshpatil-07"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1 text-xs text-muted-foreground transition-colors hover:text-primary"
+          className="inline-flex items-center gap-1 text-xs text-muted-foreground underline underline-offset-4 hover:text-foreground"
         >
           adarshpatil-07 <ExternalLink className="h-3 w-3" />
         </a>
       </div>
 
-      {/* Scrollable calendar */}
+      {/* Calendar grid */}
       <div className="overflow-x-auto">
-        <div style={{ minWidth: totalWidth + 16 }} className="relative select-none">
+        <div style={{ minWidth: totalWidth + 8 }} className="relative select-none">
           <svg
             aria-hidden="true"
             width={totalWidth}
@@ -177,9 +167,9 @@ export function GitHubCalendar() {
             {monthLabels.map(({ label, x }) => (
               <text
                 key={label + x}
-                x={WEEKDAY_COL_WIDTH + x + 2}
+                x={WEEKDAY_COL_WIDTH + x}
                 y={12}
-                fontSize={10}
+                fontSize={9}
                 fill="var(--muted-foreground)"
                 fontFamily="monospace"
               >
@@ -193,7 +183,7 @@ export function GitHubCalendar() {
                 key={label}
                 x={0}
                 y={MONTH_ROW_HEIGHT + (WEEKDAY_INDICES[i] ?? 0) * STEP + CELL_SIZE - 1}
-                fontSize={9}
+                fontSize={8}
                 fill="var(--muted-foreground)"
                 fontFamily="monospace"
               >
@@ -201,7 +191,7 @@ export function GitHubCalendar() {
               </text>
             ))}
 
-            {/* Contribution cells */}
+            {/* Cells */}
             {weeks.map((week, wi) =>
               week.map((day, di) => {
                 if (!day) return null;
@@ -215,14 +205,10 @@ export function GitHubCalendar() {
                     y={y}
                     width={CELL_SIZE}
                     height={CELL_SIZE}
-                    rx={2}
+                    rx={1.5}
                     fill={color}
                     style={{ cursor: "default" }}
                     onMouseEnter={(e) => {
-                      const rect = (e.target as SVGRectElement)
-                        .closest("svg")
-                        ?.getBoundingClientRect();
-                      if (!rect) return;
                       const svgEl = (e.target as SVGRectElement).closest("svg");
                       const cellRect = (e.target as SVGRectElement).getBoundingClientRect();
                       const parentRect = svgEl?.parentElement?.getBoundingClientRect();
@@ -246,8 +232,8 @@ export function GitHubCalendar() {
           {/* Tooltip */}
           {tooltip && (
             <div
-              className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded-lg border border-border bg-card px-2.5 py-1.5 text-xs text-foreground shadow-lg"
-              style={{ left: tooltip.x, top: tooltip.y - 6 }}
+              className="pointer-events-none absolute z-10 -translate-x-1/2 -translate-y-full rounded border border-border bg-popover px-2 py-1 text-xs text-popover-foreground"
+              style={{ left: tooltip.x, top: tooltip.y - 4 }}
             >
               {tooltip.text}
             </div>
@@ -256,16 +242,16 @@ export function GitHubCalendar() {
       </div>
 
       {/* Legend */}
-      <div className="mt-3 flex items-center justify-end gap-1.5">
-        <span className="text-xs text-muted-foreground">Less</span>
+      <div className="mt-2.5 flex items-center justify-end gap-1.5 text-xs text-muted-foreground">
+        <span>Less</span>
         {[0, 1, 2, 3, 4].map((level) => (
           <div
             key={level}
             className="rounded-sm"
-            style={{ width: 10, height: 10, background: LEVEL_COLORS[level] }}
+            style={{ width: 9, height: 9, background: LEVEL_COLORS[level] }}
           />
         ))}
-        <span className="text-xs text-muted-foreground">More</span>
+        <span>More</span>
       </div>
     </div>
   );

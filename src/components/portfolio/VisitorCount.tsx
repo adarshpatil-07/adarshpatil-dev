@@ -28,19 +28,20 @@ export function VisitorCount() {
   const label = result?.ok ? result.count.toLocaleString() : result ? "Unavailable" : "Loading…";
 
   return (
-    <div className="rounded-2xl border border-border bg-card/60 px-4 py-3">
-      <p className="font-mono text-[11px] font-semibold uppercase tracking-wider text-primary">
-        Visitors
-      </p>
-      <p className="mt-2 inline-flex items-center gap-2 font-display text-2xl font-bold tracking-tight">
-        <Eye className="h-5 w-5 text-primary" aria-hidden="true" />
-        <span aria-live="polite">{label}</span>
-      </p>
+    <div className="rounded-md border border-border bg-card p-3">
+      <div className="flex items-baseline justify-between mb-1.5">
+        <span className="font-mono text-xs text-muted-foreground">Visitors</span>
+        <span className="text-[11px] text-muted-foreground">Live visits</span>
+      </div>
+      <div className="flex items-center gap-2">
+        <Eye className="h-4 w-4 text-foreground" aria-hidden="true" />
+        <span className="text-xl font-bold tracking-tight text-foreground" aria-live="polite">
+          {label}
+        </span>
+      </div>
       {result && !result.ok ? (
-        <p className="mt-2 text-xs leading-5 text-muted-foreground">{result.message}</p>
-      ) : (
-        <p className="mt-2 text-xs text-muted-foreground">Counted from live site visits.</p>
-      )}
+        <p className="mt-1 text-xs text-muted-foreground">{result.message}</p>
+      ) : null}
     </div>
   );
 }

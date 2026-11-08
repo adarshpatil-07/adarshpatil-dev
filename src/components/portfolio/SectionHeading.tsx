@@ -1,27 +1,28 @@
-import { Reveal } from "./Reveal";
+import { cn } from "@/lib/utils";
 
 interface SectionHeadingProps {
   index: string;
   title: string;
   description?: string;
+  className?: string;
 }
 
-export function SectionHeading({ index, title, description }: SectionHeadingProps) {
+export function SectionHeading({ index, title, description, className }: SectionHeadingProps) {
   return (
-    <Reveal y={16} className="mb-6 grid gap-2 md:mb-10 md:grid-cols-[10rem_1fr] md:items-start md:gap-3 lg:mb-7">
-      <p className="font-mono text-xs font-semibold uppercase tracking-wider text-primary">
-        #{index} / {title}
-      </p>
-      <div>
-        <h2 className="font-display text-3xl font-bold tracking-tight leading-tight sm:text-4xl md:text-5xl">
+    <div className={cn("mb-4 pb-2.5 border-b border-border flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 sm:gap-4", className)}>
+      <div className="flex items-baseline gap-2.5">
+        <span className="font-mono text-sm font-normal text-muted-foreground">
+          #{index}
+        </span>
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
           {title}
         </h2>
-        {description ? (
-          <p className="mt-2.5 max-w-2xl text-sm leading-6 text-muted-foreground md:mt-4 md:text-base lg:mt-3">
-            {description}
-          </p>
-        ) : null}
       </div>
-    </Reveal>
+      {description ? (
+        <p className="text-sm text-muted-foreground max-w-xl sm:text-right">
+          {description}
+        </p>
+      ) : null}
+    </div>
   );
 }

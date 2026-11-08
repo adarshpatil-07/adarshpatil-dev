@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
 import { ThemeToggle } from "./ThemeToggle";
@@ -14,7 +13,7 @@ const links = [
   { label: "Experience", id: "experience" },
   { label: "Contact", id: "contact" },
 ];
-const HEADER_OFFSET = 64;
+const HEADER_OFFSET = 56;
 
 function scrollToId(id: string) {
   const target = document.getElementById(id);
@@ -52,56 +51,56 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-md transition-colors duration-300">
-      <div className="mx-auto grid h-16 max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-5 md:px-8 lg:max-w-7xl lg:px-10">
+    <header className="sticky top-0 z-50 h-14 border-b border-border bg-background">
+      <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 md:px-6">
         <a
           href="#top"
           onClick={(event) => handleNav(event, "top")}
-          className="truncate font-display text-xl font-semibold"
+          className="font-display text-lg font-bold tracking-tight text-foreground"
           aria-label="Back to top"
         >
           {portfolio.initials}
-          <span className="text-primary">.</span>
         </a>
+
         <div className="flex items-center gap-1 sm:gap-2">
-          <nav className="hidden items-center gap-4 lg:flex xl:gap-6" aria-label="Main navigation">
+          <nav className="hidden items-center gap-5 lg:flex" aria-label="Main navigation">
             {links.map((link) => {
+              const isActive = active === link.id;
               return (
                 <a
                   key={link.id}
                   href={`#${link.id}`}
                   onClick={(event) => handleNav(event, link.id)}
-                  aria-current={active === link.id ? "true" : undefined}
-                  className={`relative whitespace-nowrap text-sm transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${active === link.id ? "text-foreground" : "text-muted-foreground"}`}
+                  aria-current={isActive ? "true" : undefined}
+                  className={`relative py-1 text-sm font-medium transition-colors hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-sm ${
+                    isActive ? "text-foreground font-semibold underline underline-offset-8" : "text-muted-foreground"
+                  }`}
                 >
                   {link.label}
-                  {active === link.id ? (
-                    <motion.span
-                      layoutId="nav-active"
-                      className="absolute -bottom-1.5 left-0 h-px w-full bg-primary"
-                    />
-                  ) : null}
                 </a>
               );
             })}
           </nav>
-          <div className="mx-1 hidden h-5 w-px bg-border lg:block" />
+
+          <div className="mx-2 hidden h-4 w-px bg-border lg:block" />
           <ThemeToggle />
+
           <Button
             variant="ghost"
             size="icon"
-            className="shrink-0 lg:hidden"
+            className="shrink-0 lg:hidden min-h-[44px] min-w-[44px]"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
             aria-label="Toggle menu"
           >
-            {open ? <X /> : <Menu />}
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
         </div>
       </div>
+
       {open ? (
         <nav
-          className="border-t border-border bg-background px-5 py-2 lg:hidden"
+          className="border-b border-border bg-background px-4 py-2 lg:hidden"
           aria-label="Mobile navigation"
         >
           {links.map((link) => (
@@ -109,7 +108,7 @@ export function Header() {
               key={link.id}
               href={`#${link.id}`}
               onClick={(event) => handleNav(event, link.id)}
-              className="block border-b border-border py-2.5 text-sm last:border-0 md:py-3"
+              className="flex min-h-[44px] items-center border-b border-border py-2 text-sm text-foreground last:border-0 hover:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
               {link.label}
             </a>

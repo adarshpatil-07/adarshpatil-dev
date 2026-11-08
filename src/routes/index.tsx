@@ -3,6 +3,7 @@ import { About } from "@/components/portfolio/About";
 import { Articles } from "@/components/portfolio/Articles";
 import { Contact } from "@/components/portfolio/Contact";
 import { Footer } from "@/components/portfolio/Footer";
+import { GitHubCalendar } from "@/components/portfolio/GitHubCalendar";
 import { Header } from "@/components/portfolio/Header";
 import { Hero } from "@/components/portfolio/Hero";
 import { OpenSource } from "@/components/portfolio/OpenSource";
@@ -37,8 +38,16 @@ function Index() {
       <Header />
       <main>
         <Hero />
-        <About />
-        <Skills />
+        {/* About & Skills placed side by side on desktop, stacked on mobile, with GitHub Calendar below */}
+        <section className="section-shell">
+          <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2 lg:gap-10">
+            <About />
+            <Skills />
+          </div>
+          <div className="mt-6 pt-5 border-t border-border">
+            <GitHubCalendar />
+          </div>
+        </section>
         <Projects />
         <OpenSource />
         <Articles />

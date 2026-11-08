@@ -32,7 +32,7 @@ export function SocialIconLink({ social, className }: { social: SocialLink; clas
       rel={isEmail ? undefined : "noopener noreferrer"}
       aria-label={social.label}
       className={cn(
-        "grid h-9 w-9 shrink-0 place-items-center rounded-full border border-border bg-card/60 text-foreground transition-all duration-300 hover:scale-105 hover:border-primary/50 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+        "inline-flex h-11 w-11 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-md border border-border bg-transparent text-muted-foreground transition-[border-color,color] duration-150 hover:border-foreground/50 hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className,
       )}
     >
@@ -51,9 +51,13 @@ export function SocialIconRow({
   iconClassName?: string;
 }) {
   return (
-    <div className={cn("flex items-center gap-2", className)}>
+    <div className={cn("flex flex-wrap items-center gap-2", className)}>
       {socials.map((social) => (
-        <SocialIconLink key={social.type} social={social} className={iconClassName} />
+        <SocialIconLink
+          key={social.type}
+          social={social}
+          {...(iconClassName !== undefined ? { className: iconClassName } : {})}
+        />
       ))}
     </div>
   );

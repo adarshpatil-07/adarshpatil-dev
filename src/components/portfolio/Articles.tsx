@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
-import { Reveal } from "./Reveal";
+import { Button } from "@/components/ui/button";
 import { SectionHeading } from "./SectionHeading";
 
 export function Articles() {
@@ -9,50 +9,61 @@ export function Articles() {
       <SectionHeading
         index="05"
         title="Articles"
-        description="Notes and essays. Entries live in the portfolio data file so published pieces can replace the demo content later."
+        description="Notes and essays. Published pieces will replace demo entries."
       />
-      <div className="space-y-3 md:ml-[10rem] md:space-y-4">
+
+      <div className="space-y-3">
         {portfolio.articles.map((article, index) => (
-          <Reveal
+          <article
             key={article.title}
-            as="article"
-            delay={Math.min(index, 4) * 0.06}
-            className="rounded-3xl border border-border bg-card/40 p-4 shadow-sm transition-colors hover:border-primary/40 sm:p-8 lg:p-6"
+            className="rounded-md border border-border bg-card p-3 sm:p-4"
           >
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="font-mono text-xs font-bold text-primary">#0{index + 1}</span>
-              <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-mono text-[11px] font-semibold text-primary">
-                {article.category}
-              </span>
-              <span className="font-mono text-xs text-muted-foreground">{article.date}</span>
-              {article.isDemo ? (
-                <span className="rounded-full border border-border px-2.5 py-0.5 font-mono text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Demo
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="font-mono text-xs text-muted-foreground">
+                  #0{index + 1}
                 </span>
-              ) : null}
+                <span className="rounded border border-border bg-background px-2 py-0.5 font-mono text-xs text-foreground">
+                  {article.category}
+                </span>
+                <span className="font-mono text-xs text-muted-foreground">
+                  {article.date}
+                </span>
+                {article.isDemo ? (
+                  <span className="rounded border border-border px-1.5 py-0.2 font-mono text-[10px] text-muted-foreground">
+                    Demo
+                  </span>
+                ) : null}
+              </div>
             </div>
-            <h3 className="mt-3 font-display text-xl font-bold tracking-tight sm:text-2xl md:mt-4 lg:mt-3">
+
+            <h3 className="mt-2 text-base sm:text-lg font-bold tracking-tight text-foreground">
               {article.title}
             </h3>
-            <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+
+            <p className="mt-1.5 text-[15px] leading-relaxed text-muted-foreground">
               {article.description}
             </p>
-            {article.href ? (
-              <a
-                href={article.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-[transform,background-color] hover:scale-[1.02] hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-6 lg:mt-4"
-              >
-                Read article
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            ) : (
-              <p className="mt-4 text-sm font-medium text-muted-foreground md:mt-6 lg:mt-4">
-                Link coming soon - replace this demo entry with a published article URL.
-              </p>
-            )}
-          </Reveal>
+
+            <div className="mt-3 pt-2.5 border-t border-border">
+              {article.href ? (
+                <Button asChild variant="default" size="sm" className="min-h-[44px]">
+                  <a
+                    href={article.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <span>Read article</span>
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              ) : (
+                <p className="text-xs text-muted-foreground">
+                  Link coming soon - replace this demo entry with a published article URL.
+                </p>
+              )}
+            </div>
+          </article>
         ))}
       </div>
     </section>

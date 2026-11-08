@@ -1,62 +1,80 @@
 import { ArrowUpRight, Github } from "lucide-react";
-import { motion } from "motion/react";
 import type { Project } from "@/data/portfolio";
+import { Button } from "@/components/ui/button";
 
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2, margin: "0px 0px -80px 0px" }}
-      transition={{ duration: 0.6, delay: Math.min(index, 3) * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      whileHover={{ y: -4 }}
-      className="group rounded-3xl border border-border bg-card/40 p-4 sm:p-8 transition-all duration-300 hover:border-primary/40 hover:bg-card mb-5 shadow-sm md:mb-8 lg:mb-5 lg:p-6"
-    >
-      <div className="grid gap-4 md:grid-cols-[3rem_1.1fr_1fr] md:items-start md:gap-6 lg:gap-5">
-        <span className="font-mono text-xs font-bold text-primary">#0{index + 1}</span>
-        <div className="overflow-hidden rounded-2xl border border-border bg-muted">
+    <article className="rounded-md border border-border bg-card p-3 sm:p-4">
+      <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-[1.1fr_1.4fr] lg:gap-6">
+        {/* Preview image: flat, 1px border, no zoom */}
+        <div className="overflow-hidden rounded border border-border bg-secondary">
           <img
             src={project.image}
             alt={`${project.title} interface preview`}
             width={1200}
             height={760}
             loading="lazy"
-            className="aspect-[16/10] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+            className="aspect-[16/10] w-full object-cover"
           />
         </div>
-        <div className="flex h-full min-w-0 flex-col">
-          <h3 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">{project.title}</h3>
-          <p className="mt-2.5 text-sm leading-6 text-muted-foreground md:mt-4 lg:mt-3">{project.description}</p>
-          <div className="mt-3 flex flex-wrap gap-2 md:mt-5 lg:mt-4">
-            {project.tags.map((tag) => (
-              <span key={tag} className="rounded-full bg-secondary border border-border/50 px-3 py-1 font-mono text-[11px] font-medium text-foreground">
-                {tag}
+
+        {/* Content */}
+        <div className="flex h-full flex-col justify-between">
+          <div>
+            <div className="flex items-baseline justify-between gap-2">
+              <h3 className="text-lg sm:text-xl font-bold tracking-tight text-foreground">
+                {project.title}
+              </h3>
+              <span className="font-mono text-xs text-muted-foreground shrink-0">
+                #0{index + 1}
               </span>
-            ))}
+            </div>
+
+            <p className="mt-2 text-[15px] leading-relaxed text-muted-foreground">
+              {project.description}
+            </p>
+
+            <div className="mt-3 flex flex-wrap gap-1.5">
+              {project.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded border border-border bg-background px-2 py-0.5 text-xs font-mono text-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
-          <div className="mt-auto flex flex-wrap items-center gap-2.5 pt-4 text-sm font-semibold md:gap-4 md:pt-8 lg:pt-5">
-            <a
-              href={project.href}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-primary-foreground font-semibold shadow-sm transition-all hover:bg-primary/90 hover:scale-[1.02]"
-            >
-              View project
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
+
+          <div className="mt-4 flex flex-wrap items-center gap-2 pt-2 border-t border-border">
+            {project.href ? (
+              <Button asChild variant="default" size="sm" className="min-h-[44px]">
+                <a
+                  href={project.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <span>View project</span>
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+              </Button>
+            ) : null}
+
             {project.sourceHref ? (
-              <a
-                href={project.sourceHref}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-muted-foreground transition-all hover:border-foreground/40 hover:text-foreground"
-              >
-                <Github className="h-4 w-4" /> Source
-              </a>
+              <Button asChild variant="outline" size="sm" className="min-h-[44px]">
+                <a
+                  href={project.sourceHref}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Github className="h-4 w-4" />
+                  <span>Source</span>
+                </a>
+              </Button>
             ) : null}
           </div>
         </div>
       </div>
-    </motion.article>
+    </article>
   );
 }

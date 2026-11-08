@@ -1,27 +1,20 @@
-import { Database } from "lucide-react";
+import { Database, BarChart2 } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
-import { GitHubCalendar } from "./GitHubCalendar";
-import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
-// Devicons CDN base — free, no auth required
 const DI = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
-// Maps each skill name to its icon source.
-// Skills without a devicon entry use a lucide icon (see renderIcon below).
 const SKILL_ICONS: Record<string, string> = {
   // Languages
   "C / C++": `${DI}/cplusplus/cplusplus-original.svg`,
   TypeScript: `${DI}/typescript/typescript-original.svg`,
   Python: `${DI}/python/python-original.svg`,
   JavaScript: `${DI}/javascript/javascript-original.svg`,
-  // SQL → no devicon; handled below with lucide <Database>
 
   // AI / ML
   NumPy: `${DI}/numpy/numpy-original.svg`,
   Pandas: `${DI}/pandas/pandas-original.svg`,
   "scikit-learn": `${DI}/scikitlearn/scikitlearn-original.svg`,
-  // Matplotlib → no devicon; handled below with lucide <BarChart2>
   TensorFlow: `${DI}/tensorflow/tensorflow-original.svg`,
 
   // Software
@@ -33,26 +26,23 @@ const SKILL_ICONS: Record<string, string> = {
 
   // Tools
   Vite: `${DI}/vitejs/vitejs-original.svg`,
-  // GitHub Actions → use the standard GitHub mark, inverted for dark bg
   "Github Actions": `${DI}/github/github-original.svg`,
   Docker: `${DI}/docker/docker-original.svg`,
   Figma: `${DI}/figma/figma-original.svg`,
   Canva: `${DI}/canva/canva-original.svg`,
 };
 
-// Skills that use a Lucide icon component instead of an image
-const LUCIDE_ICON_SKILLS = new Set(["SQL", "Matplotlib"]);
-
 function SkillIcon({ skill }: { skill: string }) {
-  if (LUCIDE_ICON_SKILLS.has(skill)) {
-    // Both SQL and Matplotlib use a chart/database-style icon
-    return <Database className="h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />;
+  if (skill === "SQL") {
+    return <Database className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />;
+  }
+  if (skill === "Matplotlib") {
+    return <BarChart2 className="h-3.5 w-3.5 shrink-0 text-muted-foreground" aria-hidden="true" />;
   }
 
   const src = SKILL_ICONS[skill];
   if (!src) {
-    // Fallback: small bullet for any unmapped skill
-    return <span className="h-1.5 w-1.5 rounded-full bg-primary/60 shrink-0" />;
+    return <span className="h-1.5 w-1.5 rounded-full bg-muted-foreground shrink-0" />;
   }
 
   const isGitHub = skill === "Github Actions";
@@ -61,49 +51,51 @@ function SkillIcon({ skill }: { skill: string }) {
       src={src}
       alt=""
       aria-hidden="true"
-      // GitHub's logo is black on transparent — invert it so it's visible on dark bg
-      className={`h-4 w-4 shrink-0 object-contain${isGitHub ? " invert opacity-80" : ""}`}
+      loading="lazy"
+      className={`h-3.5 w-3.5 shrink-0 object-contain grayscale opacity-80 ${isGitHub ? "dark:invert" : ""}`}
     />
   );
 }
 
 export function Skills() {
   return (
-    <section id="skills" className="section-shell">
+    <div id="skills" className="flex flex-col">
       <SectionHeading
         index="02"
         title="Skills"
-        description="A practical toolkit for building across the hardware–software boundary."
+        description="A practical toolkit across hardware & software."
       />
-      <div className="grid gap-3 sm:grid-cols-2 sm:gap-4 md:gap-6 lg:grid-cols-4 lg:gap-4">
+
+      {/* Grouped rows layout (not four equal cards) */}
+      <div className="space-y-2.5">
         {portfolio.skills.map((group, index) => (
-          <Reveal
+          <div
             key={group.title}
-            as="article"
-            y={18}
-            delay={Math.min(index, 4) * 0.08}
-            className="group min-h-0 rounded-2xl sm:rounded-3xl border border-border bg-card/60 p-4 transition-[border-color,background-color,transform] duration-300 hover:border-primary/40 hover:bg-card hover:-translate-y-1 sm:min-h-56 sm:p-6 lg:min-h-0 lg:p-5 shadow-sm"
+            className="rounded-md border border-border bg-card p-3"
           >
-            <p className="font-mono text-xs font-bold text-primary">#0{index + 1}</p>
-            <h3 className="mt-3 font-display text-xl font-bold tracking-tight sm:mt-6 sm:text-2xl lg:mt-4">
-              {group.title}
-            </h3>
-            <ul className="mt-3 space-y-1.5 text-sm text-muted-foreground sm:mt-5 sm:space-y-2 lg:mt-4 lg:space-y-1.5">
+            <div className="flex items-baseline justify-between mb-2">
+              <span className="text-sm font-semibold text-foreground">
+                {group.title}
+              </span>
+              <span className="font-mono text-xs text-muted-foreground">
+                #0{index + 1}
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-1.5">
               {group.skills.map((skill) => (
-                <li key={skill} className="flex items-center gap-2">
+                <span
+                  key={skill}
+                  className="inline-flex items-center gap-1.5 rounded border border-border bg-background px-2.5 py-1 text-xs font-mono text-foreground"
+                >
                   <SkillIcon skill={skill} />
-                  {skill}
-                </li>
+                  <span>{skill}</span>
+                </span>
               ))}
-            </ul>
-          </Reveal>
+            </div>
+          </div>
         ))}
       </div>
-
-      {/* GitHub contribution calendar */}
-      <Reveal y={16} delay={0.1}>
-        <GitHubCalendar />
-      </Reveal>
-    </section>
+    </div>
   );
 }

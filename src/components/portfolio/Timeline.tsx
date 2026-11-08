@@ -1,41 +1,88 @@
 import { portfolio } from "@/data/portfolio";
-import { Reveal } from "./Reveal";
 import { SectionHeading } from "./SectionHeading";
 
 export function Timeline() {
+  const educationItems = portfolio.timeline.filter((item) => item.type === "Education");
+  const experienceItems = portfolio.timeline.filter((item) => item.type === "Experience");
+
   return (
     <section id="experience" className="section-shell">
-      <SectionHeading index="06" title="Experience & education" />
-      <div className="md:ml-[10rem]">
-        {portfolio.timeline.map((item, index) => (
-          <Reveal
-            key={`${item.title}-${item.period}`}
-            as="article"
-            delay={Math.min(index, 4) * 0.06}
-            className="grid gap-3 rounded-3xl border border-border bg-card/40 p-4 sm:p-8 md:mb-6 md:grid-cols-[10rem_1fr_10rem] md:gap-4 mb-4 shadow-sm hover:border-primary/40 transition-colors lg:mb-4 lg:p-6 lg:gap-5"
-          >
-            <div className="flex items-start justify-between gap-3">
-              <span className="rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 font-mono text-[11px] font-semibold text-primary">
-                {item.type}
-              </span>
-              <p className="font-mono text-xs text-muted-foreground md:hidden">{item.period}</p>
+      <SectionHeading
+        index="06"
+        title="Experience & education"
+        description="Academic background and practical engineering timeline."
+      />
+
+      {/* Side-by-side layout: Experience next to Education on desktop */}
+      <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-6">
+        {/* Experience column */}
+        <div className="rounded-md border border-border bg-card p-3 sm:p-4">
+          <div className="flex items-baseline justify-between border-b border-border pb-2 mb-3">
+            <h3 className="text-base font-bold text-foreground">
+              Experience & Focus
+            </h3>
+            <span className="font-mono text-xs text-muted-foreground">
+              Internships & Roles
+            </span>
+          </div>
+
+          {experienceItems.length > 0 ? (
+            <div className="space-y-4">
+              {experienceItems.map((item) => (
+                <div key={`${item.title}-${item.period}`} className="space-y-1.5">
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h4 className="text-[15px] font-semibold text-foreground">{item.title}</h4>
+                    <span className="font-mono text-xs text-muted-foreground shrink-0">{item.period}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    {item.organization} / {item.location}
+                  </p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                </div>
+              ))}
             </div>
-            <div className="min-w-0">
-              <h3 className="font-display text-xl font-bold tracking-tight sm:text-2xl">
-                {item.title}
-              </h3>
-              <p className="mt-1 text-sm font-medium text-foreground/90">
-                {item.organization} · {item.location}
+          ) : (
+            <div className="space-y-2">
+              <div className="flex items-baseline justify-between gap-2">
+                <h4 className="text-[15px] font-semibold text-foreground">{portfolio.role}</h4>
+                <span className="font-mono text-xs text-muted-foreground shrink-0">{portfolio.status}</span>
+              </div>
+              <p className="text-xs text-muted-foreground">
+                Independent Projects & Research / {portfolio.location}
               </p>
-              <p className="mt-2.5 max-w-xl text-sm leading-6 text-muted-foreground md:mt-4 lg:mt-3">
-                {item.description}
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Actively building full-stack applications and experimenting with AI/ML models. Seeking engineering internships and industry collaborations for 2026.
               </p>
             </div>
-            <p className="hidden font-mono text-xs font-semibold text-muted-foreground md:block md:text-right">
-              {item.period}
-            </p>
-          </Reveal>
-        ))}
+          )}
+        </div>
+
+        {/* Education column */}
+        <div className="rounded-md border border-border bg-card p-3 sm:p-4">
+          <div className="flex items-baseline justify-between border-b border-border pb-2 mb-3">
+            <h3 className="text-base font-bold text-foreground">
+              Education
+            </h3>
+            <span className="font-mono text-xs text-muted-foreground">
+              Degree & Studies
+            </span>
+          </div>
+
+          <div className="space-y-4">
+            {educationItems.map((item) => (
+              <div key={`${item.title}-${item.period}`} className="space-y-1.5">
+                <div className="flex items-baseline justify-between gap-2">
+                  <h4 className="text-[15px] font-semibold text-foreground">{item.title}</h4>
+                  <span className="font-mono text-xs text-muted-foreground shrink-0">{item.period}</span>
+                </div>
+                <p className="text-xs text-muted-foreground">
+                  {item.organization} / {item.location}
+                </p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,16 +1,12 @@
-"use client";
-
 import { useState, useMemo } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { AnimatePresence, motion } from "motion/react";
 import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 import { ProjectCard } from "./ProjectCard";
 import { SectionHeading } from "./SectionHeading";
 
-// Build the category list dynamically from project data
 function buildCategories(projects: typeof portfolio.projects): string[] {
   const seen = new Set<string>();
   const cats: string[] = [];
@@ -42,66 +38,48 @@ export function Projects() {
       <SectionHeading
         index="03"
         title="Selected projects"
-        description="A collection of things I've built, explored, and learned along the way."
+        description="Experiments and tools shaped by curiosity, constraints, and practical engineering."
       />
 
       {/* Category filter pills */}
-      <div className="mb-5 flex flex-wrap gap-2 md:mb-8 md:ml-[10rem] lg:mb-6">
-        {ALL_CATEGORIES.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActiveCategory(cat)}
-            className={cn(
-              "rounded-full px-4 py-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-[border-color,background-color,color] duration-200 cursor-pointer",
-              activeCategory === cat
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
-            )}
-          >
-            {cat}
-          </button>
-        ))}
-      </div>
-
-      {/* Project cards */}
-      <div>
-        <AnimatePresence mode="popLayout">
-          {visibleProjects.length === 0 ? (
-            <motion.p
-              key="empty"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="py-8 text-center text-sm text-muted-foreground md:py-12"
+      <div className="mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+        {ALL_CATEGORIES.map((cat) => {
+          const isActive = activeCategory === cat;
+          return (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={cn(
+                "min-h-[44px] rounded-md px-3 py-1.5 text-xs font-mono transition-[background-color,border-color,color] duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                isActive
+                  ? "bg-primary text-primary-foreground font-semibold"
+                  : "border border-border bg-card text-muted-foreground hover:text-foreground hover:border-foreground/40",
+              )}
             >
-              No projects in this category yet.
-            </motion.p>
-          ) : (
-            visibleProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                layout
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
-                transition={{ duration: 0.22, delay: index * 0.06 }}
-              >
-                <ProjectCard project={project} index={index} />
-              </motion.div>
-            ))
-          )}
-        </AnimatePresence>
+              {cat}
+            </button>
+          );
+        })}
       </div>
 
-      <div className="mt-8 flex justify-center md:mt-12 lg:mt-8">
-        <Button
-          asChild
-          variant="outline"
-          className="group rounded-full border-border hover:border-primary/50 h-11 px-7 text-xs font-semibold uppercase tracking-wider"
-        >
+      {/* Project cards list */}
+      <div className="space-y-3 sm:space-y-4">
+        {visibleProjects.length === 0 ? (
+          <p className="py-8 text-center text-sm text-muted-foreground border border-border rounded-md">
+            No projects in this category yet.
+          </p>
+        ) : (
+          visibleProjects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
+          ))
+        )}
+      </div>
+
+      <div className="mt-5 flex justify-center">
+        <Button asChild variant="outline" className="min-h-[44px]">
           <Link to="/projects">
-            View all projects
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1 text-primary" />
+            <span>View all projects</span>
+            <ArrowRight className="h-4 w-4" />
           </Link>
         </Button>
       </div>

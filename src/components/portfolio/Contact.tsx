@@ -34,35 +34,44 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="section-shell pb-10 md:pb-24 lg:pb-16">
+    <section id="contact" className="section-shell">
       <SectionHeading
         index="07"
-        title="Let’s build something useful."
-        description="Have an internship, research idea, or interesting engineering problem? Send a note."
+        title="Get in touch"
+        description="Have an internship, project, or question? Send a note."
       />
-      <div className="grid gap-7 md:ml-[10rem] md:grid-cols-[0.8fr_1.2fr] md:gap-12 lg:gap-8">
-        <div>
-          <p className="text-sm text-muted-foreground">Prefer email?</p>
-          <a
-            href={`mailto:${portfolio.email}`}
-            className="mt-2 inline-flex max-w-full items-center gap-2 break-words border-b border-foreground pb-1 font-display text-xl"
-          >
-            {portfolio.email}
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
-          <div className="mt-5 md:mt-8 lg:mt-6">
-            <VisitorCount />
+
+      <div className="grid grid-cols-1 items-start gap-6 md:grid-cols-[1fr_1.3fr] lg:gap-8">
+        {/* Left column: Direct contact, Visitor count, Socials */}
+        <div className="space-y-4">
+          <div className="rounded-md border border-border bg-card p-3 sm:p-4">
+            <p className="font-mono text-xs text-muted-foreground mb-1">Direct email</p>
+            <a
+              href={`mailto:${portfolio.email}`}
+              className="inline-flex items-center gap-1.5 text-base sm:text-lg font-bold text-foreground underline underline-offset-4 hover:text-muted-foreground break-all"
+            >
+              <span>{portfolio.email}</span>
+              <ArrowUpRight className="h-4 w-4 shrink-0" />
+            </a>
+            <p className="mt-2 text-xs text-muted-foreground">
+              Direct inbox. Replies usually within 24 to 48 hours.
+            </p>
           </div>
-          <div className="mt-5 md:mt-8 lg:mt-6">
-            <p className="text-sm text-muted-foreground">Find me online</p>
-            <SocialIconRow socials={profileSocials} className="mt-3" />
+
+          <VisitorCount />
+
+          <div className="rounded-md border border-border bg-card p-3 sm:p-4">
+            <p className="font-mono text-xs text-muted-foreground mb-2">Profiles & links</p>
+            <SocialIconRow socials={profileSocials} />
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Right column: Web3Forms form */}
+        <form onSubmit={handleSubmit} className="rounded-md border border-border bg-card p-3 sm:p-4 space-y-3">
           <input type="hidden" name="access_key" value={portfolio.web3FormsAccessKey} />
           <input type="hidden" name="subject" value="New portfolio message" />
-          <div className="grid gap-4 sm:grid-cols-2">
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             <Input name="name" placeholder="Your name" aria-label="Your name" required />
             <Input
               type="email"
@@ -72,41 +81,43 @@ export function Contact() {
               required
             />
           </div>
+
           <Input
             name="subject_line"
-            placeholder="What’s this about?"
+            placeholder="Subject"
             aria-label="Message subject"
             required
           />
+
           <Textarea
             name="message"
-            placeholder="Tell me a little about your idea..."
+            placeholder="Your message..."
             aria-label="Message"
-            className="min-h-36"
+            className="min-h-[120px]"
             required
           />
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
             <p className="text-xs text-muted-foreground" role="status">
               {status === "success"
-                ? "Message sent — thank you."
+                ? "Message sent - thank you."
                 : status === "error"
-                  ? "Add your Web3Forms key in the portfolio data file to enable sending."
-                  : "I’ll reply as soon as I can."}
+                  ? "Add your Web3Forms key in data/portfolio.ts to enable sending."
+                  : "I'll reply as soon as possible."}
             </p>
+
             <Button
               type="submit"
               variant="default"
-              className="w-full shrink-0 sm:w-auto rounded-full bg-white text-zinc-950 px-6 py-2.5 font-bold shadow-md hover:bg-white/90 gap-2.5"
               disabled={status === "sending"}
+              className="min-h-[44px] w-full sm:w-auto px-5"
             >
               {status === "sending" ? (
-                <Loader2 className="animate-spin text-primary" />
+                <Loader2 className="h-4 w-4 animate-spin" />
               ) : (
-                <span className="grid h-6 w-6 place-items-center rounded-full bg-primary text-primary-foreground">
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </span>
+                <ArrowUpRight className="h-4 w-4" />
               )}
-              Send message
+              <span>Send message</span>
             </Button>
           </div>
         </form>
