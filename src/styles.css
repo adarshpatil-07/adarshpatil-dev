@@ -40,6 +40,12 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-signal: var(--signal);
+  --color-hero-vignette: var(--hero-vignette);
+  --color-contribution-0: var(--contribution-0);
+  --color-contribution-1: var(--contribution-1);
+  --color-contribution-2: var(--contribution-2);
+  --color-contribution-3: var(--contribution-3);
+  --color-contribution-4: var(--contribution-4);
 }
 
 /* ═══════════════════════════════════════════
@@ -70,6 +76,16 @@
   --signal: #22c55e;
 
   --hero-gradient: linear-gradient(145deg, #1d0f33 0%, #291447 35%, #1b0d30 70%, #0f061e 100%);
+
+  /* ── GitHub contribution calendar levels ── */
+  --contribution-0: #e8e4f0;
+  --contribution-1: #bba8e0;
+  --contribution-2: #8b5fca;
+  --contribution-3: #6d28d9;
+  --contribution-4: #6d28d9;
+
+  /* ── Hero portrait vignette ── */
+  --hero-vignette: #0e051b;
 }
 
 /* ═══════════════════════════════════════════
@@ -100,6 +116,16 @@
   --signal: #22c55e;
 
   --hero-gradient: linear-gradient(145deg, #170b2b 0%, #23103e 35%, #150927 70%, #0b0416 100%);
+
+  /* ── GitHub contribution calendar levels ── */
+  --contribution-0: #161024;
+  --contribution-1: #3b2166;
+  --contribution-2: #5b31a6;
+  --contribution-3: #7c50d6;
+  --contribution-4: #a78bfa;
+
+  /* ── Hero portrait vignette ── */
+  --hero-vignette: #0e051b;
 }
 
 /* ─── Base layer ─── */
@@ -109,6 +135,7 @@
   }
   html {
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
   body {
     background-color: var(--color-background);
@@ -116,6 +143,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
   ::selection {
     background: var(--color-primary);

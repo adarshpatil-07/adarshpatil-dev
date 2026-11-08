@@ -73,7 +73,7 @@ export function Hero() {
                   href={portfolio.resumeHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group inline-flex items-center gap-2.5 rounded-full bg-white py-1.5 pl-4 pr-1.5 text-xs font-bold text-zinc-950 shadow-lg transition-all duration-300 hover:scale-[1.02] hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-[0.98] sm:py-2 sm:pl-5 sm:pr-2 sm:text-sm"
+                  className="group inline-flex items-center gap-2.5 rounded-full bg-white py-1.5 pl-4 pr-1.5 text-xs font-bold text-zinc-950 shadow-lg transition-[transform,background-color] duration-300 hover:scale-[1.02] hover:bg-white/95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white active:scale-[0.98] sm:py-2 sm:pl-5 sm:pr-2 sm:text-sm"
                 >
                   <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                   <span>Resume</span>
@@ -84,14 +84,14 @@ export function Hero() {
 
                 <a
                   href="#open-source"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm sm:gap-2"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-[border-color,background-color] duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm sm:gap-2"
                 >
                   <FolderGit2 className="h-3.5 w-3.5 sm:h-4 sm:w-4" aria-hidden="true" />
                   Open Source
                 </a>
                 <a
                   href="#contact"
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm"
+                  className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3.5 py-2 text-xs font-semibold text-white backdrop-blur-sm transition-[border-color,background-color] duration-300 hover:border-white/40 hover:bg-white/15 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm"
                 >
                   Get in touch
                 </a>
@@ -169,7 +169,7 @@ function HeroPhoto({ className }: { className?: string | undefined }) {
         {/* Subtle vignette overlay to integrate naturally with dark violet background */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0e051b]/55 via-transparent to-black/10"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-t from-hero-vignette/55 via-transparent to-black/10"
         />
       </div>
     </div>
@@ -191,7 +191,7 @@ function HeroSocial({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-all duration-300 hover:border-white/40 hover:bg-white hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm sm:gap-2"
+      className="inline-flex items-center gap-1.5 rounded-full border border-white/25 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-sm transition-[border-color,background-color,color] duration-300 hover:border-white/40 hover:bg-white hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white sm:px-4 sm:py-2.5 sm:text-sm sm:gap-2"
     >
       <SocialGlyph type={type} className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
       <span>{label}</span>

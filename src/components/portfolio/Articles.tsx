@@ -42,14 +42,14 @@ export function Articles() {
                 href={article.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:scale-[1.02] hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-6 lg:mt-4"
+                className="mt-4 inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-semibold text-primary-foreground shadow-sm transition-[transform,background-color] hover:scale-[1.02] hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:mt-6 lg:mt-4"
               >
                 Read article
                 <ArrowUpRight className="h-4 w-4" />
               </a>
             ) : (
               <p className="mt-4 text-sm font-medium text-muted-foreground md:mt-6 lg:mt-4">
-                Link coming soon — replace this demo entry with a published article URL.
+                Link coming soon - replace this demo entry with a published article URL.
               </p>
             )}
           </Reveal>

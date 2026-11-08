@@ -12,13 +12,14 @@ interface ApiResponse {
   contributions: ContributionDay[];
 }
 
-// Violet theme level colours matching the site palette
+// Contribution level colours — reference CSS custom properties so they
+// automatically respond to light/dark theme switches without hardcoded hex.
 const LEVEL_COLORS: Record<number, string> = {
-  0: "#161024",
-  1: "#3b2166",
-  2: "#5b31a6",
-  3: "#7c50d6",
-  4: "#a78bfa",
+  0: "var(--contribution-0)",
+  1: "var(--contribution-1)",
+  2: "var(--contribution-2)",
+  3: "var(--contribution-3)",
+  4: "var(--contribution-4)",
 };
 
 const WEEKDAY_LABELS = ["Mon", "Wed", "Fri"];
@@ -64,7 +65,7 @@ export function GitHubCalendar() {
                   <div
                     key={di}
                     className="animate-pulse rounded-sm"
-                    style={{ width: CELL_SIZE, height: CELL_SIZE, background: "#161024" }}
+                    style={{ width: CELL_SIZE, height: CELL_SIZE, background: "var(--contribution-0)" }}
                   />
                 ))}
               </div>
@@ -167,6 +168,7 @@ export function GitHubCalendar() {
       <div className="overflow-x-auto">
         <div style={{ minWidth: totalWidth + 16 }} className="relative select-none">
           <svg
+            aria-hidden="true"
             width={totalWidth}
             height={totalHeight}
             style={{ display: "block", overflow: "visible" }}
@@ -178,7 +180,7 @@ export function GitHubCalendar() {
                 x={WEEKDAY_COL_WIDTH + x + 2}
                 y={12}
                 fontSize={10}
-                fill="#9b91ad"
+                fill="var(--muted-foreground)"
                 fontFamily="monospace"
               >
                 {label}
@@ -192,7 +194,7 @@ export function GitHubCalendar() {
                 x={0}
                 y={MONTH_ROW_HEIGHT + (WEEKDAY_INDICES[i] ?? 0) * STEP + CELL_SIZE - 1}
                 fontSize={9}
-                fill="#9b91ad"
+                fill="var(--muted-foreground)"
                 fontFamily="monospace"
               >
                 {label}

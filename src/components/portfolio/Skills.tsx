@@ -82,7 +82,7 @@ export function Skills() {
             as="article"
             y={18}
             delay={Math.min(index, 4) * 0.08}
-            className="group min-h-0 rounded-2xl sm:rounded-3xl border border-border bg-card/60 p-4 transition-all duration-300 hover:border-primary/40 hover:bg-card hover:-translate-y-1 sm:min-h-56 sm:p-6 lg:min-h-0 lg:p-5 shadow-sm"
+            className="group min-h-0 rounded-2xl sm:rounded-3xl border border-border bg-card/60 p-4 transition-[border-color,background-color,transform] duration-300 hover:border-primary/40 hover:bg-card hover:-translate-y-1 sm:min-h-56 sm:p-6 lg:min-h-0 lg:p-5 shadow-sm"
           >
             <p className="font-mono text-xs font-bold text-primary">#0{index + 1}</p>
             <h3 className="mt-3 font-display text-xl font-bold tracking-tight sm:mt-6 sm:text-2xl lg:mt-4">

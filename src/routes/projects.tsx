@@ -92,7 +92,7 @@ function ProjectsPage() {
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
                 className={cn(
-                  "rounded-full px-4 py-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-all duration-200 cursor-pointer",
+                  "rounded-full px-4 py-1.5 text-xs font-semibold font-mono uppercase tracking-wider transition-[border-color,background-color,color] duration-200 cursor-pointer",
                   activeCategory === cat
                     ? "bg-primary text-primary-foreground shadow-sm"
                     : "border border-border text-muted-foreground hover:border-primary/50 hover:text-foreground",
