@@ -125,11 +125,11 @@ export const portfolio: PortfolioData = {
     {
       title: "Personal Portfolio Website ",
       description:
-        "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience.",
+        "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience. It brings my work together in one place so recruiters and collaborators can quickly see what I build and how I’ve grown.",
       image: telemetryImage,
       tags: ["TypeScript", "React 19", "TailWind CSS", "Vite"],
       categories: ["Full Stack", "Web Development"],
-      href: "https://adarshpatil-dev.vercel.app/",
+      href: "https://adarshpatil.runs-on.dev/",
       sourceHref: "https://github.com/adarshpatil-07/adarshpatil-dev",
     },
     {
