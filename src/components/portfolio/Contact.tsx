@@ -12,10 +12,11 @@ const profileSocials = portfolio.socials.filter((social) => social.type !== "ema
 
 export function Contact() {
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+  const isKeyEmpty = !portfolio.web3FormsAccessKey.trim() || portfolio.web3FormsAccessKey.startsWith("YOUR_");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (portfolio.web3FormsAccessKey.startsWith("YOUR_")) {
+    if (isKeyEmpty) {
       setStatus("error");
       return;
     }
@@ -31,6 +32,22 @@ export function Contact() {
     } catch {
       setStatus("error");
     }
+  }
+
+  function getStatusMessage() {
+    if (status === "success") {
+      return "Message sent successfully - thank you!";
+    }
+    if (status === "sending") {
+      return "Sending message...";
+    }
+    if (isKeyEmpty) {
+      return "Add your Web3Forms key in the portfolio data file to enable sending.";
+    }
+    if (status === "error") {
+      return "Failed to send message. Please try again or email directly.";
+    }
+    return "I'll reply as soon as possible.";
   }
 
   return (
@@ -99,11 +116,7 @@ export function Contact() {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-1">
             <p className="text-xs text-muted-foreground" role="status">
-              {status === "success"
-                ? "Message sent - thank you."
-                : status === "error"
-                  ? "Add your Web3Forms key in data/portfolio.ts to enable sending."
-                  : "I'll reply as soon as possible."}
+              {getStatusMessage()}
             </p>
 
             <Button

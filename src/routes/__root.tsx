@@ -9,8 +9,25 @@ import {
   type ErrorComponentProps,
 } from "@tanstack/react-router";
 import { type ReactNode } from "react";
+import { portfolio } from "@/data/portfolio";
 
 import appCss from "../styles.css?url";
+
+const siteTitle = `${portfolio.name} — ${portfolio.role}`;
+const siteDescription = `${portfolio.name} is a ${portfolio.role.toLowerCase()} focused on full-stack development, AI/ML systems, and building practical real-world software.`;
+const ogImage = `${portfolio.siteUrl}/og-image.png`;
+const sameAs = portfolio.socials
+  .filter((social) => social.type === "github" || social.type === "linkedin")
+  .map((social) => social.href);
+
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: portfolio.name,
+  jobTitle: portfolio.role,
+  url: portfolio.siteUrl,
+  sameAs,
+};
 
 function NotFoundComponent() {
   return (
@@ -70,26 +87,46 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: () => ({
-    meta: [
-      { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0a0a0a" },
-    ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
-      },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
-    ],
-  }),
+  head: ({ location }) => {
+    const canonicalUrl = `${portfolio.siteUrl}${!location?.pathname || location.pathname === "/" ? "" : location.pathname}`;
+    return {
+      meta: [
+        { charSet: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { name: "theme-color", content: "#0a0a0a" },
+        { title: siteTitle },
+        { name: "description", content: siteDescription },
+        { property: "og:type", content: "website" },
+        { property: "og:site_name", content: portfolio.name },
+        { property: "og:title", content: siteTitle },
+        { property: "og:description", content: siteDescription },
+        { property: "og:url", content: portfolio.siteUrl },
+        { property: "og:image", content: ogImage },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:alt", content: `${portfolio.name}, ${portfolio.role}` },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: siteTitle },
+        { name: "twitter:description", content: siteDescription },
+        { name: "twitter:image", content: ogImage },
+        { "script:ld+json": personJsonLd } as any,
+      ],
+      links: [
+        { rel: "canonical", href: canonicalUrl },
+        {
+          rel: "stylesheet",
+          href: appCss,
+        },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap",
+        },
+        { rel: "icon", href: "/favicon.ico", sizes: "any" },
+      ],
+    };
+  },
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,

@@ -53,6 +53,7 @@ export interface Article {
 }
 
 export interface PortfolioData {
+  siteUrl: string;
   name: string;
   initials: string;
   role: string;
@@ -73,6 +74,7 @@ export interface PortfolioData {
 }
 
 export const portfolio: PortfolioData = {
+  siteUrl: "https://adarshpatil.runs-on.dev",
   name: "Adarsh Patil",
   initials: "AP",
   role: "Computer Engineering Student",

@@ -8,22 +8,35 @@ import { portfolio } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/projects")({
-  head: () => ({
-    meta: [
-      { title: `Projects — ${portfolio.name}` },
-      {
-        name: "description",
-        content: `All projects and experiments built by ${portfolio.name}: ${portfolio.hero.intro}`,
-      },
-      { property: "og:title", content: `Projects — ${portfolio.name}` },
-      {
-        property: "og:description",
-        content: `Explore all projects created by ${portfolio.name}.`,
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const title = `Projects | ${portfolio.name}`;
+    const description = `Explore engineering projects and experiments built by ${portfolio.name}, covering full-stack web applications and AI/ML systems.`;
+    const url = `${portfolio.siteUrl}/projects`;
+    const image = `${portfolio.siteUrl}/og-image.png`;
+
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:site_name", content: portfolio.name },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: url },
+        { property: "og:type", content: "website" },
+        { property: "og:image", content: image },
+        { property: "og:image:width", content: "1200" },
+        { property: "og:image:height", content: "630" },
+        { property: "og:image:alt", content: `Projects by ${portfolio.name}` },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: title },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: image },
+      ],
+      links: [
+        { rel: "canonical", href: url },
+      ],
+    };
+  },
   component: ProjectsPage,
 });
 

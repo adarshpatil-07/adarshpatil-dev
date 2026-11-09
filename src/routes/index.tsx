@@ -13,22 +13,27 @@ import { Timeline } from "@/components/portfolio/Timeline";
 import { portfolio } from "@/data/portfolio";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: `${portfolio.name} — ${portfolio.role}` },
-      {
-        name: "description",
-        content: `${portfolio.name}'s portfolio: ${portfolio.hero.intro}`,
-      },
-      { property: "og:title", content: `${portfolio.name} — ${portfolio.role}` },
-      {
-        property: "og:description",
-        content: `${portfolio.hero.headline} ${portfolio.hero.intro}`,
-      },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
+  head: () => {
+    const description = `${portfolio.name} is a ${portfolio.role.toLowerCase()} focused on full-stack development, AI/ML systems, and building practical real-world software.`;
+    return {
+      meta: [
+        { title: `${portfolio.name} — ${portfolio.role}` },
+        { name: "description", content: description },
+        { property: "og:title", content: `${portfolio.name} — ${portfolio.role}` },
+        { property: "og:description", content: description },
+        { property: "og:url", content: portfolio.siteUrl },
+        { property: "og:type", content: "website" },
+        { property: "og:image", content: `${portfolio.siteUrl}/og-image.png` },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:title", content: `${portfolio.name} — ${portfolio.role}` },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: `${portfolio.siteUrl}/og-image.png` },
+      ],
+      links: [
+        { rel: "canonical", href: portfolio.siteUrl },
+      ],
+    };
+  },
   component: Index,
 });
 
