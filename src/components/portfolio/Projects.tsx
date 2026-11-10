@@ -7,29 +7,19 @@ import { cn } from "@/lib/utils";
 import { ProjectCard } from "./ProjectCard";
 import { SectionHeading } from "./SectionHeading";
 
-function buildCategories(projects: typeof portfolio.projects): string[] {
-  const seen = new Set<string>();
-  const cats: string[] = [];
-  for (const project of projects) {
-    for (const cat of project.categories) {
-      if (!seen.has(cat)) {
-        seen.add(cat);
-        cats.push(cat);
-      }
-    }
-  }
-  return ["All", ...cats.sort()];
-}
-
 export function Projects() {
-  const ALL_CATEGORIES = useMemo(() => buildCategories(portfolio.projects), []);
+  const ALL_CATEGORIES = useMemo(() => ["All", "AI / ML", "Generative AI", "Full Stack"], []);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const visibleProjects = useMemo(
     () =>
       activeCategory === "All"
         ? portfolio.projects
-        : portfolio.projects.filter((p) => p.categories.includes(activeCategory)),
+        : portfolio.projects.filter((p) =>
+            p.categories.includes(
+              activeCategory === "Generative AI" ? "Computer Vision" : activeCategory,
+            ),
+          ),
     [activeCategory],
   );
 
