@@ -115,13 +115,13 @@ export const portfolio: PortfolioData = {
     { label: "X", href: "https://x.com/AdarshBuilds07", type: "twitter" },
   ],
   skills: [
-    { title: "Languages", skills: ["C / C++", "TypeScript", "Python", "JavaScript", "SQL"] },
+    { title: "Languages", skills: ["Python", "TypeScript", "JavaScript", "SQL", "C/C++"] },
     {
-      title: "AI/ML",
-      skills: ["NumPy", "Pandas", "scikit-learn", "Matplotlib", "TensorFlow"],
+      title: "Full Stack",
+      skills: ["React", "TanStack", "Tailwind CSS", "HTML/CSS", "Node.js", "Django", "FastAPI", "PostgreSQL", "MongoDB"],
     },
-    { title: "Software", skills: ["React", "Node.js", "Git", "Linux", "PostgreSQL"] },
-    { title: "Tools", skills: ["Vite", "Github Actions", "Docker", "Figma", "Canva"] },
+    { title: "AI/ML", skills: ["NumPy", "Pandas", "scikit-learn", "Matplotlib", "TensorFlow", "LangChain", "Vector DB"] },
+    { title: "Tools", skills: ["Git", "GitHub Actions", "Docker", "Linux", "Vite", "Streamlit", "Figma", "Canva"] },
   ],
   projects: [
     {
