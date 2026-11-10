@@ -92,7 +92,7 @@ export function Hero() {
         <div className="text-left sm:text-right">
           <p className="text-sm font-semibold text-foreground">{portfolio.name}</p>
           <p className="text-xs text-muted-foreground">
-            {portfolio.role} · {portfolio.location}
+            {portfolio.role}<br />{portfolio.location}
           </p>
         </div>
       </div>
