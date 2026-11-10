@@ -87,8 +87,9 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 }
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
-  head: ({ location }) => {
-    const canonicalUrl = `${portfolio.siteUrl}${!location?.pathname || location.pathname === "/" ? "" : location.pathname}`;
+  head: ({ matches }) => {
+    const pathname = matches[matches.length - 1]?.pathname;
+    const canonicalUrl = `${portfolio.siteUrl}${!pathname || pathname === "/" ? "" : pathname}`;
     return {
       meta: [
         { charSet: "utf-8" },
