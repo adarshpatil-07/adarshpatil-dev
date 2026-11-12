@@ -93,6 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     return {
       meta: [
         { charSet: "utf-8" },
+        { name: "msvalidate.01", content: "0F5AE0231A8D6D3E4CD017753CB91FBB" } ,
         { name: "viewport", content: "width=device-width, initial-scale=1" },
         { name: "theme-color", content: "#0a0a0a" },
         { title: siteTitle },
