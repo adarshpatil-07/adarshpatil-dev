@@ -1,3 +1,4 @@
+
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
@@ -63,8 +64,16 @@ export interface PortfolioData {
   email: string;
   resumeHref: string;
   profileImage: string;
-  hero: { eyebrow: string; headline: string; intro: string };
-  about: { lead: string; paragraphs: string[]; interests: string[] };
+  hero: {
+    eyebrow: string;
+    availability: string;
+    headline: string;
+  };
+  about: {
+    lead: string;
+    paragraphs: string[];
+    interests: string[];
+  };
   socials: SocialLink[];
   skills: SkillGroup[];
   projects: Project[];
@@ -80,17 +89,18 @@ export const portfolio: PortfolioData = {
   initials: "AP",
   role: "Computer Engineering Student",
   status: "Open to internships (2026)",
-  location: "Nagpur,Maharashtra,India",
+  location: "Nagpur, Maharashtra, India",
   email: "adarshpatil.tech07@gmail.com",
   resumeHref: "/resume.pdf",
   profileImage,
+
   hero: {
     eyebrow: "Computer engineering / systems / software",
+    availability: "Open for Internships (2026)",
     headline:
-      "Exploring full-stack development and AI/ML, while aspiring to make meaningful open-source contributions.",
-    intro:
-      "I’m a computer engineering student focused on building software, exploring AI and machine learning, and turning ideas into projects that actually work.",
+      "Exploring full-stack development and AI/ML, building projects and contributing to open source.",
   },
+
   about: {
     lead: "I'm Adarsh, a Computer Engineering student with a focus on full-stack and AI/ML development - I build practical, real-world applications and am actively working toward internships and hands-on industry experience.",
     paragraphs: [
@@ -104,33 +114,83 @@ export const portfolio: PortfolioData = {
       "AI & machine learning",
     ],
   },
+
   socials: [
-    { label: "GitHub", href: "https://github.com/adarshpatil-07", type: "github" },
+    {
+      label: "GitHub",
+      href: "https://github.com/adarshpatil-07",
+      type: "github",
+    },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/adarsh-patil-bb0335375/",
       type: "linkedin",
     },
-    { label: "Email", href: "mailto:adarshpatil.tech07@gmail.com", type: "email" },
-    // Add your X/Twitter profile URL here to show the X button in the hero, contact, and footer:
-    { label: "X", href: "https://x.com/AdarshBuilds07", type: "twitter" },
+    {
+      label: "Email",
+      href: "mailto:adarshpatil.tech07@gmail.com",
+      type: "email",
+    },
+    {
+      label: "X",
+      href: "https://x.com/AdarshBuilds07",
+      type: "twitter",
+    },
   ],
+
   skills: [
-    { title: "Languages", skills: ["Python", "TypeScript", "JavaScript", "SQL", "C/C++"] },
+    {
+      title: "Languages",
+      skills: ["Python", "TypeScript", "JavaScript", "SQL", "C/C++"],
+    },
     {
       title: "Full Stack",
-      skills: ["React", "TanStack", "Tailwind CSS", "HTML/CSS", "Node.js", "Django", "FastAPI", "PostgreSQL", "MongoDB"],
+      skills: [
+        "React",
+        "TanStack",
+        "Tailwind CSS",
+        "HTML/CSS",
+        "Node.js",
+        "Django",
+        "FastAPI",
+        "PostgreSQL",
+        "MongoDB",
+      ],
     },
-    { title: "AI/ML", skills: ["NumPy", "Pandas", "scikit-learn", "Matplotlib", "TensorFlow", "LangChain", "Vector DB"] },
-    { title: "Tools", skills: ["Git", "GitHub Actions", "Docker", "Linux", "Vite", "Streamlit", "Figma", "Canva"] },
+    {
+      title: "AI/ML",
+      skills: [
+        "NumPy",
+        "Pandas",
+        "scikit-learn",
+        "Matplotlib",
+        "TensorFlow",
+        "LangChain",
+        "Vector DB",
+      ],
+    },
+    {
+      title: "Tools",
+      skills: [
+        "Git",
+        "GitHub Actions",
+        "Docker",
+        "Linux",
+        "Vite",
+        "Streamlit",
+        "Figma",
+        "Canva",
+      ],
+    },
   ],
+
   projects: [
     {
-      title: "Personal Portfolio Website ",
+      title: "Personal Portfolio Website",
       description:
-        "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience. It brings my work together in one place so recruiters and collaborators can quickly see what I build and how I’ve grown.",
+        "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience. It brings my work together in one place so recruiters and collaborators can quickly see what I build and how I've grown.",
       image: telemetryImage,
-      tags: ["TypeScript", "React 19", "TailWind CSS", "Vite"],
+      tags: ["TypeScript", "React 19", "Tailwind CSS", "Vite"],
       categories: ["Full Stack"],
       href: "https://adarshpatil.runs-on.dev/",
       sourceHref: "https://github.com/adarshpatil-07/adarshpatil-dev",
@@ -143,7 +203,8 @@ export const portfolio: PortfolioData = {
       tags: ["Python", "TensorFlow", "Keras", "NumPy", "Machine Learning"],
       categories: ["AI / ML", "Generative AI"],
       href: "",
-      sourceHref: "https://github.com/adarshpatil-07/tensorflow-computer-vision",
+      sourceHref:
+        "https://github.com/adarshpatil-07/tensorflow-computer-vision",
     },
     {
       title: "RAG Document Q&A Chatbot",
@@ -153,7 +214,8 @@ export const portfolio: PortfolioData = {
       tags: ["Python", "LangChain", "Gemini", "ChromaDB", "Streamlit", "RAG"],
       categories: ["AI / ML", "Full Stack", "Generative AI"],
       href: "https://adarsh-rag-chatbot.streamlit.app/",
-      sourceHref: "https://github.com/adarshpatil-07/Datheon_Python_Generative_AI_LangChain_Internship",
+      sourceHref:
+        "https://github.com/adarshpatil-07/Datheon_Python_Generative_AI_LangChain_Internship",
     },
     {
       title: "AbsoluteCinema - Movie Discovery Platform",
@@ -165,8 +227,8 @@ export const portfolio: PortfolioData = {
       href: "https://absolute-cinema-coral.vercel.app/",
       sourceHref: "https://github.com/adarshpatil-07/absolute-cinema",
     },
-
   ],
+
   openSource: [
     {
       title: "First Open Source Contribution",
@@ -180,49 +242,22 @@ export const portfolio: PortfolioData = {
       isDemo: false,
     },
   ],
-  /*articles: [
-    {
-      title: "Understanding the Rise and Fall of the Roman Empire",
-      category: "History",
-      date: "Demo",
-      description:
-        "An exploration of the Roman Empire's rise, its emperors, political struggles, and the events that eventually led to its decline.",
-      isDemo: true,
-    },
-  ],*/
+
   articles: [],
-  
+
   timeline: [
     {
       title: "B.Tech in Computer Engineering",
       organization: "Suryodaya College of Engineering & Technology",
-      location: "Nagpur,Maharashtra,India",
+      location: "Nagpur, Maharashtra, India",
       period: "2025 - 2029",
       type: "Education",
       description:
-        "Coursework covering data structures and algorithms, computer architecture, operating systems, database systems, software development, computer networks, and core programming concepts, with a focus on building practical software engineering skills.",
+        "Coursework in data structures, algorithms, computer architecture, operating systems, databases, software development, computer networks, and programming fundamentals.",
     },
-    /*{
-      title: "Engineering Intern",
-      organization: "Example Technology Lab",
-      location: "Remote",
-      period: "May 2025 — Aug 2025",
-      type: "Experience",
-      description:
-        "Built internal tools, tested firmware, and collaborated with engineers across hardware and software teams.",
-    },
-    {
-      title: "Embedded  Lead",
-      organization: "University Robotics Team",
-      location: "Your University",
-      period: "2024 — Present",
-      type: "Experience",
-      description:
-        "Leading firmware development and system integration for the team’s autonomous robotics platform.",
-    },*/
   ],
-  web3FormsAccessKey: import.meta.env["VITE_WEB3FORMS_KEY"] ?? "",
-};
+
+web3FormsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY ?? "",};
 
 export function getSocial(type: SocialLink["type"]) {
   return portfolio.socials.find((social) => social.type === type);
