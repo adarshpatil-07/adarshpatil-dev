@@ -9,7 +9,7 @@ export function Articles() {
       <SectionHeading
         index="05"
         title="Articles"
-        description="Notes and essays. Published pieces will replace demo entries."
+        description="Notes and essays. Published pieces coming soon."
       />
 
       <div className="space-y-3">

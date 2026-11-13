@@ -9,6 +9,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function Projects() {
   const ALL_CATEGORIES = useMemo(() => ["All", "AI / ML", "Generative AI", "Full Stack"], []);
+  const [showAll, setShowAll] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
 
   const visibleProjects = useMemo(
@@ -22,6 +23,10 @@ export function Projects() {
           ),
     [activeCategory],
   );
+
+  const displayedProjects = showAll
+  ? visibleProjects
+  : visibleProjects.slice(0, 3);
 
   return (
     <section id="projects" className="section-shell">
@@ -59,7 +64,7 @@ export function Projects() {
             No projects in this category yet.
           </p>
         ) : (
-          visibleProjects.map((project, index) => (
+          displayedProjects.map((project, index) => (
             <ProjectCard key={project.title} project={project} index={index} />
           ))
         )}

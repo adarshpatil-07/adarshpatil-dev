@@ -1,6 +1,7 @@
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
+import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
 import profileImage from "@/assets/profile1.jpeg";
 
 export interface SocialLink {
@@ -154,6 +155,17 @@ export const portfolio: PortfolioData = {
       href: "https://adarsh-rag-chatbot.streamlit.app/",
       sourceHref: "https://github.com/adarshpatil-07/Datheon_Python_Generative_AI_LangChain_Internship",
     },
+    {
+      title: "AbsoluteCinema - Movie Discovery Platform",
+      description:
+        "A movie discovery and tracking platform inspired by IMDb and Letterboxd. Explore movies, search titles, view detailed movie information, manage watchlists, and share ratings and reviews. Built with React, TypeScript, and a backend API.",
+      image: AbsoluteCinema,
+      tags: ["React", "TypeScript", "Python", "FastAPI", "PostgreSQL"],
+      categories: ["Full Stack"],
+      href: "https://absolute-cinema-coral.vercel.app/",
+      sourceHref: "https://github.com/adarshpatil-07/absolute-cinema",
+    },
+
   ],
   openSource: [
     {
@@ -168,7 +180,7 @@ export const portfolio: PortfolioData = {
       isDemo: false,
     },
   ],
-  articles: [
+  /*articles: [
     {
       title: "Understanding the Rise and Fall of the Roman Empire",
       category: "History",
@@ -177,7 +189,9 @@ export const portfolio: PortfolioData = {
         "An exploration of the Roman Empire's rise, its emperors, political struggles, and the events that eventually led to its decline.",
       isDemo: true,
     },
-  ],
+  ],*/
+  articles: [],
+  
   timeline: [
     {
       title: "B.Tech in Computer Engineering",
