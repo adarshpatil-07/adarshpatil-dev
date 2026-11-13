@@ -4,6 +4,7 @@ import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
 import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
 import profileImage from "@/assets/profile1.jpeg";
+import resume from "@/assets/resume.pdf";
 
 export interface SocialLink {
   label: string;
@@ -91,7 +92,7 @@ export const portfolio: PortfolioData = {
   status: "Open to internships (2026)",
   location: "Nagpur, Maharashtra, India",
   email: "adarshpatil.tech07@gmail.com",
-  resumeHref: "/resume.pdf",
+  resumeHref: resume,
   profileImage,
 
   hero: {
