@@ -189,7 +189,7 @@ export const portfolio: PortfolioData = {
     {
       title: "Personal Portfolio Website",
       description:
-        "A personal portfolio website showcasing my skills, projects, experience, and journey as a Computer Engineering student. Built with a focus on clean design, responsive UI, and a simple developer-focused experience. It brings my work together in one place so recruiters and collaborators can quickly see what I build and how I've grown.",
+        "A personal portfolio showcasing my projects, technical skills, experience, and journey as a Computer Engineering student. Built with a clean, responsive design to present my work, interests, and growth as a developer in one place.",
       image: telemetryImage,
       tags: ["TypeScript", "React 19", "Tailwind CSS", "Vite"],
       categories: ["Full Stack"],
