@@ -2,7 +2,9 @@
 
 A personal portfolio website built with a modern full-stack React setup. Features smooth scroll-reveal animations, dark/light mode, and a fully typed data layer so all personal content lives in one place.
 
-**Live:** 
+Live : https://adarshpatil.runs-on.dev/ 
+
+<img width="1351" height="648" alt="project-telemetry" src="https://github.com/user-attachments/assets/1c9421b9-1214-4309-99b1-36910d07edd6" />
 
 ---
 
