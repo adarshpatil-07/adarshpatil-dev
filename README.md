@@ -1,97 +1,173 @@
-# Personal Portfolio
+# Adarsh Patil | Developer Portfolio
 
-A personal portfolio website built with a modern full-stack React setup. Features smooth scroll-reveal animations, dark/light mode, and a fully typed data layer so all personal content lives in one place.
+A personal developer portfolio built with React, TypeScript, and TanStack Start. It showcases my projects, technical skills, open-source contributions, experience, and learning journey as a Computer Engineering student.
 
-Live : https://adarshpatil.runs-on.dev/ 
+**Live Website:** [adarshpatil.runs-on.dev](https://adarshpatil.runs-on.dev/)
 
-<img width="1351" height="648" alt="project-telemetry" src="https://github.com/user-attachments/assets/1c9421b9-1214-4309-99b1-36910d07edd6" />
-
----
-
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | [TanStack Start](https://tanstack.com/start) (SSR) + React 19 |
-| Routing | TanStack Router (file-based) |
-| Styling | Tailwind CSS v4 |
-| Components | shadcn/ui + Radix UI primitives |
-| Animations | Motion (Framer Motion v11+) |
-| Data Fetching | TanStack Query |
-| Icons | Lucide React |
-| Build | Vite 8 + Rolldown |
-| Language | TypeScript 5 |
+![Portfolio Preview](https://github.com/user-attachments/assets/1c9421b9-1214-4309-99b1-36910d07edd6)
 
 ---
+
+## Overview
+
+The portfolio brings together my development work and technical interests in one place. It features a responsive interface, dedicated sections for projects and skills, and a centralized data structure that makes personal content easy to maintain.
 
 ## Features
 
-- **Dark / light mode** — persisted to `localStorage`, flash-free via inline script
-- **Scroll-reveal animations** — `<Reveal>` wrapper using Motion's `useInView`
-- **Single data file** — all personal content (`portfolio.ts`) with TypeScript interfaces; components are pure renderers
-- **SSR-ready** — TanStack Start server renders the shell for fast first paint
-- **Contact form** — Web3Forms integration, no custom backend required
-- **Zero external image deps** — all assets self-hosted under `src/assets/`
+- **Responsive Design:** Layouts optimized for desktop, tablet, and mobile.
+- **Dark & Light Mode:** Theme switching with persistent user preference.
+- **Project Showcase:** Project cards with descriptions, technologies, categories, live demos, and source code links.
+- **Project Filtering:** Browse projects by development category.
+- **About & Skills:** Overview of my background, interests, and technical skills.
+- **Open Source Contributions:** Highlights contributions to open-source projects.
+- **Experience & Education:** Timeline showcasing academic and professional progress.
+- **Contact Form:** Web3Forms integration for direct communication.
+- **Resume Access:** View or access my resume directly from the portfolio.
+- **Animations:** Scroll-based reveal effects and subtle interface transitions.
+- **Centralized Data:** Personal information and portfolio content maintained in one TypeScript file.
 
----
+## Tech Stack
+
+| Category | Technologies |
+|---|---|
+| Framework | [TanStack Start](https://tanstack.com/start) |
+| Frontend | React 19, TypeScript |
+| Routing | TanStack Router |
+| Styling | Tailwind CSS v4 |
+| UI Components | Radix UI primitives, shadcn/ui-inspired components |
+| Animations | Motion |
+| Data Fetching | TanStack Query |
+| Icons | Lucide React |
+| Build Tool | Vite 8, Rolldown |
+| Deployment | Node.js-compatible hosting |
 
 ## Project Structure
 
-```
+```text
 src/
-├── assets/              # Images and static assets
+├── assets/                  # Images, resume and static assets
 ├── components/
-│   ├── portfolio/       # Page sections (Hero, About, Skills, Projects, …)
-│   └── ui/              # shadcn/ui primitives (Button, Input, Textarea)
+│   ├── sections/            # Portfolio sections
+│   └── ui/                  # Reusable UI components
 ├── data/
-│   └── portfolio.ts     # All personal content + TypeScript types
+│   └── portfolio.ts         # Portfolio content and TypeScript interfaces
 ├── lib/
-│   ├── utils.ts         # cn() helper
-│   ├── error-capture.ts # Error boundary utilities
-│   └── error-page.ts    # Shared error page content
+│   ├── utils.ts             # Utility functions
+│   ├── error-capture.ts     # Error capture utilities
+│   └── error-page.ts        # Error page content
 ├── routes/
-│   ├── __root.tsx       # HTML shell, fonts, meta, theme script
-│   └── index.tsx        # Home page (composes all sections)
-├── router.tsx           # Router + QueryClient setup
-├── server.ts            # Nitro server entry
-├── start.ts             # Client entry
-└── styles.css           # Global CSS + Tailwind theme tokens
+│   ├── __root.tsx           # Root document and application shell
+│   └── index.tsx            # Main portfolio page
+├── router.tsx               # Router configuration
+├── server.ts                # Server entry point
+├── start.ts                 # Client entry point
+└── styles.css               # Global styles and theme variables
 ```
-
----
 
 ## Getting Started
 
-**Prerequisites:** Node.js ≥ 20 — install via [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-```sh
-git clone https://github.com/<your-username>/myportfolio.git
-cd myportfolio
+- Node.js 20.19+ or 22.12+
+- npm
+- Git
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/adarshpatil-07/adarshpatil-dev.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd adarshpatil-dev
+```
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Start the development server:
+
+```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open the local URL printed in your terminal, usually:
 
-### Other commands
-
-```sh
-npm run build      # Production build (SSR output in .output/)
-npm run preview    # Preview the production build locally
-npm run lint       # ESLint + Prettier check
-npm run format     # Auto-format with Prettier
+```text
+http://localhost:5173
 ```
 
----
+### Available Scripts
 
-## Personalisation
+| Command | Description |
+|---|---|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm run build:dev` | Create a development-mode build |
+| `npm run preview` | Preview the production build |
+| `npm run lint` | Run ESLint |
+| `npm run format` | Format files using Prettier |
 
-All content — name, bio, skills, projects, work/education timeline, and social links — is centralised in [`src/data/portfolio.ts`](./src/data/portfolio.ts). Edit that file; the components update automatically.
+## Customization
 
----
+Portfolio content is centralized in:
+
+[`src/data/portfolio.ts`](./src/data/portfolio.ts)
+
+You can update:
+
+- Personal information and introduction
+- Profile image and resume
+- Social media links
+- Technical skills
+- Project descriptions, images, and links
+- Open-source contributions
+- Articles
+- Education and experience timeline
+
+The components consume this data, keeping content separate from presentation.
+
+### Environment Variables
+
+The contact form uses Web3Forms.
+
+Create a `.env` file in the project root and configure:
+
+```env
+VITE_WEB3FORMS_KEY=your_access_key
+```
+
+Keep private credentials out of version control.
 
 ## Deployment
 
-The site deploys to **Vercel** with zero configuration. Just connect the repository and Vercel auto-detects the Vite build.
+The project uses TanStack Start and Vite. Build the application with:
 
-For other hosts that support Node.js server output, run `npm run build` and serve the `.output/` directory.
+```bash
+npm run build
+```
+
+Deploy the generated production output to a compatible hosting platform that supports the configured server runtime.
+
+---
+
+## Author
+
+**Adarsh Patil**
+
+Computer Engineering Student | Full-Stack Development | AI/ML
+
+- GitHub: [@adarshpatil-07](https://github.com/adarshpatil-07)
+- LinkedIn: [Adarsh Patil](https://www.linkedin.com/in/adarsh-patil-bb0335375/)
+- Portfolio: [adarshpatil.runs-on.dev](https://adarshpatil.runs-on.dev/)
+
+---
+
+If you find something interesting in this project, feel free to explore the repository.
