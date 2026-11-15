@@ -1,4 +1,3 @@
-
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
@@ -103,9 +102,9 @@ export const portfolio: PortfolioData = {
   },
 
   about: {
-    lead: "I'm Adarsh, a Computer Engineering student interested in full-stack development and AI/ML. I enjoy building practical projects and learning by creating things.",
+    lead: "I'm Adarsh, a Computer Engineering student building full-stack products and AI tools, exploring AI agents, and contributing to open source.",
     paragraphs: [
-      "I enjoy building full-stack applications and exploring how AI/ML can solve real-world problems. I like turning ideas into working projects, experimenting with new technologies, and learning by building.",
+      "I work primarily with React, TanStack Start, Tailwind CSS, Node.js, FastAPI, and Django, backed by PostgreSQL and MongoDB. For AI work, I use Python, LangChain, vector databases, and Streamlit. I enjoy taking an idea from the initial concept all the way to a deployed product.",
       "Beyond coding, I explore different areas of computer science, document what I learn, and contribute to open source. I'm currently looking for internship opportunities to gain practical experience and grow as a software engineer.",
     ],
     interests: [
@@ -172,16 +171,7 @@ export const portfolio: PortfolioData = {
     },
     {
       title: "Tools",
-      skills: [
-        "Git",
-        "GitHub Actions",
-        "Docker",
-        "Linux",
-        "Vite",
-        "Streamlit",
-        "Figma",
-        "Canva",
-      ],
+      skills: ["Git", "GitHub Actions", "Docker", "Linux", "Vite", "Streamlit", "Figma", "Canva"],
     },
   ],
 
@@ -204,8 +194,7 @@ export const portfolio: PortfolioData = {
       tags: ["Python", "TensorFlow", "Keras", "NumPy", "Machine Learning"],
       categories: ["AI / ML", "Generative AI"],
       href: "",
-      sourceHref:
-        "https://github.com/adarshpatil-07/tensorflow-computer-vision",
+      sourceHref: "https://github.com/adarshpatil-07/tensorflow-computer-vision",
     },
     {
       title: "RAG Document Q&A Chatbot",
@@ -258,7 +247,8 @@ export const portfolio: PortfolioData = {
     },
   ],
 
-web3FormsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY ?? "",};
+  web3FormsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY ?? "",
+};
 
 export function getSocial(type: SocialLink["type"]) {
   return portfolio.socials.find((social) => social.type === type);
