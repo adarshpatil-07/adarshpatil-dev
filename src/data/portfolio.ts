@@ -1,6 +1,7 @@
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
+import philosopherImage from "@/assets/philosopher-ai.png";
 import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
 import profileImage from "@/assets/profile1.jpeg";
 import resume from "@/assets/resume.pdf";
@@ -216,6 +217,17 @@ export const portfolio: PortfolioData = {
       categories: ["Full Stack"],
       href: "https://absolute-cinema-coral.vercel.app/",
       sourceHref: "https://github.com/adarshpatil-07/absolute-cinema",
+    },
+    {
+      title: "Philosopher AI",
+      description:
+        "Chat with Kafka, Dostoevsky, or Marcus Aurelius in their own voice, grounded in the books you upload. A RAG pipeline (PDF parsing, chunking, ChromaDB vector search, Gemini) feeds each persona passages from their writing, and an optional sources view shows the text behind every reply. Built as a FastAPI backend with a React chat interface.",
+      image: boardImage,
+      tags: ["Python", "FastAPI", "ChromaDB", "Gemini", "RAG", "React"],
+      categories: ["AI / ML", "Full Stack", "Generative AI"],
+      href: "https://github.com/adarshpatil-07/philosopher-ai",
+      sourceHref:
+        "https://github.com/adarshpatil-07/philosopher-ai",
     },
   ],
 
