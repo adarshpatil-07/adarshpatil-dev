@@ -88,7 +88,7 @@ export const portfolio: PortfolioData = {
   siteUrl: "https://adarshpatil.runs-on.dev",
   name: "Adarsh Patil",
   initials: "AP",
-  role: "Computer Engineering Undergraduate | Full-Stack Developer | AI/ML Enthusiast",
+  role: "CSE Undergrad | Full-Stack Developer | AI/ML Enthusiast",
   status: "Open to internships (2026)",
   location: "Nagpur, Maharashtra, India",
   email: "adarshpatil.tech07@gmail.com",
