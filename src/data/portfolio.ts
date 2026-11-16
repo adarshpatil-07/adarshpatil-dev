@@ -88,7 +88,7 @@ export const portfolio: PortfolioData = {
   siteUrl: "https://adarshpatil.runs-on.dev",
   name: "Adarsh Patil",
   initials: "AP",
-  role: "Computer Engineering Student",
+  role: "Computer Engineering Undergraduate | Full-Stack Developer | AI/ML Enthusiast",
   status: "Open to internships (2026)",
   location: "Nagpur, Maharashtra, India",
   email: "adarshpatil.tech07@gmail.com",
@@ -106,7 +106,7 @@ export const portfolio: PortfolioData = {
     lead: "I'm Adarsh, a Computer Engineering student building full-stack products and AI tools, exploring AI agents, and contributing to open source.",
     paragraphs: [
       "I work primarily with React, TanStack Start, Tailwind CSS, Node.js, FastAPI, and Django, backed by PostgreSQL and MongoDB. For AI work, I use Python, LangChain, vector databases, and Streamlit. I enjoy taking an idea from the initial concept all the way to a deployed product.",
-      "Beyond coding, I explore different areas of computer science, document what I learn, and contribute to open source. I'm currently looking for internship opportunities to gain practical experience and grow as a software engineer.",
+      "Beyond coding, I enjoy reading philosophy and literature, writing about technology and ideas, and playing chess. I also document what I learn and contribute to open source. Currently seeking internship opportunities to gain practical experience and grow as a developer.",
     ],
     interests: [
       "Software engineering",
