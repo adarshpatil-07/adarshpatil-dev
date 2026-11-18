@@ -45,7 +45,7 @@ export const recordVisit = createServerFn({ method: "GET" }).handler(
         readEnv("VISITOR_COUNTER_NAMESPACE") ??
         readEnv("VITE_VISITOR_COUNTER_NAMESPACE") ??
         "adarshpatil-dev";
-      const key = readEnv("VISITOR_COUNTER_KEY") ?? readEnv("VITE_VISITOR_COUNTER_KEY") ?? "visits";
+      const key = readEnv("VISITOR_COUNTER_KEY") ?? readEnv("VITE_VISITOR_COUNTER_KEY") ?? "visits-v2";
       const data = await fetchJson(
         `https://abacus.jasoncameron.dev/hit/${encodeURIComponent(namespace)}/${encodeURIComponent(key)}`,
       );
