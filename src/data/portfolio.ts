@@ -5,6 +5,7 @@ import philosopherImage from "@/assets/philosopher-ai.png";
 import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
 import profileImage from "@/assets/profile1.jpeg";
 import resume from "@/assets/resume.pdf";
+import { Building } from "lucide-react";
 
 export interface SocialLink {
   label: string;
@@ -99,7 +100,7 @@ export const portfolio: PortfolioData = {
     eyebrow: "Computer engineering / systems / software",
     availability: "Available for Internships & Freelance Work",
     headline:
-      "Building web applications and exploring AI/ML through hands-on projects, while learning, experimenting, and contributing to open source.",
+  "Building web applications, exploring AI/ML, and contributing to open source through hands-on projects.",
   },
 
   about: {
