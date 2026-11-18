@@ -99,7 +99,7 @@ export const portfolio: PortfolioData = {
   hero: {
     eyebrow: "CSE Undergrad | Full-Stack Developer | AI/ML Enthusiast",
     availability: "Available for Internships & Freelance Work",
-    headline: "I build web apps & explore AI through practical projects.",
+    headline: "I build websites & explore AI through practical projects.",
   },
 
   about: {
