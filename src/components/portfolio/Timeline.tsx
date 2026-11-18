@@ -17,41 +17,52 @@ export function Timeline() {
       <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-6">
         {/* Experience column */}
         <div className="rounded-md border border-border bg-card p-3 sm:p-4">
-          <div className="flex items-baseline justify-between border-b border-border pb-2 mb-3">
-            <h3 className="text-base font-bold text-foreground">
-              Experience & Focus
-            </h3>
-            <span className="font-mono text-xs text-muted-foreground">
-              Internships & Roles
-            </span>
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-border pb-2">
+            <h3 className="text-base font-bold text-foreground">Experience & Focus</h3>
+            <span className="font-mono text-xs text-muted-foreground">Internships & Roles</span>
           </div>
 
           {experienceItems.length > 0 ? (
             <div className="space-y-4">
               {experienceItems.map((item) => (
                 <div key={`${item.title}-${item.period}`} className="space-y-1.5">
-                  <div className="flex items-baseline justify-between gap-2">
-                    <h4 className="text-[15px] font-semibold text-foreground">{item.title}</h4>
-                    <span className="font-mono text-xs text-muted-foreground shrink-0">{item.period}</span>
+                  <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                    <h4 className="min-w-0 break-words text-[15px] font-semibold text-foreground">
+                      {item.title}
+                    </h4>
+                    <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                      {item.period}
+                    </span>
                   </div>
                   <p className="text-xs text-muted-foreground">
                     {item.organization} / {item.location}
                   </p>
-                  <p className="text-sm leading-relaxed text-muted-foreground">{item.description}</p>
+                  <p className="text-sm leading-relaxed text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
               ))}
             </div>
           ) : (
             <div className="space-y-2">
-              <div className="flex items-baseline justify-between gap-2">
-                <h4 className="text-[15px] font-semibold text-foreground">{portfolio.role}</h4>
-                <span className="font-mono text-xs text-muted-foreground shrink-0">{portfolio.status}</span>
+              <div className="space-y-1">
+                <h4 className="break-words text-[15px] font-semibold text-foreground">
+                  {portfolio.role}
+                </h4>
+                <p className="inline-flex items-start gap-2 text-xs text-muted-foreground">
+                  <span
+                    aria-hidden="true"
+                    className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500"
+                  />
+                  <span>{portfolio.status}</span>
+                </p>
               </div>
               <p className="text-xs text-muted-foreground">
                 Independent Projects & Research / {portfolio.location}
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Actively building full-stack applications and experimenting with AI/ML models. Seeking engineering internships and industry collaborations for 2026.
+                Actively building full-stack applications and experimenting with AI/ML models.
+                Seeking engineering internships and industry collaborations for 2026.
               </p>
             </div>
           )}
@@ -59,21 +70,21 @@ export function Timeline() {
 
         {/* Education column */}
         <div className="rounded-md border border-border bg-card p-3 sm:p-4">
-          <div className="flex items-baseline justify-between border-b border-border pb-2 mb-3">
-            <h3 className="text-base font-bold text-foreground">
-              Education
-            </h3>
-            <span className="font-mono text-xs text-muted-foreground">
-              Degree & Studies
-            </span>
+          <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-border pb-2">
+            <h3 className="text-base font-bold text-foreground">Education</h3>
+            <span className="font-mono text-xs text-muted-foreground">Degree & Studies</span>
           </div>
 
           <div className="space-y-4">
             {educationItems.map((item) => (
               <div key={`${item.title}-${item.period}`} className="space-y-1.5">
-                <div className="flex items-baseline justify-between gap-2">
-                  <h4 className="text-[15px] font-semibold text-foreground">{item.title}</h4>
-                  <span className="font-mono text-xs text-muted-foreground shrink-0">{item.period}</span>
+                <div className="flex flex-col gap-0.5 sm:flex-row sm:items-baseline sm:justify-between sm:gap-2">
+                  <h4 className="min-w-0 break-words text-[15px] font-semibold text-foreground">
+                    {item.title}
+                  </h4>
+                  <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                    {item.period}
+                  </span>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   {item.organization} / {item.location}
