@@ -97,10 +97,9 @@ export const portfolio: PortfolioData = {
   profileImage,
 
   hero: {
-    eyebrow: "Computer engineering / systems / software",
+    eyebrow: "Computer Engineering / Full-Stack",
     availability: "Available for Internships & Freelance Work",
-    headline:
-  "Building web applications, exploring AI/ML, and contributing to open source through hands-on projects.",
+    headline: "I build useful software for the web.",
   },
 
   about: {
