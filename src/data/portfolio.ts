@@ -89,7 +89,7 @@ export const portfolio: PortfolioData = {
   name: "Adarsh Patil",
   initials: "AP",
   role: "CSE Undergrad | Full-Stack Developer | AI/ML Enthusiast",
-  status: "Open to internships (2026)",
+  status: "Available for Internships & Freelance Work",
   location: "Nagpur, Maharashtra, India",
   email: "adarshpatil.tech07@gmail.com",
   resumeHref: resume,
