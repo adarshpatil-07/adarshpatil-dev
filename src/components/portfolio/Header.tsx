@@ -75,7 +75,7 @@ export function Header() {
   }
 
   return (
-    <header className="sticky top-2 z-50 h-14 border-b border-border bg-background">
+    <header className="sticky -top-1 z-50 h-14 border-b border-border bg-background">
       <div className="mx-auto flex h-full max-w-6xl items-center justify-between px-4 md:px-6">
 
         {/* Brand */}
