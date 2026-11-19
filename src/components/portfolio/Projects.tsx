@@ -56,13 +56,13 @@ export function Projects() {
       </div>
 
       {/* Project cards */}
-      <div className="space-y-3">
+      <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
         {visibleProjects.length === 0 ? (
           <p className="rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
             No projects in this category yet.
           </p>
         ) : (
-          visibleProjects.slice(0, 3).map((project, index) => (
+          visibleProjects.slice(0, 4).map((project, index) => (
             <ProjectCard
               key={project.title}
               project={project}
