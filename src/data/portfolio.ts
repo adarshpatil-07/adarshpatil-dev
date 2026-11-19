@@ -221,7 +221,7 @@ export const portfolio: PortfolioData = {
     {
       title: "Philosopher AI",
       description:
-        "Chat with Kafka, Dostoevsky, or Marcus Aurelius in their own voice, grounded in the books you upload. A RAG pipeline (PDF parsing, chunking, ChromaDB vector search, Gemini) feeds each persona passages from their writing, and an optional sources view shows the text behind every reply. Built as a FastAPI backend with a React chat interface.",
+        "An AI-powered chat app that lets users interact with literary figures using uploaded books. Built with FastAPI, React, ChromaDB, and Gemini, featuring RAG-based responses with source citations.",
       image: boardImage,
       tags: ["Python", "FastAPI", "ChromaDB", "Gemini", "RAG", "React"],
       categories: ["AI / ML", "Full Stack", "Generative AI"],
@@ -236,9 +236,9 @@ export const portfolio: PortfolioData = {
       title: "First Open Source Contribution",
       repoName: "Understand-Anything",
       description:
-        "Contributed to Understand-Anything by adding VS Code and GitHub Copilot installation instructions to the README and its localized versions.",
+        "Contributed to Understand-Anything, a project with 93.3k GitHub stars and 8k forks, by adding VS Code and GitHub Copilot installation instructions",
       contribution:
-        "PR #756: Added marketplace installation instructions for GitHub Copilot across the main README and 8 translated README files. Reviewed and merged into main.",
+        "PR #756: Updated 9 README files with GitHub Copilot installation instructions. Merged into main.",
       technologies: ["Git", "GitHub", "Markdown", "Open Source"],
       href: "https://github.com/Egonex-AI/Understand-Anything/pull/756",
       isDemo: false,
@@ -255,7 +255,7 @@ export const portfolio: PortfolioData = {
       period: "2025 - 2029",
       type: "Education",
       description:
-        "Coursework in data structures, algorithms, computer architecture, operating systems, databases, software development, computer networks, and programming fundamentals.",
+        "Studying core computer engineering subjects, including DSA, operating systems, databases, computer networks, and software development.",
     },
   ],
 
