@@ -1,6 +1,8 @@
 import { ArrowDownRight, FileText, FolderGit2 } from "lucide-react";
 import { getSocial, portfolio } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
+// Update this path to match the exact filename in your assets folder
+import heroBanner from "@/assets/itachi-banner.jpg";
 
 const github = getSocial("github");
 const linkedin = getSocial("linkedin");
@@ -13,16 +15,33 @@ export function Hero() {
     <section id="top" className="section-shell">
       <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
         <div className="flex min-w-0 flex-col">
-          <div className="mb-4 h-28 w-28 overflow-hidden rounded-lg border border-border bg-secondary lg:hidden">
-            <img
-              src={portfolio.profileImage}
-              alt={`${portfolio.name} profile photo`}
-              width={144}
-              height={144}
-              loading="eager"
-              decoding="async"
-              className="h-full w-full object-cover object-top"
-            />
+          {/* Mobile-only Banner + Overlapping Profile Photo */}
+          <div className="mb-4 lg:hidden">
+            <div className="relative h-32 w-full overflow-hidden rounded-xl border border-border bg-secondary sm:h-40">
+              <img
+                src={heroBanner}
+                alt="Hero banner"
+                loading="eager"
+                decoding="async"
+                className="h-full w-full object-cover object-[50%_20%]"
+              />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-background/50 to-transparent"
+              />
+            </div>
+
+            <div className="relative z-10 -mt-12 ml-3 h-24 w-24 overflow-hidden rounded-xl border border-border bg-secondary ring-4 ring-background sm:h-28 sm:w-28">
+              <img
+                src={portfolio.profileImage}
+                alt={`${portfolio.name} profile photo`}
+                width={144}
+                height={144}
+                loading="eager"
+                decoding="async"
+                className="h-full w-full object-cover object-top"
+              />
+            </div>
           </div>
 
           <p className="text-sm text-muted-foreground">{portfolio.hero.eyebrow}</p>
