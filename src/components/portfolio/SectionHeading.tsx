@@ -14,7 +14,7 @@ export function SectionHeading({ index, title, description, className }: Section
         <span className="font-mono text-sm font-normal text-muted-foreground">
           #{index}
         </span>
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="font-display text-xl sm:text-2xl font-normal tracking-tight text-foreground">
           {title}
         </h2>
       </div>

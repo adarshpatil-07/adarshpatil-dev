@@ -7,7 +7,7 @@
 @theme inline {
   /* Typography */
   --font-sans: "Inter", sans-serif;
-  --font-display: "Instrument Serif", serif;
+  --font-display: "Lora", serif;
   --font-mono: "JetBrains Mono", monospace;
 
   /* Radii */
