@@ -85,19 +85,20 @@
   --contribution-4: #171717;
 }
 
-/* Dark theme (Monochrome: near-black default) */
+/* Dark theme (Monochrome: true black) */
 .dark {
   color-scheme: dark;
 
-  --site-background-image: url("/wallpaper.svg");
-  --background: #08090b;
+  --site-background-image: none;
+
+  --background: #000000;
   --foreground: #fafafa;
   --card: #000000;
   --card-foreground: #fafafa;
   --popover: #000000;
   --popover-foreground: #fafafa;
   --primary: #fafafa;
-  --primary-foreground: #0a0a0a;
+  --primary-foreground: #000000;
   --secondary: #000000;
   --secondary-foreground: #fafafa;
   --muted: #000000;
@@ -105,7 +106,7 @@
   --accent: #000000;
   --accent-foreground: #fafafa;
   --destructive: #fafafa;
-  --destructive-foreground: #0a0a0a;
+  --destructive-foreground: #000000;
   --border: #292a2e;
   --input: #292a2e;
   --ring: #fafafa;
@@ -138,17 +139,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: clip;
-  }
-
-  .dark body {
-    background-image:
-      linear-gradient(rgb(8 9 11 / 0.55), rgb(8 9 11 / 0.65)),
-      radial-gradient(ellipse at 82% 4%, rgb(255 255 255 / 0.12), transparent 34rem),
-      radial-gradient(ellipse at 12% 72%, rgb(255 255 255 / 0.035), transparent 28rem),
-      var(--site-background-image);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: auto, auto, auto, cover;
   }
 
   ::selection {
