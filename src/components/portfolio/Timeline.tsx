@@ -14,7 +14,7 @@ export function Timeline() {
       />
 
       {/* Side-by-side layout: Experience next to Education on desktop */}
-      <div className="grid grid-cols-1 items-start gap-4 md:grid-cols-2 md:gap-6">
+      <div className="flex flex-col gap-4 sm:gap-5">
         {/* Experience column */}
         <div className="rounded-md border border-border bg-card p-3 sm:p-4">
           <div className="mb-3 flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1 border-b border-border pb-2">
@@ -61,8 +61,7 @@ export function Timeline() {
                 Independent Projects & Research / {portfolio.location}
               </p>
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Actively building full-stack applications and experimenting with AI/ML models.
-                Seeking engineering internships and industry collaborations for 2026.
+                Building full-stack applications and AI-powered solutions, with a focus on practical engineering and problem-solving.
               </p>
             </div>
           )}
