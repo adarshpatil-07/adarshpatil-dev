@@ -78,7 +78,7 @@ export function Hero() {
           </nav>
         </div>
 
-        <div className="relative mx-auto hidden w-full max-w-[18rem] shrink-0 lg:block">
+        <div className="relative mx-auto hidden w-full max-w-[16rem] shrink-0 lg:block">
           <div className="aspect-[4/5] overflow-hidden rounded-xl border border-border bg-secondary">
             <img
               src={portfolio.profileImage}
