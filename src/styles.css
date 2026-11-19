@@ -56,7 +56,7 @@
   color-scheme: light;
 
   /* Set to url("/your-background.jpg") to use an image from the public folder. */
-  --site-background-image: url("/background.png");
+  --site-background-image: url("/background2.png");
 
   --background: #ffffff;
   --foreground: #0a0a0a;
@@ -93,6 +93,7 @@
 .dark {
   color-scheme: dark;
 
+  --site-background-image: url("/background.png");
   --background: #08090b;
   --foreground: #fafafa;
   --card: #101114;
@@ -142,7 +143,7 @@
   }
   .dark body {
     background-image:
-      linear-gradient(rgb(8 9 11 / 0.84), rgb(8 9 11 / 0.92)),
+      linear-gradient(rgb(8 9 11 / 0.55), rgb(8 9 11 / 0.65)),
       radial-gradient(ellipse at 82% 4%, rgb(255 255 255 / 0.12), transparent 34rem),
       radial-gradient(ellipse at 12% 72%, rgb(255 255 255 / 0.035), transparent 28rem),
       var(--site-background-image);
