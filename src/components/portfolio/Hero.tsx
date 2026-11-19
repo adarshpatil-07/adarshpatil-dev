@@ -13,7 +13,7 @@ export function Hero() {
     <section id="top" className="section-shell">
       <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
         <div className="flex min-w-0 flex-col">
-          <div className="mb-4 h-28 w-28 overflow-hidden rounded-full border border-border bg-secondary lg:hidden">
+          <div className="mb-4 h-28 w-28 overflow-hidden rounded-lg border border-border bg-secondary lg:hidden">
             <img
               src={portfolio.profileImage}
               alt={`${portfolio.name} profile photo`}
