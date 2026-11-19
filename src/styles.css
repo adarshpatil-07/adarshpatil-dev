@@ -54,7 +54,7 @@
   color-scheme: light;
 
   /* Set to url("/your-background.jpg") to use an image from the public folder. */
-  --site-background-image: url("/background2.png");
+  --site-background-image: url("/background.png");
 
   --background: #ffffff;
   --foreground: #0a0a0a;
@@ -89,7 +89,7 @@
 .dark {
   color-scheme: dark;
 
-  --site-background-image: url("/background.png");
+  --site-background-image: url("/wallpaper.svg");
   --background: #08090b;
   --foreground: #fafafa;
   --card: #101114;
