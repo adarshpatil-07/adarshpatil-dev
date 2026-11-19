@@ -180,7 +180,7 @@ export const portfolio: PortfolioData = {
     {
       title: "Personal Portfolio Website",
       description:
-        "A personal portfolio showcasing my projects, technical skills, experience, and journey as a Computer Engineering student. Built with a clean, responsive design to present my work, interests, and growth as a developer in one place.",
+    "A responsive portfolio showcasing my projects, technical skills, and growth as a Computer Engineering student through hands-on development.",
       image: telemetryImage,
       tags: ["TypeScript", "React 19", "Tailwind CSS", "Vite"],
       categories: ["Full Stack"],
@@ -190,7 +190,7 @@ export const portfolio: PortfolioData = {
     {
       title: "TensorFlow Computer Vision",
       description:
-        "An image classification project built with TensorFlow and Keras, using a neural network trained on the Fashion MNIST dataset (70,000 grayscale images across 10 apparel classes). Includes data normalization, model training, performance evaluation, and prediction visualization.",
+        "Built an image classification model using TensorFlow and Keras to classify 70,000 Fashion MNIST images across 10 apparel categories, covering data preprocessing, model training, evaluation, and prediction visualization.",
       image: labImage,
       tags: ["Python", "TensorFlow", "Keras", "NumPy", "Machine Learning"],
       categories: ["AI / ML", "Generative AI"],
@@ -200,7 +200,7 @@ export const portfolio: PortfolioData = {
     {
       title: "RAG Document Q&A Chatbot",
       description:
-        "An AI-powered document assistant that lets users upload multiple PDFs and ask questions about their contents using Retrieval-Augmented Generation (RAG), vector embeddings, and Gemini. Features contextual answers with document citations.",
+        "An AI document assistant that answers questions across multiple PDFs using RAG, vector embeddings, and Gemini, with contextual citations.",
       image: boardImage,
       tags: ["Python", "LangChain", "Gemini", "ChromaDB", "Streamlit", "RAG"],
       categories: ["AI / ML", "Full Stack", "Generative AI"],
