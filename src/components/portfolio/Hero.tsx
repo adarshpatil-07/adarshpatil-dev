@@ -70,7 +70,7 @@ export function Hero() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
+                className="text-sm text-muted-foreground underline decoration-border underline-offset-4 transition-colors hover:text-foreground"
               >
                 {social.label}
               </a>
