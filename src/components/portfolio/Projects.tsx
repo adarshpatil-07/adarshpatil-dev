@@ -55,10 +55,10 @@ export function Projects() {
         })}
       </div>
 
-      {/* Project cards */}
-      <div className="grid grid-cols-1 gap-3 lg:grid-cols-3">
+      {/* Mobile: 4 projects in 2 columns */}
+      <div className="grid grid-cols-1 gap-3 sm:hidden">
         {visibleProjects.length === 0 ? (
-          <p className="rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
+          <p className="col-span-2 rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
             No projects in this category yet.
           </p>
         ) : (
@@ -72,7 +72,24 @@ export function Projects() {
         )}
       </div>
 
-      {/* View all */}
+      {/* Desktop: 6 projects in 2 columns */}
+      <div className="hidden grid-cols-2 gap-3 sm:grid">
+        {visibleProjects.length === 0 ? (
+          <p className="col-span-2 rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
+            No projects in this category yet.
+          </p>
+        ) : (
+          visibleProjects.slice(0, 6).map((project, index) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              index={index}
+            />
+          ))
+        )}
+      </div>
+
+      {/* View all: Mobile and desktop */}
       <div className="mt-4 flex justify-center">
         <Button asChild variant="outline" className="min-h-9">
           <Link to="/projects">
