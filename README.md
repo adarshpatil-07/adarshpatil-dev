@@ -4,7 +4,8 @@ A personal developer portfolio built with React, TypeScript, and TanStack Start.
 
 **Live Website:** [adarshpatil.runs-on.dev](https://adarshpatil.runs-on.dev/)
 
-![Portfolio Preview](https://github.com/user-attachments/assets/1c9421b9-1214-4309-99b1-36910d07edd6)
+![Uploading image.png…]()
+
 
 ---
 
