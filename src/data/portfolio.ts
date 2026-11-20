@@ -1,7 +1,7 @@
 import telemetryImage from "@/assets/project-telemetry.jpg";
 import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
-import philosopherImage from "@/assets/philosopher-ai.png";
+import philosopherImage from "@/assets/philosopher-ai.webp";
 import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
 import profileImage from "@/assets/profile1.jpeg";
 import resume from "@/assets/resume.pdf";
@@ -222,7 +222,7 @@ export const portfolio: PortfolioData = {
       title: "Philosopher AI",
       description:
         "An AI-powered chat app that lets users interact with literary figures using uploaded books. Built with FastAPI, React, ChromaDB, and Gemini, featuring RAG-based responses with source citations.",
-      image: boardImage,
+      image: philosopherImage,
       tags: ["Python", "FastAPI", "ChromaDB", "Gemini", "RAG", "React"],
       categories: ["AI / ML", "Full Stack", "Generative AI"],
       href: "https://github.com/adarshpatil-07/philosopher-ai",
