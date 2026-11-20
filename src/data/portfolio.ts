@@ -10,7 +10,7 @@ import { Building } from "lucide-react";
 export interface SocialLink {
   label: string;
   href: string;
-  type: "email" | "github" | "linkedin" | "twitter";
+  type: "email" | "github" | "linkedin" | "twitter" | "Leetcode";
 }
 
 export interface SkillGroup {
@@ -136,6 +136,11 @@ export const portfolio: PortfolioData = {
       label: "X",
       href: "https://x.com/AdarshBuilds07",
       type: "twitter",
+    },
+    {
+      label: "Leetcode",
+      href: "https://leetcode.com/u/adarshpatil07/",
+      type: "Leetcode",
     },
   ],
 
