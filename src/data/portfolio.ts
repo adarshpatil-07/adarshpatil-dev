@@ -109,10 +109,11 @@ export const portfolio: PortfolioData = {
       "Beyond coding, I enjoy reading philosophy and literature, writing about technology and ideas, and playing chess. I also document what I learn and contribute to open source. Currently seeking internship opportunities to gain practical experience and grow as a developer.",
     ],
     interests: [
-      "Software engineering",
+      "Full-Stack Development",
       "Computer architecture",
-      "Full-stack engineering",
       "AI & machine learning",
+      "Python & Libraries",
+      "Open Source",
     ],
   },
 

@@ -6,7 +6,7 @@ export function About() {
     <div id="about" className="flex flex-col">
       <SectionHeading index="01" title="About" />
 
-      <div className="space-y-3.5">
+      <div className="w-full max-w-2xl space-y-3.5">
         <p className="text-base sm:text-lg font-semibold leading-snug text-foreground">
           {portfolio.about.lead}
         </p>
@@ -18,7 +18,7 @@ export function About() {
         </div>
 
         <div className="pt-1">
-          <p className="font-mono text-xs text-muted-foreground mb-2">Focus areas</p>
+          <p className="font-mono text-xs text-muted-foreground mb-2">Currently Exploring</p>
           <div className="flex flex-wrap gap-1.5">
             {portfolio.about.interests.map((interest) => (
               <span
