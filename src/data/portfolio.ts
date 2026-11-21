@@ -3,6 +3,7 @@ import labImage from "@/assets/project-lab.jpg";
 import boardImage from "@/assets/project-board.jpg";
 import philosopherImage from "@/assets/philosopher-ai.webp";
 import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
+import miyukiImage from "@/assets/miyuki.png";
 import profileImage from "@/assets/profile1.jpeg";
 import resume from "@/assets/resume.pdf";
 import { Building } from "lucide-react";
@@ -219,6 +220,16 @@ export const portfolio: PortfolioData = {
       href: "https://absolute-cinema-coral.vercel.app/",
       sourceHref: "https://github.com/adarshpatil-07/absolute-cinema",
     },
+    {
+  title: "Miyuki (美雪)",
+  description:
+    "A cinematic Japanese winter village experience featuring changing day, sunset, and night atmospheres, interactive snowfall, ambient audio, and fullscreen viewing.",
+  image: miyukiImage,
+  tags: ["React", "TypeScript", "Vite", "CSS", "HTML Canvas"],
+  categories: ["Creative Frontend"],
+  href: "https://miyuki-one.vercel.app/",
+  sourceHref: "YOUR_GITHUB_REPOSITORY_URL",
+},
     {
       title: "Philosopher AI",
       description:
