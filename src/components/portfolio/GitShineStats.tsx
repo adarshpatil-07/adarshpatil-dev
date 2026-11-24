@@ -7,7 +7,7 @@ export function GitShineStats() {
   const cardUrl = `https://gitshine.com/card/${portfolio.githubUsername}?theme=transparent`;
 
   return (
-    <div className="w-full">
+    <div className="w-full lg:mx-auto lg:max-w-5xl">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
         <p className="font-mono text-xs font-semibold text-foreground">GitHub Activity</p>
         <a
