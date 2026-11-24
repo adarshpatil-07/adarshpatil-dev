@@ -23,7 +23,7 @@ export function Hero() {
                 alt="Hero banner"
                 loading="eager"
                 decoding="async"
-                className="h-full w-full object-cover object-[50%_20%]"
+                className="h-full w-full object-cover object-center"
               />
               <div
                 aria-hidden="true"
