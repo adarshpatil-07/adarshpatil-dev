@@ -1,6 +1,6 @@
 
 import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Loader2 } from "lucide-react";
+import { ArrowUpRight, Loader2, Mail, Link2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,10 +33,13 @@ export function Contact() {
     setStatus("sending");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        body: new FormData(event.currentTarget),
-      });
+      const response = await fetch(
+        "https://api.web3forms.com/submit",
+        {
+          method: "POST",
+          body: new FormData(event.currentTarget),
+        }
+      );
 
       if (!response.ok) throw new Error("Submission failed");
 
@@ -71,104 +74,140 @@ export function Contact() {
         description="Have an internship, project, or question? Send a note."
       />
 
-      <div className="grid grid-cols-1 items-start gap-4 sm:gap-6 md:grid-cols-[1fr_1.3fr] lg:gap-8">
+      <div className="mt-7 grid grid-cols-1 items-start gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-12 lg:gap-16">
+
         {/* Left column */}
-        <div className="space-y-3 sm:space-y-4">
-          <div className="rounded-md border border-border bg-card p-3 sm:p-4">
-            <p className="mb-1 font-mono text-xs text-muted-foreground">
-              Direct email
-            </p>
+        <div className="min-w-0">
+
+          {/* Direct email */}
+          <div className="border-b border-border pb-5">
+            <div className="flex items-center gap-2 mb-3">
+              <Mail className="h-4 w-4 text-violet-500" />
+              <p className="font-mono text-xs text-muted-foreground">
+                Direct email
+              </p>
+            </div>
 
             <a
               href={`mailto:${portfolio.email}`}
-              className="inline-flex items-center gap-1.5 break-all text-sm font-bold text-foreground underline underline-offset-4 hover:text-muted-foreground sm:text-lg"
+              className="group inline-flex max-w-full items-center gap-2 text-base sm:text-lg font-semibold text-foreground break-all hover:text-violet-500 transition-colors"
             >
               <span>{portfolio.email}</span>
-              <ArrowUpRight className="h-4 w-4 shrink-0" />
+              <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
 
-            <p className="mt-1.5 text-xs text-muted-foreground sm:mt-2">
+            <p className="mt-2 text-xs text-muted-foreground">
               Direct inbox. Replies usually within 24 to 48 hours.
             </p>
           </div>
 
-          <VisitorCount />
+          {/* Visitor count */}
+          <div className="border-b border-border py-5">
+            <VisitorCount />
+          </div>
 
-          <div className="rounded-md border border-border bg-card p-3 sm:p-4">
-            <p className="mb-2 font-mono text-xs text-muted-foreground">
-              Profiles & links
-            </p>
+          {/* Social profiles */}
+          <div className="pt-5">
+            <div className="flex items-center gap-2 mb-3">
+              <Link2 className="h-4 w-4 text-violet-500" />
+              <p className="font-mono text-xs text-muted-foreground">
+                Profiles & links
+              </p>
+            </div>
+
             <SocialIconRow socials={profileSocials} />
           </div>
         </div>
 
-        {/* Right column */}
-        <form
-          onSubmit={handleSubmit}
-          className="space-y-2 rounded-md border border-border bg-card p-2.5 sm:space-y-3 sm:p-4"
-        >
-          <input
-            type="hidden"
-            name="access_key"
-            value={portfolio.web3FormsAccessKey}
-          />
-          <input
-            type="hidden"
-            name="subject"
-            value="New portfolio message"
-          />
+        {/* Right column - Contact form */}
+        <div className="min-w-0">
 
-          <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 sm:gap-3">
-            <Input
-              name="name"
-              placeholder="Your name"
-              aria-label="Your name"
-              required
-            />
-            <Input
-              type="email"
-              name="email"
-              placeholder="Email address"
-              aria-label="Email address"
-              required
-            />
-          </div>
-
-          <Input
-            name="subject_line"
-            placeholder="Subject"
-            aria-label="Message subject"
-            required
-          />
-
-          <Textarea
-            name="message"
-            placeholder="Your message..."
-            aria-label="Message"
-            className="min-h-[75px] sm:min-h-[120px]"
-            required
-          />
-
-          <div className="flex flex-col justify-between gap-2.5 pt-0.5 sm:flex-row sm:items-center sm:gap-3 sm:pt-1">
-            <p className="text-xs text-muted-foreground" role="status">
-              {getStatusMessage()}
+          <div className="mb-5">
+            <h3 className="text-base sm:text-lg font-semibold text-foreground">
+              Send me a message
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Fill in the details below and I'll get back to you.
             </p>
-
-            <Button
-              type="submit"
-              variant="default"
-              disabled={status === "sending"}
-              className="min-h-[42px] w-full px-5 sm:min-h-[44px] sm:w-auto"
-            >
-              {status === "sending" ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : (
-                <ArrowUpRight className="h-4 w-4" />
-              )}
-              <span>Send message</span>
-            </Button>
           </div>
-        </form>
+
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-3 sm:space-y-4"
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value={portfolio.web3FormsAccessKey}
+            />
+
+            <input
+              type="hidden"
+              name="subject"
+              value="New portfolio message"
+            />
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+              <Input
+                name="name"
+                placeholder="Your name"
+                aria-label="Your name"
+                required
+                className="min-h-[44px] bg-transparent"
+              />
+
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email address"
+                aria-label="Email address"
+                required
+                className="min-h-[44px] bg-transparent"
+              />
+            </div>
+
+            <Input
+              name="subject_line"
+              placeholder="Subject"
+              aria-label="Message subject"
+              required
+              className="min-h-[44px] bg-transparent"
+            />
+
+            <Textarea
+              name="message"
+              placeholder="Your message..."
+              aria-label="Message"
+              className="min-h-[120px] resize-y bg-transparent"
+              required
+            />
+
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
+
+              <p
+                className="text-xs leading-relaxed text-muted-foreground sm:max-w-[60%]"
+                role="status"
+              >
+                {getStatusMessage()}
+              </p>
+
+              <Button
+                type="submit"
+                variant="default"
+                disabled={status === "sending"}
+                className="min-h-[44px] w-full px-5 sm:w-auto shrink-0"
+              >
+                {status === "sending" ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <ArrowUpRight className="h-4 w-4" />
+                )}
+
+                <span>Send message</span>
+              </Button>
+            </div>
+          </form>
+        </div>
       </div>
     </section>
   );
