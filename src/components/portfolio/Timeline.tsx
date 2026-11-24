@@ -20,7 +20,7 @@ export function Timeline() {
         description="Academic background and practical engineering timeline."
       />
 
-      <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+      <div className="grid grid-cols-1 gap-10">
 
         {/* Experience column */}
         <div className="min-w-0">
