@@ -52,7 +52,7 @@ function SkillIcon({ skill }: { skill: string }) {
       alt=""
       aria-hidden="true"
       loading="lazy"
-      className={`h-3.5 w-3.5 shrink-0 object-contain grayscale opacity-80 ${isGitHub ? "dark:invert" : ""}`}
+      className={`h-3.5 w-3.5 shrink-0 object-contain ${isGitHub ? "dark:invert" : ""}`}
     />
   );
 }
