@@ -7,11 +7,11 @@ export function About() {
       <SectionHeading index="01" title="About" />
 
       <div className="w-full max-w-2xl space-y-3.5">
-        <p className="text-base sm:text-lg font-semibold leading-snug text-foreground">
+        <p className="text-base sm:text-lg font-semibold leading-snug text-foreground text-balance text-justify [hyphens:auto]">
           {portfolio.about.lead}
         </p>
 
-        <div className="space-y-3 text-[15px] leading-relaxed text-muted-foreground">
+        <div className="space-y-3 text-[15px] leading-relaxed text-muted-foreground text-justify [hyphens:auto]">
           {portfolio.about.paragraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
