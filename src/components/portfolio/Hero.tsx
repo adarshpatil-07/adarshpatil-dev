@@ -2,7 +2,7 @@ import { ArrowDownRight, FileText, FolderGit2 } from "lucide-react";
 import { getSocial, portfolio } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 // Update this path to match the exact filename in your assets folder
-import heroBanner from "@/assets/itachi-banner.jpg";
+import heroBanner from "@/assets/AOT wallpaper.gif";
 
 const github = getSocial("github");
 const linkedin = getSocial("linkedin");
@@ -13,11 +13,11 @@ const heroSocials = [github, linkedin, twitter].filter(Boolean) as typeof portfo
 export function Hero() {
   return (
     <section id="top" className="section-shell">
-      <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
+      <div className="grid gap-8 sm:gap-10">
         <div className="flex min-w-0 flex-col">
-          {/* Mobile-only Banner + Overlapping Profile Photo */}
-          <div className="mb-4 lg:hidden">
-            <div className="relative h-32 w-full overflow-hidden rounded-xl border border-border bg-secondary sm:h-40">
+          {/* Banner + overlapping profile photo (all screen sizes) */}
+          <div className="mb-4">
+            <div className="relative h-40 w-full overflow-hidden rounded-xl border border-border bg-secondary sm:h-52 lg:h-64">
               <img
                 src={heroBanner}
                 alt="Hero banner"
@@ -95,20 +95,6 @@ export function Hero() {
               </a>
             ))}
           </nav>
-        </div>
-
-        <div className="relative mx-auto hidden w-full max-w-[16rem] shrink-0 lg:block">
-          <div className="aspect-[4/5] overflow-hidden rounded-xl border border-border bg-secondary">
-            <img
-              src={portfolio.profileImage}
-              alt={`${portfolio.name}, ${portfolio.role}`}
-              width={1086}
-              height={1448}
-              loading="eager"
-              decoding="async"
-              className="h-full w-full object-cover object-top"
-            />
-          </div>
         </div>
       </div>
     </section>
