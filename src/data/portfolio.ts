@@ -59,6 +59,8 @@ export interface Article {
 
 export interface PortfolioData {
   siteUrl: string;
+  githubUsername: string;
+  githubUrl: string;
   name: string;
   initials: string;
   role: string;
@@ -88,6 +90,8 @@ export interface PortfolioData {
 
 export const portfolio: PortfolioData = {
   siteUrl: "https://adarshpatil.runs-on.dev",
+  githubUsername: "adarshpatil-07",
+  githubUrl: "https://github.com/adarshpatil-07",
   name: "Adarsh Patil",
   initials: "AP",
   role: "CSE Undergrad | Full-Stack Developer | AI/ML Enthusiast",
