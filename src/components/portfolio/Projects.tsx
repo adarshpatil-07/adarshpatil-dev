@@ -28,7 +28,7 @@ export function Projects() {
       <SectionHeading
         index="03"
         title="Selected projects"
-        description="Experiments and tools shaped by curiosity, constraints, and practical engineering."
+        description="From curious ideas to working solutions"
       />
 
       {/* Category filters */}
