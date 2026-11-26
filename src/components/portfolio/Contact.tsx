@@ -42,7 +42,7 @@ export function Contact() {
             {copied ? "Copied" : "Copy email"}
           </button>
           <a className="site-button site-button-red" href="/contact">
-            Open contact page
+            Get in Touch
           </a>
         </div>
         <ul className="contact-socials">
