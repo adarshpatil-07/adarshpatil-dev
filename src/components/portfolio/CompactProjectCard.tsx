@@ -1,65 +1,33 @@
-import { ArrowUpRight, Github } from "lucide-react";
 import type { Project } from "@/data/portfolio";
-import { Button } from "@/components/ui/button";
 
 export function CompactProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group flex h-full flex-col rounded-md border border-border bg-card p-3 transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/30 motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:border-foreground/30 sm:p-4">
-      <div className="overflow-hidden rounded border border-border bg-secondary">
-        <img
-          src={project.image}
-          alt={`${project.title} interface preview`}
-          width={1200}
-          height={760}
-          loading="lazy"
-          className="aspect-[16/10] w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.02] motion-safe:group-focus-within:scale-[1.02]"
-        />
-      </div>
-
-      <div className="flex flex-1 flex-col pt-3">
-        <h3 className="text-base sm:text-lg font-bold tracking-tight text-foreground">
-          {project.title}
-        </h3>
-        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-          {project.description}
-        </p>
-
-        <div className="mt-3 flex flex-wrap gap-1.5">
+    <article className="full-project-card">
+      <img
+        src={project.image}
+        alt={`${project.title} interface preview`}
+        width={1200}
+        height={760}
+        loading="lazy"
+      />
+      <div className="full-project-card-content">
+        <h2>{project.title}</h2>
+        <p>{project.description}</p>
+        <div className="full-project-tags">
           {project.tags.map((tag) => (
-            <span
-              key={tag}
-              className="rounded border border-border bg-background px-2 py-0.5 text-xs font-mono text-foreground"
-            >
-              {tag}
-            </span>
+            <span key={tag}>{tag}</span>
           ))}
         </div>
-
-        <div className="mt-auto flex flex-wrap items-center gap-2 pt-4 border-t border-border">
+        <div className="full-project-links">
           {project.href ? (
-            <Button asChild variant="default" size="sm" className="min-h-[44px]">
-              <a
-                href={project.href}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <span>View project</span>
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
-            </Button>
+            <a href={project.href} target="_blank" rel="noopener">
+              View project
+            </a>
           ) : null}
-
           {project.sourceHref ? (
-            <Button asChild variant="outline" size="sm" className="min-h-[44px]">
-              <a
-                href={project.sourceHref}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Github className="h-4 w-4" />
-                <span>Source</span>
-              </a>
-            </Button>
+            <a href={project.sourceHref} target="_blank" rel="noopener">
+              Source
+            </a>
           ) : null}
         </div>
       </div>

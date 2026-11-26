@@ -32,7 +32,7 @@ function ContactPage() {
   return (
     <>
       <Header />
-      <main>
+      <main className="route-main">
         <ContactForm />
       </main>
       <Footer />

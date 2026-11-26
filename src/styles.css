@@ -1,25 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap");
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
-  /* Typography */
-  --font-sans: "Inter", sans-serif;
-  --font-display: "Lora", serif;
-  --font-mono: "JetBrains Mono", monospace;
-
-  /* Radii */
-  --radius: 0.375rem;
-  --radius-sm: calc(var(--radius) - 2px);
-  --radius-md: var(--radius);
-  --radius-lg: calc(var(--radius) + 2px);
-  --radius-xl: 0.75rem;
-  --radius-2xl: 1rem;
-  --radius-3xl: 1.25rem;
-
-  /* Semantic colour tokens */
+  --font-sans: "Zen Kaku Gothic New", system-ui, sans-serif;
+  --font-display: "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --radius: 0rem;
+  --radius-sm: 0rem;
+  --radius-md: 0rem;
+  --radius-lg: 0rem;
+  --radius-xl: 0rem;
+  --radius-2xl: 0rem;
+  --radius-3xl: 0rem;
+  --color-snow: #eef2f6;
+  --color-ink: #1a2233;
+  --color-deep: #0e1420;
+  --color-red: #b8232f;
+  --color-frost: #c9d6e3;
+  --color-slate: #566678;
+  --color-paper: #fbfcfd;
+  --color-dot: #9fd3ff;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -39,141 +41,916 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-signal: var(--signal);
-
-  /* Calendar grayscale scale */
-  --color-contribution-0: var(--contribution-0);
-  --color-contribution-1: var(--contribution-1);
-  --color-contribution-2: var(--contribution-2);
-  --color-contribution-3: var(--contribution-3);
-  --color-contribution-4: var(--contribution-4);
 }
 
-/* Light theme (Monochrome: crisp white base) */
 :root {
   color-scheme: light;
-
-  /* Set to url("/your-background.jpg") to use an image from the public folder. */
-  --site-background-image: url("/background.png");
-
-  --background: #ffffff;
-  --foreground: #0a0a0a;
-  --card: #fafafa;
-  --card-foreground: #0a0a0a;
-  --popover: #ffffff;
-  --popover-foreground: #0a0a0a;
-  --primary: #0a0a0a;
-  --primary-foreground: #fafafa;
-  --secondary: #f4f4f4;
-  --secondary-foreground: #0a0a0a;
-  --muted: #f4f4f4;
-  --muted-foreground: #737373;
-  --accent: #f4f4f4;
-  --accent-foreground: #0a0a0a;
-  --destructive: #0a0a0a;
-  --destructive-foreground: #fafafa;
-  --border: #e5e5e5;
-  --input: #e5e5e5;
-  --ring: #0a0a0a;
-  --signal: #737373;
-
-  /* GitHub contribution calendar (grayscale) */
-  --contribution-0: #f0f0f0;
-  --contribution-1: #d4d4d4;
-  --contribution-2: #a3a3a3;
-  --contribution-3: #525252;
-  --contribution-4: #171717;
+  --snow: #eef2f6;
+  --ink: #1a2233;
+  --deep: #0e1420;
+  --red: #b8232f;
+  --frost: #c9d6e3;
+  --slate: #566678;
+  --paper: #fbfcfd;
+  --focus: var(--red);
+  --background: var(--snow);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --secondary: #dfe7ef;
+  --secondary-foreground: var(--ink);
+  --muted: #dfe7ef;
+  --muted-foreground: var(--slate);
+  --accent: #dfe7ef;
+  --accent-foreground: var(--ink);
+  --destructive: var(--red);
+  --destructive-foreground: var(--paper);
+  --border: var(--frost);
+  --input: var(--frost);
+  --ring: var(--red);
 }
 
-/* Dark theme (Monochrome: true black) */
-.dark {
-  color-scheme: dark;
-
-  --site-background-image: none;
-
-  --background: #000000;
-  --foreground: #fafafa;
-  --card: #000000;
-  --card-foreground: #fafafa;
-  --popover: #000000;
-  --popover-foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #000000;
-  --secondary: #000000;
-  --secondary-foreground: #fafafa;
-  --muted: #000000;
-  --muted-foreground: #a1a1a1;
-  --accent: #000000;
-  --accent-foreground: #fafafa;
-  --destructive: #fafafa;
-  --destructive-foreground: #000000;
-  --border: #292a2e;
-  --input: #292a2e;
-  --ring: #fafafa;
-  --signal: #a1a1a1;
-
-  /* GitHub contribution calendar (grayscale) */
-  --contribution-0: #171717;
-  --contribution-1: #2e2e2e;
-  --contribution-2: #525252;
-  --contribution-3: #8a8a8a;
-  --contribution-4: #fafafa;
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
 }
 
-/* Base layer */
-@layer base {
-  * {
-    border-color: var(--color-border);
-  }
-
-  html {
-    scroll-behavior: smooth;
-    overflow-x: clip;
-  }
-
-  body {
-    background-color: var(--color-background);
-    background-image: var(--site-background-image);
-    color: var(--color-foreground);
-    font-family: var(--font-sans);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    overflow-x: clip;
-  }
-
-  ::selection {
-    background: var(--color-primary);
-    color: var(--color-primary-foreground);
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
+  overflow-x: clip;
 }
 
-/* Section shell */
-@utility section-shell {
+body {
+  margin: 0;
+  background: var(--snow);
+  color: var(--ink);
+  font: 400 1.0625rem/1.65 "Zen Kaku Gothic New", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus, var(--red));
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+.display-font {
+  font-family: "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.ul {
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem clamp(1rem, 4vw, 3rem);
+  color: var(--paper);
+  background: rgb(14 20 32 / 55%);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  --focus: var(--paper);
+}
+
+.site-logo {
+  font: 1.05rem "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.7rem;
+}
+
+.site-nav a {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.site-nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 7px;
+}
+
+.menu-button {
+  display: none;
+  padding: 0.3rem 0.8rem;
+  border: 2px solid var(--paper);
+  color: var(--paper);
+  background: none;
+  font: 700 0.9rem "Zen Kaku Gothic New", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.hero {
+  --focus: var(--paper);
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  min-height: 100svh;
+  align-items: center;
+  overflow: hidden;
+  padding: 7rem clamp(1rem, 5vw, 4rem) 10rem;
+  color: var(--paper);
+  background: var(--deep);
+}
+
+.hero-bg {
+  position: absolute;
+  z-index: -3;
+  inset: 0;
   width: 100%;
-  max-width: 72rem;
-  margin-inline: auto;
-  padding-block: 1.75rem; /* 28px on mobile */
-  padding-inline: 1rem; /* 16px on mobile */
-  border-bottom: 1px solid var(--color-border);
-  scroll-margin-top: 3.5rem; /* 56px sticky header offset */
-
-  @media (min-width: 48rem) {
-    padding-block: 2.5rem; /* 40px on desktop */
-    padding-inline: 1.5rem; /* 24px on desktop */
-  }
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
+.hero::before {
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgb(14 20 32 / 92%), rgb(14 20 32 / 58%) 60%, rgb(14 20 32 / 30%)),
+    linear-gradient(0deg, rgb(14 20 32 / 65%), transparent 45%);
+  content: "";
+}
 
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+.hero::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: clamp(50px, 9vw, 130px);
+  background: var(--snow);
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+  content: "";
+}
+
+.snow-canvas {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.hero-wrap {
+  display: grid;
+  width: 100%;
+  max-width: 1200px;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 3rem;
+  margin: auto;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.95rem;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 99px;
+  background: rgb(14 20 32 / 50%);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.hero-badge i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #9fd3ff;
+  animation: pulse 2s infinite;
+}
+
+.hero h1 {
+  max-width: 15em;
+  margin: 1.3rem 0 1rem;
+  font: clamp(2rem, 4.2vw + 0.4rem, 3.8rem) / 1.08 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.hero-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.1em;
+}
+
+.hero-line span {
+  display: block;
+  transform: translateY(110%);
+  animation: up 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+.hero-line:nth-child(2) span {
+  animation-delay: 0.12s;
+}
+
+.hero-line:nth-child(3) span {
+  animation-delay: 0.24s;
+}
+
+.hero-role {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+.hero-buttons,
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 2rem 0 1.5rem;
+}
+
+.site-button {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border: 2px solid var(--paper);
+  color: var(--paper);
+  background: none;
+  font: 700 1rem "Zen Kaku Gothic New", system-ui, sans-serif;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, color 0.2s;
+}
+
+.site-button:hover {
+  transform: translateY(-3px);
+}
+
+.site-button-light {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.site-button-outline:hover {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.site-button-red {
+  border-color: var(--red);
+  color: #fff;
+  background: var(--red);
+}
+
+.hero-socials,
+.contact-socials {
+  display: flex;
+  gap: 1.4rem;
+  font-weight: 500;
+}
+
+.hero-photo {
+  position: relative;
+  width: clamp(200px, 24vw, 320px);
+  transform: rotate(2.5deg);
+  animation: pop 1s 0.5s both cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  border: 4px solid var(--paper);
+  background: var(--ink);
+  object-fit: cover;
+  box-shadow: 0 24px 50px rgb(0 0 0 / 45%);
+}
+
+.hero-seal {
+  position: absolute;
+  right: -16px;
+  bottom: -16px;
+  display: grid;
+  width: 56px;
+  height: 56px;
+  transform: rotate(-8deg);
+  place-items: center;
+  color: var(--paper);
+  background: var(--red);
+  font: 1.7rem "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.anim-fade {
+  animation: fade 0.8s 0.55s both;
+}
+
+@keyframes up {
+  to { transform: none; }
+}
+
+@keyframes fade {
+  from { opacity: 0; transform: translateY(12px); }
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(26px) rotate(7deg); }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgb(159 211 255 / 60%); }
+  50% { box-shadow: 0 0 0 7px rgb(159 211 255 / 0%); opacity: 0.5; }
+}
+
+.site-section {
+  padding: clamp(4rem, 9vw, 7.5rem) clamp(1rem, 5vw, 4rem);
+}
+
+.section-inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.section-title {
+  margin: 0 0 0.6rem;
+  font: clamp(1.9rem, 4vw, 3.2rem) / 1.1 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.section-subtitle {
+  max-width: 46ch;
+  margin: 0 0 2.5rem;
+  color: var(--slate);
+}
+
+.section-jp {
+  margin-left: 0.8rem;
+  color: var(--red);
+  font: 0.95rem "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+  vertical-align: middle;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: start;
+  gap: 2rem 5rem;
+}
+
+.about-lead {
+  font: clamp(1.4rem, 2.6vw, 2rem) / 1.35 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.about-row {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 1rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--frost);
+}
+
+.about-row:last-child {
+  border-bottom: 1px solid var(--frost);
+}
+
+.about-row dt {
+  color: var(--slate);
+  font-weight: 700;
+}
+
+.about-row dd {
+  margin: 0;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chips span {
+  padding: 0.25rem 0.85rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 99px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.skills-row {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1rem;
+  padding: 1.3rem 0;
+  border-top: 2px solid var(--ink);
+}
+
+.skills-row:last-of-type {
+  border-bottom: 2px solid var(--ink);
+}
+
+.skills-row h3 {
+  margin: 0;
+  font: 1.05rem "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.github-activity {
+  --focus: var(--paper);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  color: var(--paper);
+  background: var(--deep);
+}
+
+.github-activity img {
+  max-width: 100%;
+}
+
+.project-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.project-tabs button {
+  padding: 0.3rem 0;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  color: var(--slate);
+  background: none;
+  font: 700 1rem "Zen Kaku Gothic New", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.project-tabs button[aria-pressed="true"] {
+  border-color: var(--red);
+  color: var(--ink);
+}
+
+.project-grid {
+  display: grid;
+  grid-auto-flow: dense;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 14px;
+}
+
+.project-reveal {
+  position: relative;
+  grid-column: span 4;
+  min-height: 470px;
+  overflow: hidden;
+  border: 3px solid var(--ink);
+  background: var(--ink);
+}
+
+.project-reveal[hidden] {
+  display: none;
+}
+
+.project-reveal.w7 { grid-column: span 7; }
+.project-reveal.w5 { grid-column: span 5; }
+.project-reveal.w12 { grid-column: span 12; min-height: 340px; }
+
+.project-panel {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.9s cubic-bezier(0.7, 0, 0.2, 1);
+}
+
+.project-reveal.is-visible .project-panel {
+  clip-path: inset(0);
+}
+
+.project-panel > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.project-panel:hover > img {
+  transform: scale(1.05);
+}
+
+.project-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: min(30rem, 90%);
+  padding: 1rem 1.2rem;
+  border: solid var(--ink);
+  border-width: 3px 3px 0 0;
+  background: var(--paper);
+}
+
+.project-caption h3 {
+  margin: 0 0 0.4rem;
+  font: 1.1rem / 1.25 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.project-caption p {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.project-caption small {
+  display: block;
+  margin: 0.5rem 0 0.6rem;
+  color: var(--slate);
+  font-size: 0.85rem;
+}
+
+.project-caption a {
+  margin-right: 1rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.section-note {
+  margin: 1.5rem 0 0;
+  color: var(--slate);
+}
+
+.open-source-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+}
+
+.open-source-card > b {
+  padding: 0.3rem 0.8rem;
+  color: var(--paper);
+  background: var(--ink);
+  font-size: 0.9rem;
+}
+
+.open-source-card h3 {
+  margin: 0 0 0.3rem;
+  font: 1.2rem / 1.3 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.open-source-link {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.open-source-link:hover {
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.timeline {
+  max-width: 760px;
+  padding-left: 2rem;
+  border-left: 3px solid var(--ink);
+}
+
+.timeline article {
+  position: relative;
+  padding-bottom: 2.6rem;
+}
+
+.timeline article:last-child {
+  padding-bottom: 0;
+}
+
+.timeline article::before {
+  position: absolute;
+  top: 0.4rem;
+  left: calc(-2rem - 9px);
+  width: 15px;
+  height: 15px;
+  border: 3px solid var(--snow);
+  background: var(--red);
+  content: "";
+}
+
+.timeline small {
+  color: var(--slate);
+  font-weight: 700;
+}
+
+.timeline h3 {
+  margin: 0.2rem 0 0.4rem;
+  font: 1.25rem / 1.3 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.timeline p {
+  margin: 0;
+}
+
+.timeline p + p {
+  margin-top: 0.3rem;
+}
+
+.contact-section {
+  --focus: var(--paper);
+  padding-bottom: 2rem;
+  color: var(--paper);
+  background: var(--deep);
+}
+
+.contact-section .section-subtitle {
+  color: #9fb0c3;
+}
+
+.contact-mail {
+  display: block;
+  margin: 0 0 1rem;
+  font: clamp(1.25rem, 4.2vw, 3.2rem) / 1.15 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+  overflow-wrap: anywhere;
+  text-decoration: none;
+}
+
+.contact-mail:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 4px;
+  text-underline-offset: 9px;
+}
+
+.contact-buttons {
+  margin: 1.5rem 0;
+}
+
+.contact-socials {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgb(255 255 255 / 18%);
+  color: #9fb0c3;
+  font-size: 0.9rem;
+}
+
+.contact-inline-feature {
+  margin-top: 1rem;
+  color: #9fb0c3;
+  font-size: 0.9rem;
+}
+
+.contact-inline-feature p {
+  margin: 0.2rem 0;
+}
+
+.route-main {
+  min-height: calc(100vh - 56px);
+  padding-top: 5.5rem;
+}
+
+.route-shell {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1rem, 5vw, 4rem);
+}
+
+.route-heading {
+  margin: 0.5rem 0;
+  font: clamp(1.9rem, 4vw, 3.2rem) / 1.1 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.route-lede {
+  max-width: 46ch;
+  color: var(--slate);
+}
+
+.route-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 1.5rem 0;
+}
+
+.route-filter button {
+  padding: 0.3rem 0.85rem;
+  border: 2px solid var(--frost);
+  color: var(--ink);
+  background: var(--paper);
+  font: 500 0.95rem "Zen Kaku Gothic New", system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.route-filter button[aria-pressed="true"] {
+  border-color: var(--ink);
+  color: var(--paper);
+  background: var(--ink);
+}
+
+.full-project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.full-project-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+}
+
+.full-project-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-bottom: 3px solid var(--ink);
+  object-fit: cover;
+}
+
+.full-project-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.full-project-card h2 {
+  margin: 0;
+  font: 1.15rem / 1.3 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.full-project-card p {
+  color: var(--slate);
+  font-size: 0.95rem;
+}
+
+.full-project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.full-project-tags span {
+  padding: 0.2rem 0.65rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 99px;
+  font-size: 0.85rem;
+}
+
+.full-project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: auto;
+  font-weight: 700;
+}
+
+.route-contact-form {
+  max-width: 760px;
+  border: 3px solid var(--ink);
+  background: var(--paper);
+  padding: clamp(1rem, 4vw, 2rem);
+}
+
+.route-contact-form h1 {
+  margin: 0;
+  font: clamp(1.8rem, 4vw, 2.8rem) / 1.1 "Dela Gothic One", "Zen Kaku Gothic New", system-ui, sans-serif;
+}
+
+.route-contact-form > p {
+  color: var(--slate);
+}
+
+.route-contact-form form {
+  display: grid;
+  gap: 1rem;
+}
+
+.route-contact-form input,
+.route-contact-form textarea {
+  width: 100%;
+  min-height: 44px;
+  padding: 0.7rem 0.85rem;
+  border: 2px solid var(--frost);
+  border-radius: 0;
+  color: var(--ink);
+  background: transparent;
+  font: inherit;
+}
+
+.route-contact-form textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.route-contact-form .form-names {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.route-contact-form .form-submit-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.route-contact-form .form-status {
+  color: var(--slate);
+  font-size: 0.9rem;
+}
+
+.site-footer {
+  padding: 1.5rem clamp(1rem, 5vw, 4rem);
+  color: #9fb0c3;
+  background: var(--deep);
+  font-size: 0.9rem;
+}
+
+.site-footer > div {
+  display: flex;
+  max-width: 1200px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin: auto;
+}
+
+@media (max-width: 1000px) {
+  .hero-wrap { grid-template-columns: 1fr; }
+  .hero-photo { order: -1; width: 170px; }
+  .about-grid, .skills-row { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 900px) {
+  .project-reveal, .project-reveal.w7, .project-reveal.w5, .project-reveal.w12 {
+    grid-column: span 12;
+    min-height: 400px;
   }
+  .open-source-card { grid-template-columns: 1fr; justify-items: start; }
+  .full-project-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 700px) {
+  .menu-button { display: block; }
+  .site-nav {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: rgb(14 20 32 / 96%);
+  }
+  .site-nav.is-open { display: flex; }
+  .site-nav a { padding: 1rem clamp(1rem, 4vw, 3rem); opacity: 1; }
+  .about-row { grid-template-columns: 1fr; gap: 0.2rem; }
+  .route-contact-form .form-names { grid-template-columns: 1fr; }
+  .full-project-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+  .hero-line span { transform: none; }
+  .project-panel { clip-path: none; }
 }

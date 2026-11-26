@@ -1,11 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft } from "lucide-react";
 import { Header } from "@/components/portfolio/Header";
 import { Footer } from "@/components/portfolio/Footer";
 import { CompactProjectCard } from "@/components/portfolio/CompactProjectCard";
 import { portfolio } from "@/data/portfolio";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/projects")({
   head: () => {
@@ -32,9 +30,7 @@ export const Route = createFileRoute("/projects")({
         { name: "twitter:description", content: description },
         { name: "twitter:image", content: image },
       ],
-      links: [
-        { rel: "canonical", href: url },
-      ],
+      links: [{ rel: "canonical", href: url }],
     };
   },
   component: ProjectsPage,
@@ -73,44 +69,32 @@ function ProjectsPage() {
   return (
     <>
       <Header />
-      <main id="top">
-        <section className="section-shell">
-          <div className="mb-6">
-            <Link
-              to="/"
-              className="inline-flex min-h-[44px] items-center gap-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground underline underline-offset-4"
-            >
-              <ArrowLeft className="h-4 w-4" />
+      <main id="top" className="route-main">
+        <section className="route-shell">
+          <div>
+            <Link to="/" className="ul">
               Back to home
             </Link>
 
-            <div className="mt-3 border-b border-border pb-4">
-              <span className="font-mono text-xs text-muted-foreground">
-                Archive / All Projects
-              </span>
-              <h1 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight text-foreground">
-                All projects
-              </h1>
-              <p className="mt-1.5 max-w-2xl text-[15px] leading-relaxed text-muted-foreground">
-                Experiments, tools, and systems shaped by curiosity, constraints, and practical engineering.
+            <div className="mt-4">
+              <span className="text-sm text-slate">Archive / All Projects</span>
+              <h1 className="route-heading">All projects</h1>
+              <p className="route-lede">
+                Experiments, tools, and systems shaped by curiosity, constraints, and practical
+                engineering.
               </p>
             </div>
           </div>
 
-          {/* Category filter pills */}
-          <div className="mb-4 flex flex-wrap gap-1.5 sm:gap-2">
+          <div className="route-filter" role="group" aria-label="Filter projects">
             {ALL_CATEGORIES.map((cat) => {
               const isActive = activeCategory === cat;
               return (
                 <button
                   key={cat}
+                  type="button"
                   onClick={() => setActiveCategory(cat)}
-                  className={cn(
-                    "min-h-[44px] rounded-md px-3 py-1.5 text-xs font-mono transition-[background-color,border-color,color] duration-150 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-                    isActive
-                      ? "bg-primary text-primary-foreground font-semibold"
-                      : "border border-border bg-card text-muted-foreground hover:text-foreground hover:border-foreground/40",
-                  )}
+                  aria-pressed={isActive}
                 >
                   {cat}
                 </button>
@@ -118,11 +102,9 @@ function ProjectsPage() {
             })}
           </div>
 
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 sm:gap-4">
+          <div className="full-project-grid">
             {visibleProjects.length === 0 ? (
-              <p className="col-span-full py-8 text-center text-sm text-muted-foreground border border-border rounded-md">
-                No projects in this category yet.
-              </p>
+              <p>No projects in this category yet.</p>
             ) : (
               visibleProjects.map((project) => (
                 <CompactProjectCard key={project.title} project={project} />

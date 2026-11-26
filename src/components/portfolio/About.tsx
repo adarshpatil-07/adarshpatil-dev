@@ -1,40 +1,47 @@
-
 import { portfolio } from "@/data/portfolio";
-import { SectionHeading } from "./SectionHeading";
+
+const details = [
+  ["How I work", "From first idea to deployed product."],
+  ["Also into", "AI agents and open source."],
+  ["Off screen", "Philosophy, literature, chess, and writing about tech and ideas."],
+  ["Looking for", "An internship to gain practical experience."],
+] as const;
 
 export function About() {
   return (
-    <div id="about" className="flex flex-col">
-      <SectionHeading title="About" />
-
-      <div className="w-full max-w-2xl space-y-3 sm:space-y-3.5">
-        <p className="text-[14px] sm:text-lg font-semibold leading-snug text-foreground text-balance text-justify [hyphens:auto]">
-          {portfolio.about.lead}
-        </p>
-
-        <div className="space-y-2.5 sm:space-y-3 text-[13px] sm:text-[15px] leading-relaxed text-muted-foreground text-justify [hyphens:auto]">
-          {portfolio.about.paragraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
-        </div>
-
-        <div className="pt-0.5 sm:pt-1">
-          <p className="font-mono text-[11px] sm:text-xs text-muted-foreground mb-1.5 sm:mb-2">
-            Currently Exploring
+    <section id="about" className="site-section">
+      <div className="section-inner about-grid">
+        <div>
+          <h2 className="section-title">About</h2>
+          <p className="about-lead">
+            Computer Engineering student building full-stack products and AI tools.
           </p>
-
-          <div className="flex flex-wrap gap-1 sm:gap-1.5">
-            {portfolio.about.interests.map((interest) => (
-              <span
-                key={interest}
-                className="rounded border border-border bg-card px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-xs font-mono text-foreground"
-              >
-                {interest}
-              </span>
-            ))}
-          </div>
         </div>
+        <dl>
+          {details.map(([title, description]) => (
+            <div className="about-row" key={title}>
+              <dt>{title}</dt>
+              <dd>{description}</dd>
+            </div>
+          ))}
+          <div className="about-row">
+            <dt>Exploring now</dt>
+            <dd className="chips">
+              {portfolio.about.interests.map((interest) => (
+                <span key={interest}>
+                  {interest === "Full-Stack Development"
+                    ? "Full-stack development"
+                    : interest === "Python & Libraries"
+                      ? "Python & libraries"
+                      : interest === "Open Source"
+                        ? "Open source"
+                        : interest}
+                </span>
+              ))}
+            </dd>
+          </div>
+        </dl>
       </div>
-    </div>
+    </section>
   );
 }

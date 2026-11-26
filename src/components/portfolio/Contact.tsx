@@ -1,98 +1,77 @@
-import { useState, type FormEvent } from "react";
-import { ArrowUpRight, Loader2, Mail, Link2 } from "lucide-react";
-import { Link } from "@tanstack/react-router";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Footer } from "@/components/portfolio/Footer";
+import { Articles } from "@/components/portfolio/Articles";
+import { VisitorCount } from "@/components/portfolio/VisitorCount";
 import { portfolio } from "@/data/portfolio";
-import { SectionHeading } from "./SectionHeading";
-import { SocialIconRow } from "./SocialIcons";
-import { VisitorCount } from "./VisitorCount";
 
-const profileSocials = portfolio.socials.filter(
-  (social) => social.type !== "email"
-);
+const profileSocials = portfolio.socials.filter((social) => social.type !== "email");
 
 export function Contact() {
+  const [copied, setCopied] = useState(false);
+  const copyTimer = useRef<number | null>(null);
+
+  useEffect(
+    () => () => {
+      if (copyTimer.current !== null) window.clearTimeout(copyTimer.current);
+    },
+    [],
+  );
+
+  async function copyEmail() {
+    try {
+      await navigator.clipboard.writeText(portfolio.email);
+      setCopied(true);
+      if (copyTimer.current !== null) window.clearTimeout(copyTimer.current);
+      copyTimer.current = window.setTimeout(() => setCopied(false), 1800);
+    } catch {
+      window.location.href = `mailto:${portfolio.email}`;
+    }
+  }
+
   return (
-    <section className="section-shell">
-      <SectionHeading
-        title="Get in touch"
-        description="Have an internship, project, or question? Send a note."
-      />
-
-      <div className="mt-7 grid grid-cols-1 items-start gap-8 md:grid-cols-[0.85fr_1.15fr] md:gap-12 lg:gap-16">
-        <div className="min-w-0">
-          <div className="border-b border-border pb-5">
-            <div className="mb-3 flex items-center gap-2">
-              <Mail className="h-4 w-4 text-violet-500" />
-              <p className="font-mono text-xs text-muted-foreground">
-                Direct email
-              </p>
-            </div>
-
-            <a
-              href={`mailto:${portfolio.email}`}
-              className="group inline-flex max-w-full items-center gap-2 break-all text-base font-semibold text-foreground transition-colors hover:text-violet-500 sm:text-lg"
-            >
-              <span>{portfolio.email}</span>
-              <ArrowUpRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-
-            <p className="mt-2 text-xs text-muted-foreground">
-              Direct inbox. Replies usually within 24 to 48 hours.
-            </p>
-          </div>
-
-          <div className="border-b border-border py-5">
-            <VisitorCount />
-          </div>
-
-          <div className="pt-5">
-            <div className="mb-3 flex items-center gap-2">
-              <Link2 className="h-4 w-4 text-violet-500" />
-              <p className="font-mono text-xs text-muted-foreground">
-                Profiles & links
-              </p>
-            </div>
-
-            <SocialIconRow socials={profileSocials} />
-          </div>
+    <section id="contact" className="site-section contact-section">
+      <div className="section-inner">
+        <h2 className="section-title">Get in touch</h2>
+        <p className="section-subtitle">Have an internship, project, or question? Send a note.</p>
+        <a className="contact-mail" href={`mailto:${portfolio.email}`}>
+          {portfolio.email}
+        </a>
+        <p>Replies usually within 24 to 48 hours.</p>
+        <div className="contact-buttons">
+          <button className="site-button site-button-outline" type="button" onClick={copyEmail}>
+            {copied ? "Copied" : "Copy email"}
+          </button>
+          <a className="site-button site-button-red" href="/contact">
+            Open contact page
+          </a>
         </div>
-
-        <div className="min-w-0">
-          <div className="mb-5">
-            <h3 className="text-base font-semibold text-foreground sm:text-lg">
-              Contact form
-            </h3>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Send a message through the dedicated contact page.
-            </p>
-          </div>
-
-          <Button asChild variant="outline" className="min-h-[44px]">
-            <Link to="/contact">
-              <span>Open contact page</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </Link>
-          </Button>
+        <ul className="contact-socials">
+          {profileSocials.map((social) => (
+            <li key={social.type}>
+              <a className="ul" href={social.href} target="_blank" rel="noopener">
+                {social.type === "twitter" ? "X" : social.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <div className="contact-inline-feature">
+          <VisitorCount />
+          <Articles />
         </div>
+        <Footer embedded />
       </div>
     </section>
   );
 }
 
 export function ContactForm() {
-  const [status, setStatus] = useState<
-    "idle" | "sending" | "success" | "error"
-  >("idle");
-
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const isKeyEmpty =
-    !portfolio.web3FormsAccessKey.trim() ||
-    portfolio.web3FormsAccessKey.startsWith("YOUR_");
+    !portfolio.web3FormsAccessKey.trim() || portfolio.web3FormsAccessKey.startsWith("YOUR_");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const form = event.currentTarget;
 
     if (isKeyEmpty) {
       setStatus("error");
@@ -104,25 +83,21 @@ export function ContactForm() {
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: new FormData(event.currentTarget),
+        body: new FormData(form),
       });
 
       if (!response.ok) throw new Error("Submission failed");
 
       setStatus("success");
-      event.currentTarget.reset();
+      form.reset();
     } catch {
       setStatus("error");
     }
   }
 
   function getStatusMessage() {
-    if (status === "success") {
-      return "Message sent successfully - thank you!";
-    }
-    if (status === "sending") {
-      return "Sending message...";
-    }
+    if (status === "success") return "Message sent successfully - thank you!";
+    if (status === "sending") return "Sending message...";
     if (isKeyEmpty) {
       return "Add your Web3Forms key in the portfolio data file to enable sending.";
     }
@@ -133,87 +108,36 @@ export function ContactForm() {
   }
 
   return (
-    <section className="section-shell">
-      <div className="mx-auto max-w-2xl rounded-xl border border-border bg-card p-4 sm:p-7">
-        <div className="mb-5">
-          <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-            Send me a message
-          </h1>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Fill in the details below and I&apos;ll get back to you.
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
-          <input
-            type="hidden"
-            name="access_key"
-            value={portfolio.web3FormsAccessKey}
-          />
-
-          <input
-            type="hidden"
-            name="subject"
-            value="New portfolio message"
-          />
-
-          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Input
-              name="name"
-              placeholder="Your name"
-              aria-label="Your name"
-              required
-              className="min-h-[44px] bg-transparent"
-            />
-
-            <Input
+    <section className="route-shell">
+      <div className="route-contact-form">
+        <h1>Send me a message</h1>
+        <p>Fill in the details below and I&apos;ll get back to you.</p>
+        <form onSubmit={handleSubmit}>
+          <input type="hidden" name="access_key" value={portfolio.web3FormsAccessKey} />
+          <input type="hidden" name="subject" value="New portfolio message" />
+          <div className="form-names">
+            <input name="name" placeholder="Your name" aria-label="Your name" required />
+            <input
               type="email"
               name="email"
               placeholder="Email address"
               aria-label="Email address"
               required
-              className="min-h-[44px] bg-transparent"
             />
           </div>
-
-          <Input
-            name="subject_line"
-            placeholder="Subject"
-            aria-label="Message subject"
-            required
-            className="min-h-[44px] bg-transparent"
-          />
-
-          <Textarea
-            name="message"
-            placeholder="Your message..."
-            aria-label="Message"
-            className="min-h-[120px] resize-y bg-transparent"
-            required
-          />
-
-          <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
-            <p
-              className="text-xs leading-relaxed text-muted-foreground sm:max-w-[60%]"
-              role="status"
-            >
+          <input name="subject_line" placeholder="Subject" aria-label="Message subject" required />
+          <textarea name="message" placeholder="Your message..." aria-label="Message" required />
+          <div className="form-submit-row">
+            <p className="form-status" role="status">
               {getStatusMessage()}
             </p>
-
-            <Button
+            <button
+              className="site-button site-button-red"
               type="submit"
-              variant="default"
               disabled={status === "sending"}
-              className="min-h-[44px] w-full shrink-0 px-5 sm:w-auto"
             >
-              {status === "sending" ? (
-                <Loader2 className="h-4 w-4 animate-spin" />
-              ) : (
-                <ArrowUpRight className="h-4 w-4" />
-              )}
-
-              <span>Send message</span>
-            </Button>
+              Send message
+            </button>
           </div>
         </form>
       </div>

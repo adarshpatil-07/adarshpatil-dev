@@ -93,9 +93,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     return {
       meta: [
         { charSet: "utf-8" },
-        { name: "msvalidate.01", content: "0F5AE0231A8D6D3E4CD017753CB91FBB" } ,
+        { name: "msvalidate.01", content: "0F5AE0231A8D6D3E4CD017753CB91FBB" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { name: "theme-color", content: "#0a0a0a" },
+        { name: "theme-color", content: "#0e1420" },
         { title: siteTitle },
         { name: "description", content: siteDescription },
         { property: "og:type", content: "website" },
@@ -121,10 +121,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&display=swap",
-        },
         { rel: "icon", href: "/favicon.ico", sizes: "16x16 32x32 48x48 64x64 128x128" },
       ],
     };
@@ -140,11 +136,6 @@ function RootShell({ children }: { children: ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme')||'dark';if(t==='dark'){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
-          }}
-        />
       </head>
       <body>
         {children}
