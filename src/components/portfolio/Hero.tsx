@@ -1,3 +1,4 @@
+
 import {
   ArrowDownRight,
   FileText,
@@ -18,7 +19,7 @@ const heroSocials = [github, linkedin, twitter].filter(
 export function Hero() {
   return (
     <section id="top" className="section-shell">
-      <div className="grid gap-8 sm:gap-10">
+      <div className="grid gap-8 sm:gap-10 lg:gap-12">
         <div className="flex min-w-0 flex-col">
 
           {/* AOT Wallpaper - unchanged */}
@@ -37,7 +38,7 @@ export function Hero() {
           </div>
 
           {/* Hero content layout */}
-          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[220px_minmax(0,1fr)_190px] lg:items-center lg:gap-8">
+          <div className="grid grid-cols-1 gap-5 lg:grid-cols-[240px_minmax(0,1fr)_200px] lg:items-center lg:gap-12">
 
             {/* Profile photo */}
             <div className="relative z-10 -mt-12 ml-3 mb-0 h-24 w-24 overflow-hidden rounded-xl border border-border bg-secondary ring-4 ring-background sm:h-28 sm:w-28 lg:mt-0 lg:ml-0 lg:h-40 lg:w-40 lg:justify-self-center">
@@ -53,10 +54,10 @@ export function Hero() {
             </div>
 
             {/* Introduction and actions */}
-            <div className="flex min-w-0 flex-col">
+            <div className="flex min-w-0 flex-col lg:py-4">
 
               {/* Availability */}
-              <div className="inline-flex items-center gap-3 mt-2 text-sm text-foreground/90 lg:mt-3">
+              <div className="inline-flex items-center gap-3 mt-2 text-sm text-foreground/90 lg:mt-0">
                 <span
                   aria-hidden="true"
                   className="h-2 w-2 shrink-0 rounded-full bg-emerald-500 ring-4 ring-emerald-500/10"
@@ -65,17 +66,17 @@ export function Hero() {
               </div>
 
               {/* Headline */}
-              <h1 className="mt-4 max-w-[42rem] text-2xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-3xl lg:text-[2.65rem]">
+              <h1 className="mt-4 lg:mt-5 max-w-[42rem] text-2xl font-semibold leading-[1.08] tracking-tight text-foreground sm:text-3xl lg:text-[2.65rem]">
                 {portfolio.hero.headline}
               </h1>
 
               {/* Eyebrow / tech description */}
-              <p className="mt-4 text-sm text-muted-foreground sm:text-base">
+              <p className="mt-4 lg:mt-5 text-sm text-muted-foreground sm:text-base">
                 {portfolio.hero.eyebrow}
               </p>
 
               {/* Action buttons */}
-              <div className="mt-6 flex flex-wrap items-center gap-3">
+              <div className="mt-6 lg:mt-8 flex flex-wrap items-center gap-3">
                 <Button
                   asChild
                   variant="default"
@@ -115,7 +116,7 @@ export function Hero() {
 
             {/* Social links - horizontal mobile, vertical desktop */}
             <nav
-              className="flex flex-wrap items-center gap-x-5 gap-y-3 border-border lg:flex-col lg:items-start lg:justify-center lg:gap-6 lg:border-l lg:py-5 lg:pl-8"
+              className="flex flex-wrap items-center gap-x-5 gap-y-3 border-border lg:flex-col lg:items-start lg:justify-center lg:gap-7 lg:border-l lg:py-8 lg:pl-10"
               aria-label="Social links"
             >
               {heroSocials.map((social) => (
