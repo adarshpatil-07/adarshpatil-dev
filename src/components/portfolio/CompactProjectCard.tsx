@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 
 export function CompactProjectCard({ project, index }: { project: Project; index: number }) {
   return (
-    <article className="flex h-full flex-col rounded-md border border-border bg-card p-3 sm:p-4">
+    <article className="group flex h-full flex-col rounded-md border border-border bg-card p-3 transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/30 motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:border-foreground/30 sm:p-4">
       <div className="mb-2 flex items-baseline justify-between">
         <span className="font-mono text-xs text-muted-foreground">
           #{index + 1 < 10 ? `0${index + 1}` : index + 1}
@@ -18,7 +18,7 @@ export function CompactProjectCard({ project, index }: { project: Project; index
           width={1200}
           height={760}
           loading="lazy"
-          className="aspect-[16/10] w-full object-cover"
+          className="aspect-[16/10] w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.02] motion-safe:group-focus-within:scale-[1.02]"
         />
       </div>
 

@@ -11,7 +11,7 @@ export function ProjectCard({
   index: number;
 }) {
   return (
-    <article className="flex flex-col rounded-md border border-border bg-card p-3 sm:p-2.5">
+    <article className="group flex flex-col rounded-md border border-border bg-card p-3 transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/30 motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:border-foreground/30 sm:p-2.5">
       {/* Preview image */}
       <div className="overflow-hidden rounded border border-border bg-secondary">
         <img
@@ -20,7 +20,7 @@ export function ProjectCard({
           width={1200}
           height={760}
           loading="lazy"
-          className="aspect-[16/10] w-full object-cover"
+          className="aspect-[16/10] w-full object-cover transition-transform duration-300 motion-safe:group-hover:scale-[1.02] motion-safe:group-focus-within:scale-[1.02]"
         />
       </div>
 
