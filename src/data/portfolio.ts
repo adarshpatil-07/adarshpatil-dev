@@ -6,7 +6,6 @@ import AbsoluteCinema from "@/assets/AbsoluteCinema.png";
 import miyukiImage from "@/assets/miyuki.png";
 import profileImage from "@/assets/profile1.jpeg";
 import resume from "@/assets/resume.pdf";
-import { Building } from "lucide-react";
 
 export interface SocialLink {
   label: string;
@@ -25,7 +24,7 @@ export interface Project {
   image: string;
   tags: string[];
   categories: string[];
-  href: string;
+  href?: string;
   sourceHref?: string;
 }
 
@@ -199,8 +198,7 @@ export const portfolio: PortfolioData = {
         "Built an image classification model using TensorFlow and Keras to classify 70,000 Fashion MNIST images across 10 apparel categories, covering data preprocessing, model training, evaluation, and prediction visualization.",
       image: labImage,
       tags: ["Python", "TensorFlow", "Keras", "NumPy", "Machine Learning"],
-      categories: ["AI / ML", "Generative AI"],
-      href: "",
+      categories: ["AI / ML"],
       sourceHref: "https://github.com/adarshpatil-07/tensorflow-computer-vision",
     },
     {
@@ -225,15 +223,14 @@ export const portfolio: PortfolioData = {
       sourceHref: "https://github.com/adarshpatil-07/absolute-cinema",
     },
     {
-  title: "Miyuki (美雪)",
-  description:
-    "A cinematic Japanese winter village experience featuring changing day, sunset, and night atmospheres, interactive snowfall, ambient audio, and fullscreen viewing.",
-  image: miyukiImage,
-  tags: ["React", "TypeScript", "Vite", "CSS", "HTML Canvas"],
-  categories: ["Creative Frontend"],
-  href: "https://miyuki-one.vercel.app/",
-  sourceHref: "YOUR_GITHUB_REPOSITORY_URL",
-},
+      title: "Miyuki (美雪)",
+      description:
+        "A cinematic Japanese winter village experience featuring changing day, sunset, and night atmospheres, interactive snowfall, ambient audio, and fullscreen viewing.",
+      image: miyukiImage,
+      tags: ["React", "TypeScript", "Vite", "CSS", "HTML Canvas"],
+      categories: ["Creative Frontend"],
+      href: "https://miyuki-one.vercel.app/",
+    },
     {
       title: "Philosopher AI",
       description:
@@ -275,7 +272,7 @@ export const portfolio: PortfolioData = {
     },
   ],
 
-  web3FormsAccessKey: import.meta.env.VITE_WEB3FORMS_KEY ?? "",
+  web3FormsAccessKey: import.meta.env["VITE_WEB3FORMS_KEY"] ?? "",
 };
 
 export function getSocial(type: SocialLink["type"]) {

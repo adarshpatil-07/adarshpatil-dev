@@ -9,7 +9,15 @@ import { ProjectCard } from "./ProjectCard";
 import { SectionHeading } from "./SectionHeading";
 
 export function Projects() {
-  const categories = ["All", "AI / ML", "Generative AI", "Full Stack"];
+  const categories = useMemo(
+    () => [
+      "All",
+      ...Array.from(
+        new Set(portfolio.projects.flatMap((project) => project.categories)),
+      ).sort(),
+    ],
+    [],
+  );
   const [activeCategory, setActiveCategory] = useState("All");
 
   const visibleProjects = useMemo(

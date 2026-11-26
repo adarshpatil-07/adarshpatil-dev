@@ -1,5 +1,11 @@
 
-import { useEffect, useState, type MouseEvent } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type KeyboardEvent,
+  type MouseEvent,
+} from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
@@ -36,6 +42,11 @@ function scrollToId(id: string) {
   const target = document.getElementById(id);
   if (!target) return;
 
+  const hash = `#${id}`;
+  if (window.location.hash !== hash) {
+    window.history.pushState(null, "", hash);
+  }
+
   const reduce = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   ).matches;
@@ -55,6 +66,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [active, setActive] = useState("top");
+  const moreButtonRef = useRef<HTMLButtonElement>(null);
+  const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -66,8 +79,9 @@ export function Header() {
               a.boundingClientRect.top - b.boundingClientRect.top
           );
 
-        if (visibleEntries.length > 0) {
-          setActive(visibleEntries[0].target.id);
+        const firstVisibleEntry = visibleEntries[0];
+        if (firstVisibleEntry) {
+          setActive(firstVisibleEntry.target.id);
         }
       },
       {
@@ -94,8 +108,24 @@ export function Header() {
     scrollToId(id);
   }
 
+  function handleHeaderKeyDown(event: KeyboardEvent<HTMLElement>) {
+    if (event.key !== "Escape" || (!open && !moreOpen)) return;
+
+    event.preventDefault();
+    if (moreOpen) {
+      moreButtonRef.current?.focus();
+    } else {
+      mobileMenuButtonRef.current?.focus();
+    }
+    setOpen(false);
+    setMoreOpen(false);
+  }
+
   return (
-    <header className="sticky -top-1 z-50 h-14 bg-background">
+    <header
+      className="sticky -top-1 z-50 h-14 bg-background"
+      onKeyDown={handleHeaderKeyDown}
+    >
       <div className="relative mx-auto flex h-full max-w-6xl items-center justify-between px-4 md:px-6">
 
         {/* Brand */}
@@ -144,9 +174,11 @@ export function Header() {
             <div className="relative">
               <button
                 type="button"
+                ref={moreButtonRef}
                 onClick={() => setMoreOpen((value) => !value)}
                 aria-expanded={moreOpen}
                 aria-haspopup="true"
+                aria-controls="desktop-more-menu"
                 className={`
                   inline-flex items-center gap-1 rounded-md px-3 py-2
                   text-sm font-medium whitespace-nowrap
@@ -167,33 +199,35 @@ export function Header() {
                 />
               </button>
 
-              {moreOpen && (
-                <div className="absolute right-0 top-full mt-2 min-w-40 rounded-lg border border-border bg-background p-1.5 shadow-lg">
-                  {moreLinks.map((link) => {
-                    const isActive = active === link.id;
+              <div
+                id="desktop-more-menu"
+                hidden={!moreOpen}
+                className="absolute right-0 top-full mt-2 min-w-40 rounded-lg border border-border bg-background p-1.5 shadow-lg"
+              >
+                {moreLinks.map((link) => {
+                  const isActive = active === link.id;
 
-                    return (
-                      <a
-                        key={link.id}
-                        href={`#${link.id}`}
-                        onClick={(event) => handleNav(event, link.id)}
-                        aria-current={isActive ? "location" : undefined}
-                        className={`
-                          block rounded-md px-3 py-2.5 text-sm
-                          transition-colors duration-200
-                          ${
-                            isActive
-                              ? "bg-muted text-foreground"
-                              : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                          }
-                        `}
-                      >
-                        {link.label}
-                      </a>
-                    );
-                  })}
-                </div>
-              )}
+                  return (
+                    <a
+                      key={link.id}
+                      href={`#${link.id}`}
+                      onClick={(event) => handleNav(event, link.id)}
+                      aria-current={isActive ? "location" : undefined}
+                      className={`
+                        block rounded-md px-3 py-2.5 text-sm
+                        transition-colors duration-200
+                        ${
+                          isActive
+                            ? "bg-muted text-foreground"
+                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                        }
+                      `}
+                    >
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </nav>
 
@@ -205,9 +239,11 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
+            ref={mobileMenuButtonRef}
             className="min-h-[44px] min-w-[44px] shrink-0 lg:hidden"
             onClick={() => setOpen((value) => !value)}
             aria-expanded={open}
+            aria-controls="mobile-navigation-menu"
             aria-label="Toggle menu"
           >
             {open ? (
@@ -220,37 +256,37 @@ export function Header() {
       </div>
 
       {/* Mobile Navigation - Compact Upper-Right Dropdown */}
-      {open && (
-        <nav
-          className="absolute right-4 top-full mt-2 w-52 rounded-xl border border-border bg-background p-2 shadow-lg md:right-6 lg:hidden"
-          aria-label="Mobile navigation"
-        >
-          {links.map((link) => {
-            const isActive = active === link.id;
+      <nav
+        id="mobile-navigation-menu"
+        hidden={!open}
+        className="absolute right-4 top-full mt-2 w-52 rounded-xl border border-border bg-background p-2 shadow-lg md:right-6 lg:hidden"
+        aria-label="Mobile navigation"
+      >
+        {links.map((link) => {
+          const isActive = active === link.id;
 
-            return (
-              <a
-                key={link.id}
-                href={`#${link.id}`}
-                onClick={(event) => handleNav(event, link.id)}
-                aria-current={isActive ? "location" : undefined}
-                className={`
-                  flex min-h-[42px] items-center rounded-lg px-3 py-2
-                  text-sm font-medium transition-colors
-                  focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
-                  ${
-                    isActive
-                      ? "bg-muted text-foreground"
-                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                  }
-                `}
-              >
-                {link.label}
-              </a>
-            );
-          })}
-        </nav>
-      )}
+          return (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(event) => handleNav(event, link.id)}
+              aria-current={isActive ? "location" : undefined}
+              className={`
+                flex min-h-[42px] items-center rounded-lg px-3 py-2
+                text-sm font-medium transition-colors
+                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+                ${
+                  isActive
+                    ? "bg-muted text-foreground"
+                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                }
+              `}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </nav>
     </header>
   );
 }
