@@ -1,15 +1,20 @@
+
 import { useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { portfolio } from "@/data/portfolio";
 
 export function GitShineStats() {
   const [imageFailed, setImageFailed] = useState(false);
+
   const cardUrl = `https://gitshine.com/card/${portfolio.githubUsername}?theme=transparent`;
 
   return (
     <div className="w-full lg:mx-auto lg:max-w-5xl">
       <div className="mb-3 flex flex-wrap items-center justify-between gap-2">
-        <p className="font-mono text-xs font-semibold text-foreground">GitHub Activity</p>
+        <p className="font-mono text-xs font-semibold text-foreground">
+          GitHub Activity
+        </p>
+
         <a
           href={portfolio.githubUrl}
           target="_blank"
@@ -22,12 +27,12 @@ export function GitShineStats() {
       </div>
 
       {imageFailed ? (
-        <div className="rounded-md border border-border bg-card p-4 text-center text-sm">
+        <div className="p-2 text-center text-sm">
           <a
             href={portfolio.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 underline underline-offset-4 text-foreground hover:text-muted-foreground"
+            className="inline-flex items-center gap-1 text-foreground underline underline-offset-4 hover:text-muted-foreground"
           >
             View my GitHub profile
             <ExternalLink className="h-3 w-3" />
@@ -49,7 +54,7 @@ export function GitShineStats() {
               height={400}
               loading="lazy"
               onError={() => setImageFailed(true)}
-              className="block h-auto w-full rounded-md border border-border"
+              className="block h-auto w-full rounded-md"
             />
           </a>
         </div>
