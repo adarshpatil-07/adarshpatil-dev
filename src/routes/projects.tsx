@@ -124,8 +124,8 @@ function ProjectsPage() {
                 No projects in this category yet.
               </p>
             ) : (
-              visibleProjects.map((project, index) => (
-                <CompactProjectCard key={project.title} project={project} index={index} />
+              visibleProjects.map((project) => (
+                <CompactProjectCard key={project.title} project={project} />
               ))
             )}
           </div>

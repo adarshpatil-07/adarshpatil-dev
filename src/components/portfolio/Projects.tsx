@@ -34,7 +34,6 @@ export function Projects() {
   return (
     <section id="projects" className="section-shell">
       <SectionHeading
-        index="03"
         title="Selected projects"
         description="From curious ideas to working solutions"
       />
@@ -63,35 +62,33 @@ export function Projects() {
         })}
       </div>
 
-      {/* Mobile: 4 projects in 2 columns */}
-      <div className="grid grid-cols-1 gap-3 sm:hidden">
+      {/* Mobile: up to 4 projects in one column */}
+      <div className="grid grid-cols-1 gap-4 md:hidden">
         {visibleProjects.length === 0 ? (
-          <p className="col-span-2 rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
+          <p className="col-span-full rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
             No projects in this category yet.
           </p>
         ) : (
-          visibleProjects.slice(0, 4).map((project, index) => (
+          visibleProjects.slice(0, 4).map((project) => (
             <ProjectCard
               key={project.title}
               project={project}
-              index={index}
             />
           ))
         )}
       </div>
 
-      {/* Desktop: 6 projects in 2 columns */}
-      <div className="hidden grid-cols-2 gap-3 sm:grid">
+      {/* Desktop: up to 6 projects in 2 columns */}
+      <div className="hidden grid-cols-2 gap-4 md:grid">
         {visibleProjects.length === 0 ? (
-          <p className="col-span-2 rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
+          <p className="col-span-full rounded-md border border-border py-7 text-center text-sm text-muted-foreground">
             No projects in this category yet.
           </p>
         ) : (
-          visibleProjects.slice(0, 6).map((project, index) => (
+          visibleProjects.slice(0, 6).map((project) => (
             <ProjectCard
               key={project.title}
               project={project}
-              index={index}
             />
           ))
         )}

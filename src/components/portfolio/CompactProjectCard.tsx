@@ -2,15 +2,9 @@ import { ArrowUpRight, Github } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 
-export function CompactProjectCard({ project, index }: { project: Project; index: number }) {
+export function CompactProjectCard({ project }: { project: Project }) {
   return (
     <article className="group flex h-full flex-col rounded-md border border-border bg-card p-3 transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/30 motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:border-foreground/30 sm:p-4">
-      <div className="mb-2 flex items-baseline justify-between">
-        <span className="font-mono text-xs text-muted-foreground">
-          #{index + 1 < 10 ? `0${index + 1}` : index + 1}
-        </span>
-      </div>
-
       <div className="overflow-hidden rounded border border-border bg-secondary">
         <img
           src={project.image}

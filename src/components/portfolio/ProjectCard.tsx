@@ -3,15 +3,10 @@ import { ArrowUpRight, Github } from "lucide-react";
 import type { Project } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 
-export function ProjectCard({
-  project,
-  index,
-}: {
-  project: Project;
-  index: number;
-}) {
+export function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group flex flex-col rounded-md border border-border bg-card p-3 transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/30 motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:border-foreground/30 sm:p-2.5">
+    <article className="group flex h-full flex-col rounded-lg border border-border bg-card p-3 transition-[transform,border-color] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:border-foreground/30 motion-safe:focus-within:-translate-y-0.5 motion-safe:focus-within:border-foreground/30 sm:p-4">
+
       {/* Preview image */}
       <div className="overflow-hidden rounded border border-border bg-secondary">
         <img
@@ -25,26 +20,21 @@ export function ProjectCard({
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col justify-between">
+      <div className="flex flex-1 flex-col pt-3">
         <div>
-          <div className="mt-2 flex items-baseline justify-between gap-2">
-            <h3 className="text-base font-bold tracking-tight text-foreground sm:text-base">
-              {project.title}
-            </h3>
-            <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
-              #0{index + 1}
-            </span>
-          </div>
+          <h3 className="text-base font-bold tracking-tight text-foreground sm:text-base">
+            {project.title}
+          </h3>
 
           <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
             {project.description}
           </p>
 
-          <div className="mt-3 flex flex-wrap gap-1">
+          <div className="mt-3 flex flex-wrap gap-1.5">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded border border-border bg-background px-1.5 py-0.5 text-[11px] font-mono text-foreground"
+                className="rounded border border-border bg-background px-2 py-0.5 text-[11px] font-mono text-foreground"
               >
                 {tag}
               </span>
@@ -52,7 +42,8 @@ export function ProjectCard({
           </div>
         </div>
 
-        <div className="mt-3 flex flex-wrap items-center gap-2 border-t border-border pt-3">
+        {/* Actions */}
+        <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-border pt-3">
           {project.href ? (
             <Button asChild variant="default" size="sm" className="min-h-9">
               <a
@@ -79,6 +70,7 @@ export function ProjectCard({
             </Button>
           ) : null}
         </div>
+
       </div>
     </article>
   );
