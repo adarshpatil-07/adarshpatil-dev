@@ -13,7 +13,6 @@ export function OpenSource() {
   return (
     <section id="open-source" className="section-shell">
       <SectionHeading
-        index="04"
         title="Open source"
         description="Contributions to open-source software and projects."
       />

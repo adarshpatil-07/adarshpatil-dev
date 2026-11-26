@@ -5,7 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 export function About() {
   return (
     <div id="about" className="flex flex-col">
-      <SectionHeading index="01" title="About" />
+      <SectionHeading title="About" />
 
       <div className="w-full max-w-2xl space-y-3 sm:space-y-3.5">
         <p className="text-[14px] sm:text-lg font-semibold leading-snug text-foreground text-balance text-justify [hyphens:auto]">
