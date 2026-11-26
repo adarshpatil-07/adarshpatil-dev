@@ -6,6 +6,7 @@ import {
   type KeyboardEvent,
   type MouseEvent,
 } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { portfolio } from "@/data/portfolio";
@@ -66,6 +67,9 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const [moreOpen, setMoreOpen] = useState(false);
   const [active, setActive] = useState("top");
+  const pathname = useRouterState({
+    select: (state) => state.location.pathname,
+  });
   const moreButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -102,9 +106,11 @@ export function Header() {
     event: MouseEvent<HTMLAnchorElement>,
     id: string
   ) {
-    event.preventDefault();
     setOpen(false);
     setMoreOpen(false);
+    if (pathname !== "/") return;
+
+    event.preventDefault();
     scrollToId(id);
   }
 
@@ -130,7 +136,9 @@ export function Header() {
 
         {/* Brand */}
         <a
-          href="#top"
+          href={
+            pathname === "/" || pathname === "/projects" ? "#top" : "/"
+          }
           onClick={(event) => handleNav(event, "top")}
           className="font-display text-base font-bold tracking-tight text-foreground sm:text-lg"
           aria-label="Back to top"
@@ -151,7 +159,7 @@ export function Header() {
               return (
                 <a
                   key={link.id}
-                  href={`#${link.id}`}
+                  href={pathname === "/" ? `#${link.id}` : `/#${link.id}`}
                   onClick={(event) => handleNav(event, link.id)}
                   aria-current={isActive ? "location" : undefined}
                   className={`
@@ -205,23 +213,41 @@ export function Header() {
                 className="absolute right-0 top-full mt-2 min-w-40 rounded-lg border border-border bg-background p-1.5 shadow-lg"
               >
                 {moreLinks.map((link) => {
-                  const isActive = active === link.id;
+                  const isContact = link.id === "contact";
+                  const isActive = isContact
+                    ? pathname === "/contact"
+                    : active === link.id;
+                  const className = `
+                    block rounded-md px-3 py-2.5 text-sm
+                    transition-colors duration-200
+                    ${
+                      isActive
+                        ? "bg-muted text-foreground"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    }
+                  `;
+
+                  if (isContact) {
+                    return (
+                      <Link
+                        key={link.id}
+                        to="/contact"
+                        onClick={() => setMoreOpen(false)}
+                        aria-current={isActive ? "page" : undefined}
+                        className={className}
+                      >
+                        {link.label}
+                      </Link>
+                    );
+                  }
 
                   return (
                     <a
                       key={link.id}
-                      href={`#${link.id}`}
+                      href={pathname === "/" ? `#${link.id}` : `/#${link.id}`}
                       onClick={(event) => handleNav(event, link.id)}
                       aria-current={isActive ? "location" : undefined}
-                      className={`
-                        block rounded-md px-3 py-2.5 text-sm
-                        transition-colors duration-200
-                        ${
-                          isActive
-                            ? "bg-muted text-foreground"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        }
-                      `}
+                      className={className}
                     >
                       {link.label}
                     </a>
@@ -263,24 +289,42 @@ export function Header() {
         aria-label="Mobile navigation"
       >
         {links.map((link) => {
-          const isActive = active === link.id;
+          const isContact = link.id === "contact";
+          const isActive = isContact
+            ? pathname === "/contact"
+            : active === link.id;
+          const className = `
+            flex min-h-[42px] items-center rounded-lg px-3 py-2
+            text-sm font-medium transition-colors
+            focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
+            ${
+              isActive
+                ? "bg-muted text-foreground"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground"
+            }
+          `;
+
+          if (isContact) {
+            return (
+              <Link
+                key={link.id}
+                to="/contact"
+                onClick={() => setOpen(false)}
+                aria-current={isActive ? "page" : undefined}
+                className={className}
+              >
+                {link.label}
+              </Link>
+            );
+          }
 
           return (
             <a
               key={link.id}
-              href={`#${link.id}`}
+              href={pathname === "/" ? `#${link.id}` : `/#${link.id}`}
               onClick={(event) => handleNav(event, link.id)}
               aria-current={isActive ? "location" : undefined}
-              className={`
-                flex min-h-[42px] items-center rounded-lg px-3 py-2
-                text-sm font-medium transition-colors
-                focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring
-                ${
-                  isActive
-                    ? "bg-muted text-foreground"
-                    : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                }
-              `}
+              className={className}
             >
               {link.label}
             </a>

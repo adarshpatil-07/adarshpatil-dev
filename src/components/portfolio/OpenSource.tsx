@@ -1,9 +1,8 @@
 
 import { useState } from "react";
-import { ChevronDown, GitMerge, Github } from "lucide-react";
+import { ChevronDown, Github } from "lucide-react";
 import type { OpenSourceContribution } from "@/data/portfolio";
 import { portfolio } from "@/data/portfolio";
-import { Button } from "@/components/ui/button";
 import { SectionHeading } from "./SectionHeading";
 
 export function OpenSource() {
@@ -16,10 +15,10 @@ export function OpenSource() {
       <SectionHeading
         index="04"
         title="Open source"
-        description="Contributions to open-source software and pull requests."
+        description="Contributions to open-source software and projects."
       />
 
-      <div className="mt-6">
+      <div className="mt-8 space-y-3">
         {portfolio.openSource.map((item, index) => {
           const expanded = openTitle === item.title;
           const panelId = `oss-panel-${index}`;
@@ -28,123 +27,74 @@ export function OpenSource() {
           return (
             <article
               key={item.title}
-              className="border-b border-border last:border-b-0"
+              className="group relative overflow-hidden border-b border-border/70 last:border-b-0"
             >
-              <button
-                type="button"
-                id={buttonId}
-                aria-expanded={expanded}
-                aria-controls={panelId}
-                onClick={() =>
-                  setOpenTitle(expanded ? null : item.title)
-                }
-                className="group flex w-full min-h-[68px] items-center justify-between gap-4 py-4 text-left cursor-pointer transition-colors duration-200 hover:bg-secondary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-              >
-                <div className="flex items-center gap-4 min-w-0">
-                  <GitMerge
-                    className="h-5 w-5 sm:h-5 sm:w-5 shrink-0 text-violet-500"
-                    strokeWidth={1.8}
-                  />
+              <div className="flex items-center gap-3 sm:gap-5 py-5">
+                <button
+                  type="button"
+                  id={buttonId}
+                  aria-expanded={expanded}
+                  aria-controls={panelId}
+                  onClick={() =>
+                    setOpenTitle(expanded ? null : item.title)
+                  }
+                  className="flex flex-1 min-w-0 items-center gap-3 sm:gap-5 text-left cursor-pointer"
+                >
+                  <span className="shrink-0 font-mono text-xs text-muted-foreground/60 tabular-nums">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
 
-                  <div className="min-w-0">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <h3 className="text-sm sm:text-base font-semibold text-foreground tracking-tight leading-snug">
-                        {item.title}
-                      </h3>
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-base sm:text-lg font-medium tracking-tight text-foreground transition-colors duration-200 group-hover:text-foreground/75">
+                      {item.title}
+                    </h3>
 
-                      {item.isDemo ? (
-                        <span className="rounded border border-border px-1.5 py-0.5 font-mono text-[10px] text-muted-foreground">
-                          Demo
-                        </span>
-                      ) : null}
-                    </div>
-
-                    <p className="text-xs sm:text-sm text-muted-foreground mt-1 font-mono break-words">
+                    <p className="mt-1 text-xs sm:text-sm text-muted-foreground truncate">
                       {item.repoName}
                     </p>
                   </div>
+
+                  <ChevronDown
+                    className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                      expanded ? "rotate-180" : ""
+                    }`}
+                    strokeWidth={1.7}
+                  />
+                </button>
+
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`View ${item.title} on GitHub`}
+                  onClick={(e) => e.stopPropagation()}
+                  className="shrink-0 flex h-9 w-9 items-center justify-center rounded-full text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-secondary/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Github className="h-[18px] w-[18px]" strokeWidth={1.7} />
+                </a>
+              </div>
+
+              <div
+                id={panelId}
+                role="region"
+                aria-labelledby={buttonId}
+                hidden={!expanded}
+                className="pb-6 pl-8 sm:pl-12 pr-2 animate-in fade-in slide-in-from-top-1 duration-200"
+              >
+                <p className="text-sm sm:text-[15px] leading-relaxed text-muted-foreground max-w-2xl">
+                  {item.description}
+                </p>
+
+                <div className="mt-4 max-w-2xl">
+                  <p className="text-sm sm:text-[15px] leading-relaxed text-foreground/90">
+                    {item.contribution}
+                  </p>
                 </div>
-
-                <ChevronDown
-                  className={`h-4 w-4 shrink-0 text-muted-foreground transition-transform duration-200 ${
-                    expanded ? "rotate-180" : ""
-                  }`}
-                />
-              </button>
-
-              {expanded ? (
-                <ContributionDetails
-                  item={item}
-                  panelId={panelId}
-                  labelledBy={buttonId}
-                />
-              ) : null}
+              </div>
             </article>
           );
         })}
       </div>
     </section>
-  );
-}
-
-function ContributionDetails({
-  item,
-  panelId,
-  labelledBy,
-}: {
-  item: OpenSourceContribution;
-  panelId: string;
-  labelledBy: string;
-}) {
-  return (
-    <div
-      id={panelId}
-      role="region"
-      aria-labelledby={labelledBy}
-      className="pb-5 pl-9 sm:pl-10 pr-1 pt-2 sm:pt-3"
-    >
-      <p className="text-sm sm:text-[15px] leading-relaxed text-muted-foreground">
-        {item.description}
-      </p>
-
-      <div className="mt-4">
-        <p className="font-mono text-xs text-muted-foreground mb-1">
-          Contribution summary
-        </p>
-
-        <p className="text-sm leading-relaxed text-foreground">
-          {item.contribution}
-        </p>
-      </div>
-
-      <div className="mt-3 flex flex-wrap gap-1.5">
-        {item.technologies.map((tech) => (
-          <span
-            key={tech}
-            className="rounded border border-border px-2 py-1 text-xs font-mono text-foreground"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div className="mt-4">
-        <Button
-          asChild
-          variant="outline"
-          size="sm"
-          className="min-h-[44px]"
-        >
-          <a
-            href={item.href}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Github className="h-4 w-4" />
-            <span>View on GitHub</span>
-          </a>
-        </Button>
-      </div>
-    </div>
   );
 }

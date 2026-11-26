@@ -4,6 +4,7 @@ import {
   FileText,
   FolderGit2,
 } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { getSocial, portfolio } from "@/data/portfolio";
 import { Button } from "@/components/ui/button";
 import heroBanner from "@/assets/AOT wallpaper.gif";
@@ -109,7 +110,7 @@ export function Hero() {
                   variant="outline"
                   className="min-h-[44px]"
                 >
-                  <a href="#contact">Get in touch</a>
+                  <Link to="/contact">Get in touch</Link>
                 </Button>
               </div>
             </div>
