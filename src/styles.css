@@ -954,3 +954,17 @@ a {
   .hero-line span { transform: none; }
   .project-panel { clip-path: none; }
 }
+
+@media (min-width: 1001px) {
+  .github-activity {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .github-activity img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+}
