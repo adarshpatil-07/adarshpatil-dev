@@ -40,7 +40,10 @@ const selectedProjects: SelectedProject[] = [
     image: miyukiImage,
     categories: ["fe"],
     width: "w5",
-    links: [{ label: "View project", href: "https://miyuki-one.vercel.app/" }],
+    links: [
+      { label: "View project", href: "https://miyuki-one.vercel.app/" },
+      { label: "Source", href: `${portfolio.githubUrl}/miyuki` },
+    ],
   },
   {
     title: "RAG Document Q&A Chatbot",
