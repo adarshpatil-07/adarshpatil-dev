@@ -961,10 +961,31 @@ a {
     align-items: stretch;
   }
 
+  .github-activity .github-card-link {
+    display: block;
+    width: 100%;
+    min-width: 0;
+  }
+
   .github-activity img {
     display: block;
     width: 100%;
     max-width: 100%;
+    min-width: 0;
+    height: auto;
+  }
+}
+
+@media (min-width: 1001px) {
+  .github-card-link {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .github-card-image {
+    display: block;
+    width: 100%;
     height: auto;
   }
 }
