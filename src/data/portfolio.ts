@@ -230,6 +230,7 @@ export const portfolio: PortfolioData = {
       tags: ["React", "TypeScript", "Vite", "CSS", "HTML Canvas"],
       categories: ["Creative Frontend"],
       href: "https://miyuki-one.vercel.app/",
+      sourceHref: "https://github.com/adarshpatil-07/miyuki",
     },
     {
       title: "Philosopher AI",
